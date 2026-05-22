@@ -11,16 +11,14 @@ export function BottomCTA() {
         <Reveal>
           <div
             className="relative overflow-hidden rounded-[40px] px-7 py-14 text-center sm:px-12 sm:py-20"
-            style={{
-              background:
-                "linear-gradient(125deg, #ff8a65 0%, #ff6b9d 50%, #4dd0e1 100%)",
-            }}
+            style={{ background: "var(--grad-sunset-x)" }}
           >
+            <div className="dots-light absolute inset-0" aria-hidden />
             <div
-              className="absolute inset-0 opacity-30"
+              className="absolute inset-0"
               style={{
                 background:
-                  "radial-gradient(ellipse at 20% 10%, rgba(255,255,255,0.5), transparent 55%)",
+                  "radial-gradient(ellipse at 18% 0%, rgba(255,255,255,0.32), transparent 55%)",
               }}
               aria-hidden
             />

@@ -1,6 +1,9 @@
 /**
  * RankLogic SEO — Design Tokens
- * Liquid Glass Neomorphism · Miami High-End Construction
+ * "Tactile Sunset" · layered frosted glass + refined neumorphism
+ *
+ * Palette: Magical Moonlight, Polar Drift, Sea Buckthorn,
+ * Neverything, Ateneo Blue, Miami Coral.
  *
  * Handoff note (Figma → Bricks Builder): paste this block into
  * Bricks → Settings → Custom Code → Custom CSS, inside :root { }.
@@ -8,46 +11,66 @@
 
 :root {
   /* ---- Surfaces ---- */
-  --bg: #e8eef5;
-  --bg-raised: #f4f7fb;
-  --surface: #eef2f8;
-  --glass-tint: rgba(255, 255, 255, 0.7);
+  --bg: #f0eeeb;          /* Magical Moonlight */
+  --bg-raised: #f7f6f3;
+  --surface: #e6e4dd;
+  --mist: #ccd5da;        /* Polar Drift */
+  --glass-tint: rgba(255, 255, 255, 0.66);
+
+  /* ---- Dark ---- */
+  --navy: #003a6c;        /* Ateneo Blue */
+  --navy-deep: #13181b;   /* Neverything */
 
   /* ---- Ink (text) ---- */
-  --ink: #16202e;
-  --ink-soft: #4a5b70;
-  --ink-faint: #8493a8;
+  --ink: #13181b;
+  --ink-soft: #45515f;
+  --ink-faint: #8a93a0;
+  --cream: #f0eeeb;
+  --cream-soft: rgba(240, 238, 235, 0.72);
 
-  /* ---- Miami palette ---- */
-  --coral: #ff8a65;
-  --coral-deep: #ff7043;
-  --pink: #ff6b9d;
-  --amber: #ffb74d;
-  --aqua: #4dd0e1;
+  /* ---- Accents ---- */
+  --coral: #fd8973;       /* Miami Coral */
+  --coral-deep: #c2502e;  /* burnt coral — legible on light */
+  --amber: #ffbf65;       /* Sea Buckthorn */
 
-  /* ---- Brand (legacy / accents) ---- */
-  --brand-orange: #d6693f;
-  --brand-black: #05090a;
-
-  /* ---- Neomorphic shadow channels ---- */
-  --neo-dark: rgba(174, 184, 200, 0.45);
-  --neo-light: rgba(255, 255, 255, 0.95);
+  /* ---- Neomorphic shadow channels (warm) ---- */
+  --neo-dark: rgba(182, 172, 156, 0.55);
+  --neo-light: rgba(255, 255, 255, 0.92);
 
   /* ---- Gradients ---- */
-  --grad-hot: linear-gradient(135deg, #ff7043 0%, #ff6b9d 100%);
-  --grad-bar: linear-gradient(90deg, #ff8a65 0%, #ff6b9d 100%);
-  --grad-wide: linear-gradient(120deg, #ff8a65 0%, #ff6b9d 55%, #4dd0e1 100%);
+  --grad-hot: linear-gradient(130deg, #003a6c 0%, #c2502e 100%);
+  --grad-warm: linear-gradient(135deg, #fd8973 0%, #ffbf65 100%);
+  --grad-sunset: linear-gradient(
+    180deg,
+    #13181b 0%,
+    #003a6c 27%,
+    #6d5a7a 49%,
+    #fd8973 75%,
+    #ffbf65 100%
+  );
+  --grad-sunset-x: linear-gradient(
+    105deg,
+    #003a6c 0%,
+    #6d5a7a 38%,
+    #fd8973 72%,
+    #ffbf65 100%
+  );
 
-  /* ---- Shadows ---- */
-  --shadow-glass: 0 24px 64px rgba(174, 184, 200, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  --shadow-neo: 12px 12px 32px rgba(174, 184, 200, 0.45),
-    -12px -12px 32px rgba(255, 255, 255, 0.95);
-  --shadow-neo-sm: 6px 6px 16px rgba(174, 184, 200, 0.4),
-    -6px -6px 16px rgba(255, 255, 255, 0.9);
-  --shadow-neo-inset: inset 6px 6px 14px rgba(174, 184, 200, 0.45),
-    inset -6px -6px 14px rgba(255, 255, 255, 0.85);
-  --shadow-cta: 0 12px 32px rgba(214, 105, 63, 0.35);
+  /* ---- Shadows — soft, tactile ---- */
+  --shadow-glass: 0 22px 54px rgba(19, 24, 27, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --shadow-neo: 10px 10px 26px var(--neo-dark),
+    -9px -9px 22px var(--neo-light);
+  --shadow-neo-sm: 6px 6px 15px var(--neo-dark),
+    -5px -5px 12px var(--neo-light);
+  --shadow-neo-inset: inset 7px 7px 15px var(--neo-dark),
+    inset -6px -6px 13px var(--neo-light);
+  --shadow-cta: 0 14px 32px rgba(253, 137, 115, 0.42);
+  --shadow-lift: 0 30px 64px rgba(19, 24, 27, 0.18);
+
+  /* ---- Dot texture ---- */
+  --dot-ink: rgba(19, 24, 27, 0.055);
+  --dot-light: rgba(255, 255, 255, 0.08);
 
   /* ---- Radii ---- */
   --r-sm: 12px;

@@ -48,7 +48,7 @@ export default function BookPage() {
                   </li>
                 ))}
               </ul>
-              <div className="mt-6 border-t border-white/70 pt-5">
+              <div className="mt-6 border-t border-ink/10 pt-5">
                 <p className="text-sm text-ink-soft">
                   Rather just call?
                 </p>

@@ -52,7 +52,7 @@ export function Footer() {
             </FooterCol>
           </div>
 
-          <div className="mt-10 border-t border-white/60 pt-6">
+          <div className="mt-10 border-t border-ink/10 pt-6">
             <p className="text-xs text-ink-faint">{footer.legal}</p>
           </div>
         </div>

@@ -1,34 +1,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
   <defs>
-    <linearGradient id="hot" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ff7043"/>
-      <stop offset="1" stop-color="#ff6b9d"/>
+    <linearGradient id="sunset" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#13181b"/>
+      <stop offset="0.28" stop-color="#003a6c"/>
+      <stop offset="0.5" stop-color="#6d5a7a"/>
+      <stop offset="0.76" stop-color="#fd8973"/>
+      <stop offset="1" stop-color="#ffbf65"/>
     </linearGradient>
-    <radialGradient id="b1" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#ff8a65" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#ff8a65" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="b2" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#4dd0e1" stop-opacity="0.5"/>
-      <stop offset="1" stop-color="#4dd0e1" stop-opacity="0"/>
-    </radialGradient>
-    <radialGradient id="b3" cx="0.5" cy="0.5" r="0.5">
-      <stop offset="0" stop-color="#ffb74d" stop-opacity="0.45"/>
-      <stop offset="1" stop-color="#ffb74d" stop-opacity="0"/>
-    </radialGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#13181b" fill-opacity="0.06"/>
+    </pattern>
   </defs>
-  <rect width="1200" height="630" fill="#e8eef5"/>
-  <circle cx="160" cy="120" r="340" fill="url(#b1)"/>
-  <circle cx="1080" cy="150" r="300" fill="url(#b2)"/>
-  <circle cx="780" cy="620" r="360" fill="url(#b3)"/>
-  <g transform="translate(90,232)">
-    <rect width="68" height="68" rx="10" fill="url(#hot)"/>
-    <text x="34" y="50" font-family="Georgia, serif" font-size="44" font-weight="900" fill="#ffffff" text-anchor="middle">R</text>
-    <text x="92" y="38" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#16202e">RankLogic</text>
-    <text x="290" y="38" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#ff7043">SEO</text>
+
+  <rect width="1200" height="630" fill="#f0eeeb"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect x="812" y="58" width="330" height="514" rx="40" fill="url(#sunset)"/>
+
+  <!-- R-mark -->
+  <g transform="translate(86,74) scale(0.62)">
+    <g fill="#13181b">
+      <rect x="17" y="13" width="24" height="74" rx="4"/>
+      <path fill-rule="evenodd" d="M17 13 H56 A22 22 0 0 1 56 57 H17 Z M40 28 H49 A7.5 7.5 0 0 1 49 43 H40 Z"/>
+      <path d="M39 50 H60 L88 87 H67 Z"/>
+    </g>
+    <polygon points="68,15 68,45 38,15" fill="#fd8973"/>
+    <path d="M52 32 L30 54" stroke="#fd8973" stroke-width="13" stroke-linecap="round"/>
   </g>
-  <text x="90" y="392" font-family="Georgia, serif" font-size="68" font-weight="900" fill="#16202e">Phone-ringing SEO for</text>
-  <text x="90" y="470" font-family="Georgia, serif" font-size="68" font-weight="900" fill="url(#hot)" font-style="italic">high-end home services.</text>
-  <text x="90" y="540" font-family="Arial, sans-serif" font-size="27" fill="#4a5b70">Roofing · HVAC · Plumbing · Pool · Restoration · Electrical</text>
-  <text x="90" y="582" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2" fill="#ff7043">MAKE MORE MONEY. GET MORE CLIENTS.</text>
+  <g transform="translate(166,78)">
+    <text font-family="Arial, sans-serif" font-size="34" font-weight="900" letter-spacing="-1" fill="#13181b">RANKLOGIC</text>
+    <text y="30" font-family="Arial, sans-serif" font-size="17" font-weight="800" letter-spacing="6" fill="#c2502e">SEO</text>
+  </g>
+
+  <!-- Headline -->
+  <text x="86" y="320" font-family="Georgia, serif" font-size="70" font-weight="900" fill="#13181b">Phone-ringing SEO</text>
+  <text x="86" y="400" font-family="Georgia, serif" font-size="70" font-weight="900" fill="#13181b">for <tspan fill="#003a6c" font-style="italic">high-end</tspan> home</text>
+  <text x="86" y="480" font-family="Georgia, serif" font-size="70" font-weight="900" fill="#13181b">service contractors.</text>
+  <text x="88" y="545" font-family="Arial, sans-serif" font-size="23" fill="#45515f">Roofing · HVAC · Plumbing · Pool · Restoration · Electrical</text>
+
+  <text x="977" y="556" font-family="Arial, sans-serif" font-size="22" font-weight="800" letter-spacing="2" fill="#ffbf65" text-anchor="middle">ONE CLIENT PER CITY</text>
 </svg>

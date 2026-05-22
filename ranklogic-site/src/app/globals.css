@@ -2,18 +2,19 @@
 @import "../styles/tokens.css";
 
 @theme {
-  --color-bg: #e8eef5;
-  --color-bg-raised: #f4f7fb;
-  --color-surface: #eef2f8;
-  --color-ink: #16202e;
-  --color-ink-soft: #4a5b70;
-  --color-ink-faint: #8493a8;
-  --color-coral: #ff8a65;
-  --color-coral-deep: #ff7043;
-  --color-pink: #ff6b9d;
-  --color-amber: #ffb74d;
-  --color-aqua: #4dd0e1;
-  --color-brand-orange: #d6693f;
+  --color-bg: #f0eeeb;
+  --color-bg-raised: #f7f6f3;
+  --color-surface: #e6e4dd;
+  --color-mist: #ccd5da;
+  --color-ink: #13181b;
+  --color-ink-soft: #45515f;
+  --color-ink-faint: #8a93a0;
+  --color-navy: #003a6c;
+  --color-navy-deep: #13181b;
+  --color-cream: #f0eeeb;
+  --color-coral: #fd8973;
+  --color-coral-deep: #c2502e;
+  --color-amber: #ffbf65;
 
   --font-display: var(--font-playfair);
   --font-caps: var(--font-oswald);
@@ -40,7 +41,7 @@ body {
 }
 
 ::selection {
-  background: var(--pink);
+  background: var(--coral);
   color: #fff;
 }
 
@@ -49,37 +50,70 @@ h1, h2, h3, h4 {
   letter-spacing: -0.02em;
 }
 
-/* ---------- Glass + Neomorphism ---------- */
+/* ---------- Frosted glass ---------- */
 .glass {
   background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.72),
-    rgba(255, 255, 255, 0.36)
+    150deg,
+    rgba(255, 255, 255, 0.74),
+    rgba(255, 255, 255, 0.42)
   );
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(22px) saturate(165%);
+  -webkit-backdrop-filter: blur(22px) saturate(165%);
+  border: 1px solid rgba(255, 255, 255, 0.78);
   box-shadow: var(--shadow-glass);
 }
 
+/* Frosted glass for use on dark / navy surfaces */
+.glass-dark {
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+/* ---------- Neumorphism (soft, tactile) ---------- */
 .neo {
   background: var(--bg-raised);
   box-shadow: var(--shadow-neo);
 }
-
 .neo-sm {
   background: var(--bg-raised);
   box-shadow: var(--shadow-neo-sm);
 }
-
 .neo-inset {
   background: var(--surface);
   box-shadow: var(--shadow-neo-inset);
 }
 
+/* Neumorphism on navy surfaces */
+.neo-navy {
+  background: #00386a;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.42),
+    -7px -7px 18px rgba(255, 255, 255, 0.06);
+}
+.neo-navy-inset {
+  background: #00305c;
+  box-shadow: inset 6px 6px 14px rgba(0, 0, 0, 0.5),
+    inset -5px -5px 12px rgba(255, 255, 255, 0.06);
+}
+
 /* ---------- Gradient text ---------- */
 .grad-text {
   background: var(--grad-hot);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* Gradient text tuned for dark backgrounds */
+.grad-text-warm {
+  background: var(--grad-warm);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -94,14 +128,24 @@ h1, h2, h3, h4 {
 .highlight-bar::before {
   content: "";
   position: absolute;
-  left: -0.12em;
-  right: -0.12em;
-  bottom: 0.06em;
-  height: 0.4em;
-  background: rgba(255, 183, 77, 0.5);
+  left: -0.14em;
+  right: -0.14em;
+  bottom: 0.04em;
+  height: 0.42em;
+  background: var(--amber);
   border-radius: 3px;
   z-index: -1;
-  transform: rotate(-1.2deg);
+  transform: rotate(-1.4deg);
+}
+
+/* ---------- Dot texture (image-2 tactile field) ---------- */
+.dots {
+  background-image: radial-gradient(var(--dot-ink) 1.5px, transparent 1.7px);
+  background-size: 22px 22px;
+}
+.dots-light {
+  background-image: radial-gradient(var(--dot-light) 1.5px, transparent 1.7px);
+  background-size: 22px 22px;
 }
 
 /* ---------- Animated background blobs ---------- */
@@ -117,8 +161,8 @@ h1, h2, h3, h4 {
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.75;
+  filter: blur(85px);
+  opacity: 0.7;
   will-change: transform;
 }
 
@@ -127,7 +171,7 @@ h1, h2, h3, h4 {
   height: 46vw;
   top: -12vw;
   left: -8vw;
-  background: radial-gradient(circle, rgba(255, 138, 101, 0.55), transparent 70%);
+  background: radial-gradient(circle, rgba(253, 137, 115, 0.5), transparent 70%);
   animation: drift-1 26s var(--ease-out) infinite alternate;
 }
 .blob-2 {
@@ -135,7 +179,7 @@ h1, h2, h3, h4 {
   height: 40vw;
   top: -6vw;
   right: -10vw;
-  background: radial-gradient(circle, rgba(77, 208, 225, 0.5), transparent 70%);
+  background: radial-gradient(circle, rgba(0, 58, 108, 0.22), transparent 70%);
   animation: drift-2 32s var(--ease-out) infinite alternate;
 }
 .blob-3 {
@@ -143,7 +187,7 @@ h1, h2, h3, h4 {
   height: 50vw;
   bottom: -18vw;
   left: 26vw;
-  background: radial-gradient(circle, rgba(255, 183, 77, 0.42), transparent 70%);
+  background: radial-gradient(circle, rgba(255, 191, 101, 0.42), transparent 70%);
   animation: drift-3 38s var(--ease-out) infinite alternate;
 }
 .blob-4 {
@@ -151,7 +195,7 @@ h1, h2, h3, h4 {
   height: 34vw;
   top: 44%;
   right: -6vw;
-  background: radial-gradient(circle, rgba(255, 107, 157, 0.4), transparent 70%);
+  background: radial-gradient(circle, rgba(204, 213, 218, 0.5), transparent 70%);
   animation: drift-1 30s var(--ease-out) infinite alternate-reverse;
 }
 
@@ -170,14 +214,17 @@ h1, h2, h3, h4 {
   html { scroll-behavior: auto; }
 }
 
-/* ---------- Noise grain overlay ---------- */
+/* ---------- Faint global dot field ---------- */
 .grain {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: radial-gradient(
+    rgba(19, 24, 27, 0.05) 1px,
+    transparent 1.4px
+  );
+  background-size: 26px 26px;
 }
 
 /* ---------- Layout utilities ---------- */
@@ -199,11 +246,11 @@ h1, h2, h3, h4 {
 
 /* ---------- Motion utilities ---------- */
 .cta-pulse {
-  animation: cta-pulse 2.4s ease-in-out infinite;
+  animation: cta-pulse 2.6s ease-in-out infinite;
 }
 @keyframes cta-pulse {
-  0%, 100% { box-shadow: 0 12px 32px rgba(214, 105, 63, 0.35); }
-  50% { box-shadow: 0 18px 44px rgba(255, 107, 157, 0.5); }
+  0%, 100% { box-shadow: 0 12px 30px rgba(253, 137, 115, 0.4); }
+  50% { box-shadow: 0 18px 46px rgba(255, 191, 101, 0.52); }
 }
 
 .lift {

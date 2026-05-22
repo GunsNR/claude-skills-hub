@@ -1,23 +1,34 @@
 import { steak } from "@/lib/copy";
 import { Reveal } from "@/components/ui/Reveal";
-import { RichText } from "@/components/ui/RichText";
 
 export function SteakSection() {
   return (
     <section className="relative py-16 sm:py-20">
       <div className="container-site grid items-center gap-6 lg:grid-cols-[1.05fr_0.95fr]">
         <Reveal>
-          <div className="glass relative h-full overflow-hidden rounded-[32px] p-9 sm:p-12">
+          <div className="relative h-full overflow-hidden rounded-[32px] bg-navy p-9 sm:p-12">
+            <div className="dots-light absolute inset-0" aria-hidden />
             <span
-              className="font-display absolute -top-6 left-6 text-[9rem] leading-none text-coral/25"
+              className="font-display absolute -top-10 left-5 text-[12rem] leading-none text-coral/30"
               aria-hidden
             >
               &ldquo;
             </span>
-            <blockquote className="relative font-display text-3xl font-bold leading-[1.18] text-ink sm:text-[2.6rem]">
-              <RichText value={steak.quote} />
+            <blockquote className="relative font-display text-3xl font-bold leading-[1.18] text-cream sm:text-[2.6rem]">
+              {steak.quote.map((seg, i) =>
+                seg.em ? (
+                  <em
+                    key={i}
+                    className="font-display italic text-coral"
+                  >
+                    {seg.text}
+                  </em>
+                ) : (
+                  <span key={i}>{seg.text}</span>
+                ),
+              )}
             </blockquote>
-            <p className="font-caps mt-8 text-xs font-semibold uppercase tracking-[0.16em] text-ink-faint">
+            <p className="font-caps relative mt-8 text-xs font-semibold uppercase tracking-[0.16em] text-amber">
               The RankLogic difference
             </p>
           </div>

@@ -27,7 +27,7 @@ export function PainBlock() {
                 <p className="mt-5 text-[0.98rem] font-medium leading-relaxed text-ink">
                   {card.problem}
                 </p>
-                <div className="mt-5 flex items-start gap-2.5 border-t border-white/70 pt-5">
+                <div className="mt-5 flex items-start gap-2.5 border-t border-ink/10 pt-5">
                   <span
                     className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[0.7rem] font-black text-white"
                     style={{ background: "var(--grad-hot)" }}

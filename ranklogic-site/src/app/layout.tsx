@@ -35,7 +35,6 @@ export const metadata: Metadata = {
   title: `${site.name} — South Florida SEO for Home Service Contractors`,
   description:
     "RankLogic SEO gets South Florida roofers, HVAC, plumbers, and home service pros found, chosen, and paid. One client per trade per city. Make more money, get more clients.",
-  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({
