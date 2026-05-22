@@ -2,7 +2,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 type Variant = "primary" | "ghost" | "white" | "white-ghost";
-type Size = "md" | "lg";
+type Size = "md" | "lg" | "xl";
 
 const base =
   "font-caps inline-flex items-center justify-center gap-2 rounded-full font-semibold uppercase tracking-[0.06em] transition-all duration-300 will-change-transform";
@@ -10,6 +10,7 @@ const base =
 const sizes: Record<Size, string> = {
   md: "px-6 py-3 text-[0.82rem]",
   lg: "px-8 py-4 text-[0.92rem]",
+  xl: "px-9 py-5 text-[1rem]",
 };
 
 const variants: Record<Variant, string> = {

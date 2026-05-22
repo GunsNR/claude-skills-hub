@@ -34,23 +34,19 @@ export const topBar = {
 };
 
 export const hero = {
+  badge: "Performance-Guaranteed SEO · South Florida",
   h1: [
-    { text: "South Florida's " },
-    { text: "phone-ringing", highlight: true },
-    { text: " SEO for " },
-    { text: "high-end", em: true },
-    { text: " home services." },
+    { text: "We " },
+    { text: "Guarantee", highlight: true },
+    { text: " Clients for Home Service Businesses." },
   ] as Rich,
-  sub: "Roofing. HVAC. Plumbing. Pool. Restoration. Electrical. We get you found, chosen, and paid — not buried under reports nobody reads. Make more money. Get more clients. The steak amongst meatballs.",
-  form: {
-    badge: "Free Audit · Zero Obligation",
-    heading: "See what's costing you jobs.",
-    cta: "Send My Free Audit →",
-    finePrint:
-      "No spam. No sales pitch. We'll review your site within 48 hours.",
-  },
-  phoneLine: "Or just pick up the phone:",
-  phoneLineEnd: "— Izzy answers.",
+  sub: "We get South Florida roofers, HVAC techs, and plumbers found, called, and booked. One client per trade, per city — or we don't take you on.",
+  ctaPrimary: { label: "Get My Free Audit", href: "/audit" },
+  ctaWhatsApp: "Chat on WhatsApp",
+  reassure: "Free audit · No contracts past 90 days · Zero obligation",
+  phoneIntro: "Or call",
+  phoneOutro: "— Izzy answers, not a call center.",
+  trust: "331+ five-star reviews · Wayne's Roofing Co., #1 in Ocean County",
 };
 
 export const proofStrip = {

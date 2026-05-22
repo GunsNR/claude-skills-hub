@@ -10,6 +10,7 @@ import { TopBar } from "@/components/sections/TopBar";
 import { Nav } from "@/components/sections/Nav";
 import { Footer } from "@/components/sections/Footer";
 import { StickyCallBar } from "@/components/sections/StickyCallBar";
+import { FloatingWhatsApp } from "@/components/sections/FloatingWhatsApp";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <Footer />
         <StickyCallBar />
+        <FloatingWhatsApp />
         <Analytics />
       </body>
     </html>

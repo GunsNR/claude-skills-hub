@@ -19,6 +19,10 @@ export const site = {
   // PLACEHOLDER — confirm real Calendly link.
   calendlyUrl: "https://calendly.com/ranklogicseo/15min",
 
+  // PLACEHOLDER — confirm real WhatsApp business number (digits only in wa.me).
+  whatsapp:
+    "https://wa.me/19545550100?text=Hi%20RankLogic%2C%20I%27d%20like%20a%20free%20SEO%20audit.",
+
   // PLACEHOLDER — confirm GA4 measurement ID (G-XXXXXXXX).
   analyticsId: "",
 
