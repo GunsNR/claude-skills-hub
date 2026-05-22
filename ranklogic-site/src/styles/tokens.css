@@ -1,0 +1,62 @@
+/**
+ * RankLogic SEO — Design Tokens
+ * Liquid Glass Neomorphism · Miami High-End Construction
+ *
+ * Handoff note (Figma → Bricks Builder): paste this block into
+ * Bricks → Settings → Custom Code → Custom CSS, inside :root { }.
+ */
+
+:root {
+  /* ---- Surfaces ---- */
+  --bg: #e8eef5;
+  --bg-raised: #f4f7fb;
+  --surface: #eef2f8;
+  --glass-tint: rgba(255, 255, 255, 0.7);
+
+  /* ---- Ink (text) ---- */
+  --ink: #16202e;
+  --ink-soft: #4a5b70;
+  --ink-faint: #8493a8;
+
+  /* ---- Miami palette ---- */
+  --coral: #ff8a65;
+  --coral-deep: #ff7043;
+  --pink: #ff6b9d;
+  --amber: #ffb74d;
+  --aqua: #4dd0e1;
+
+  /* ---- Brand (legacy / accents) ---- */
+  --brand-orange: #d6693f;
+  --brand-black: #05090a;
+
+  /* ---- Neomorphic shadow channels ---- */
+  --neo-dark: rgba(174, 184, 200, 0.45);
+  --neo-light: rgba(255, 255, 255, 0.95);
+
+  /* ---- Gradients ---- */
+  --grad-hot: linear-gradient(135deg, #ff7043 0%, #ff6b9d 100%);
+  --grad-bar: linear-gradient(90deg, #ff8a65 0%, #ff6b9d 100%);
+  --grad-wide: linear-gradient(120deg, #ff8a65 0%, #ff6b9d 55%, #4dd0e1 100%);
+
+  /* ---- Shadows ---- */
+  --shadow-glass: 0 24px 64px rgba(174, 184, 200, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  --shadow-neo: 12px 12px 32px rgba(174, 184, 200, 0.45),
+    -12px -12px 32px rgba(255, 255, 255, 0.95);
+  --shadow-neo-sm: 6px 6px 16px rgba(174, 184, 200, 0.4),
+    -6px -6px 16px rgba(255, 255, 255, 0.9);
+  --shadow-neo-inset: inset 6px 6px 14px rgba(174, 184, 200, 0.45),
+    inset -6px -6px 14px rgba(255, 255, 255, 0.85);
+  --shadow-cta: 0 12px 32px rgba(214, 105, 63, 0.35);
+
+  /* ---- Radii ---- */
+  --r-sm: 12px;
+  --r-md: 20px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+  --r-pill: 999px;
+
+  /* ---- Layout ---- */
+  --container: 1240px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
