@@ -430,3 +430,41 @@ export const blogPosts: BlogPost[] = [
 ];
 
 export const blogPostMap = Object.fromEntries(blogPosts.map((p) => [p.slug, p]));
+
+const LF = "https://loremflickr.com/800/450";
+
+/** Deterministic, keyword-relevant stock photo per post via loremflickr */
+export const blogPhotoUrls: Record<string, string> = {
+  /* Local SEO */
+  "why-roofers-lose-map-pack":  `${LF}/roofing,contractor,house?lock=11`,
+  "rank-google-maps-hvac":      `${LF}/hvac,air-conditioning,technician?lock=12`,
+  "local-pack-explained":       `${LF}/smartphone,map,location?lock=13`,
+  "pool-seo-zip-code":          `${LF}/swimming-pool,blue-water?lock=14`,
+  "local-seo-vs-national":      `${LF}/city,skyline,aerial?lock=15`,
+  "google-maps-vs-organic":     `${LF}/smartphone,google?lock=16`,
+  /* Google Business Profile */
+  "google-business-profile-checklist": `${LF}/laptop,business,checklist?lock=17`,
+  "gbp-photos-guide":           `${LF}/photography,camera,professional?lock=18`,
+  "gbp-posts-strategy":         `${LF}/social-media,marketing?lock=19`,
+  "gbp-suspension-prevention":  `${LF}/laptop,security?lock=20`,
+  /* Reviews */
+  "get-100-google-reviews":     `${LF}/customer,satisfaction,review?lock=21`,
+  "review-velocity-system":     `${LF}/five-star,rating?lock=22`,
+  "competitor-review-attacks":  `${LF}/competition,business,strategy?lock=23`,
+  "review-response-templates":  `${LF}/phone,communication,message?lock=24`,
+  /* Content */
+  "city-pages-vs-service-pages": `${LF}/city,website,digital?lock=25`,
+  "seo-content-contractors":    `${LF}/writing,laptop,content?lock=26`,
+  "five-page-website":          `${LF}/website,laptop,design?lock=27`,
+  "blogging-wont-save-you":     `${LF}/typing,computer,blog?lock=28`,
+  /* Strategy */
+  "homeadvisor-vs-seo":         `${LF}/money,investment,roi?lock=29`,
+  "90-day-seo-timeline":        `${LF}/calendar,planning,timeline?lock=30`,
+  "fire-seo-agency":            `${LF}/contract,office,business?lock=31`,
+  "exclusivity-model":          `${LF}/partnership,handshake?lock=32`,
+  /* Trade Guides */
+  "seo-for-roofers-guide":      `${LF}/roof,shingles,construction?lock=33`,
+  "hvac-seo-guide":             `${LF}/hvac,installation,air-conditioning?lock=34`,
+  "plumber-seo-guide":          `${LF}/plumber,pipe,tools?lock=35`,
+  "restoration-seo-guide":      `${LF}/water-damage,restoration?lock=36`,
+};

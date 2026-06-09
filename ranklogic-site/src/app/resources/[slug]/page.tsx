@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { blogPostMap, blogPosts, CATEGORY_LABELS } from "@/lib/blog";
+import { blogPostMap, blogPosts, blogPhotoUrls, CATEGORY_LABELS } from "@/lib/blog";
 import { BlogThumb } from "@/components/ui/BlogThumb";
 
 interface Props {
@@ -43,6 +43,8 @@ export default async function BlogPostPage({ params }: Props) {
       <div className="container-site pt-8">
         <BlogThumb
           category={post.category}
+          photo={blogPhotoUrls[post.slug]}
+          alt={post.title}
           className="w-full rounded-2xl overflow-hidden"
         />
       </div>
@@ -110,7 +112,11 @@ export default async function BlogPostPage({ params }: Props) {
                 href={`/resources/${r.slug}`}
                 className="group flex flex-col overflow-hidden rounded-xl bg-bg-raised shadow-[0_2px_12px_rgba(0,0,0,0.06)] transition-transform hover:-translate-y-0.5"
               >
-                <BlogThumb category={r.category} />
+                <BlogThumb
+                    category={r.category}
+                    photo={blogPhotoUrls[r.slug]}
+                    alt={r.title}
+                  />
                 <div className="p-4">
                   <p className="font-display text-sm font-bold leading-snug text-ink transition-colors group-hover:text-coral-deep">
                     {r.title}

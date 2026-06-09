@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { blogPosts, CATEGORY_LABELS } from "@/lib/blog";
+import { blogPosts, blogPhotoUrls, CATEGORY_LABELS } from "@/lib/blog";
 import { BlogThumb } from "@/components/ui/BlogThumb";
 import { PageHero } from "@/components/sections/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
@@ -37,7 +37,11 @@ export default function ResourcesPage() {
                   href={`/resources/${post.slug}`}
                   className="group flex flex-col overflow-hidden rounded-2xl bg-bg-raised shadow-[0_2px_16px_rgba(0,0,0,0.07)] transition-transform duration-300 hover:-translate-y-1"
                 >
-                  <BlogThumb category={post.category} />
+                  <BlogThumb
+                    category={post.category}
+                    photo={blogPhotoUrls[post.slug]}
+                    alt={post.title}
+                  />
 
                   <div className="flex flex-1 flex-col gap-3 p-5">
                     <div className="flex items-center justify-between">
