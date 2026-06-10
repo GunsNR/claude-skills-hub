@@ -1,0 +1,21 @@
+{
+  "daily_budget_usd": 2.0,
+  "hard_cap_usd": 5.0,
+  "routes": {
+    "fast": {"models": ["google/gemini-2.5-flash-lite", "deepseek/deepseek-chat-v3.1:free"]},
+    "summarization": {"models": ["google/gemini-2.5-flash-lite", "deepseek/deepseek-chat-v3.1:free"]},
+    "classification": {"models": ["deepseek/deepseek-chat-v3.1:free", "google/gemini-2.5-flash-lite"]},
+    "growth": {"models": ["anthropic/claude-sonnet-4.6", "google/gemini-2.5-flash"]},
+    "reasoning": {"models": ["anthropic/claude-opus-4.8", "anthropic/claude-sonnet-4.6"]},
+    "coding": {"models": ["anthropic/claude-sonnet-4.6", "deepseek/deepseek-chat-v3.1:free"]},
+    "research": {"models": ["anthropic/claude-sonnet-4.6", "google/gemini-2.5-flash"]}
+  },
+  "cost_per_mtok_usd": {
+    "deepseek/deepseek-chat-v3.1:free": 0.0,
+    "google/gemini-2.5-flash-lite": 0.3,
+    "google/gemini-2.5-flash": 1.25,
+    "anthropic/claude-sonnet-4.6": 9.0,
+    "anthropic/claude-opus-4.8": 35.0
+  },
+  "free_fallback": "deepseek/deepseek-chat-v3.1:free"
+}
