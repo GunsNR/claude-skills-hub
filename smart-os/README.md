@@ -9,7 +9,10 @@ right now?"**
 
 - **One-line capture** → auto-classified (client / sales / finance / tax /
   growth / SEO delivery), auto-routed: production SEO work goes straight to
-  **Dilshan's queue** with a generated brief in Obsidian.
+  **Dilshan's queue** with a generated brief in Obsidian — and Dilshan gets
+  an automatic **WhatsApp + email** notification
+  ([setup](docs/NOTIFICATIONS.md)). One-tap reassign (→ DS / → Me) on every
+  task card.
 - **CEO Brief** — exactly 3 tasks for Izzy, quick wins for low-energy
   moments, stale-client alerts, tax status. Nothing else.
 - **Tax Guard** — every income event sets aside 30% automatically (ledger +

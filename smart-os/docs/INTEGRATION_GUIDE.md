@@ -59,6 +59,9 @@ into Alembic later if you prefer migrations.
 | `SMARTOS_VAULT` | absolute path to Obsidian vault | unset → vault features off |
 | `SMARTOS_CEO_DB` | SQLAlchemy URL for standalone mode | `sqlite:///smartos_ceo.db` |
 | `SMARTOS_CEO_PORT` | standalone port | 8100 |
+| `SMARTOS_CALLMEBOT_PHONE` / `SMARTOS_CALLMEBOT_APIKEY` | WhatsApp to Dilshan (see NOTIFICATIONS.md) | unset → skipped |
+| `SMARTOS_SMTP_HOST/PORT/USER/PASS`, `SMARTOS_NOTIFY_EMAIL` | email to Dilshan | unset → skipped |
+| `SMARTOS_NOTIFY_WEBHOOK` | Zapier/Make fan-out hook | unset → skipped |
 
 ## Obsidian setup
 

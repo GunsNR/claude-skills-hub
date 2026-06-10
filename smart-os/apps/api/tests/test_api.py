@@ -8,6 +8,10 @@ from smartos_ceo.router import router
 @pytest.fixture()
 def client(db, vault, monkeypatch):
     monkeypatch.delenv("OPENROUTER_API_KEY", raising=False)
+    for var in ["SMARTOS_CALLMEBOT_PHONE", "SMARTOS_CALLMEBOT_APIKEY",
+                "SMARTOS_SMTP_HOST", "SMARTOS_SMTP_USER", "SMARTOS_SMTP_PASS",
+                "SMARTOS_NOTIFY_EMAIL", "SMARTOS_NOTIFY_WEBHOOK"]:
+        monkeypatch.delenv(var, raising=False)
     # Build the app directly so we keep the db fixture's in-memory engine
     # instead of create_app() re-configuring a file-backed one.
     app = FastAPI()
@@ -79,6 +83,29 @@ def test_dashboard_serves(client):
     r = client.get("/api/ceo/dashboard")
     assert r.status_code == 200
     assert "Brain dump" in r.text
+
+
+def test_reassign_endpoint(client):
+    task = client.post("/api/ceo/capture",
+                       json={"text": "organize my desk"}).json()
+    r = client.post(f"/api/ceo/tasks/{task['id']}/owner",
+                    json={"owner": "dilshan"})
+    assert r.status_code == 200
+    body = r.json()
+    assert body["owner"] == "dilshan"
+    assert body["notified"]["whatsapp"] == "skipped (not configured)"
+    queue = client.get("/api/ceo/delegate/queue").json()
+    assert task["id"] in [t["id"] for t in queue]
+
+    r = client.post(f"/api/ceo/tasks/{task['id']}/owner",
+                    json={"owner": "izzy"})
+    assert r.json()["owner"] == "izzy"
+    assert "notified" not in r.json()
+
+    assert client.post(f"/api/ceo/tasks/{task['id']}/owner",
+                       json={"owner": "bob"}).status_code == 422
+    assert client.post("/api/ceo/tasks/9999/owner",
+                       json={"owner": "dilshan"}).status_code == 404
 
 
 def test_404s(client):

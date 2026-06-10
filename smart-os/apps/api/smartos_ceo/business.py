@@ -5,7 +5,7 @@ from datetime import timezone
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from . import obsidian
+from . import notify, obsidian
 from .models import Client, ClientLog, Task, utcnow
 
 STALE_CONTACT_DAYS = 14
@@ -100,7 +100,9 @@ def delegate(db: Session, title: str, details: str = "",
                 f"Delegation/{utcnow():%Y-%m-%d} {safe_name}.md", brief)
         except FileNotFoundError:
             note_path = None  # vault not configured; task still created
-    return {"task_id": task.id, "obsidian_note": note_path}
+    notified = notify.notify_dilshan(task.title, details, note_path)
+    return {"task_id": task.id, "obsidian_note": note_path,
+            "notified": notified}
 
 
 def delegation_queue(db: Session) -> list[Task]:
