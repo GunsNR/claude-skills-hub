@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart OS — Repeats</title>
+<style>
+  :root{--bg:#0f1117;--card:#181b25;--card2:#1e2230;--text:#e8eaf2;
+    --dim:#8a90a6;--accent:#6ee7b7;--danger:#f87171;--radius:16px}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:17px;line-height:1.5;max-width:680px;margin:0 auto;
+    padding:20px 16px 80px}
+  .nav{display:flex;gap:16px;align-items:baseline;margin-bottom:18px}
+  h1{font-size:22px}
+  .nav a{color:var(--dim);text-decoration:none;font-size:15px}
+  form{background:var(--card);border-radius:var(--radius);padding:16px;
+    margin-bottom:22px;display:flex;flex-direction:column;gap:10px}
+  input,select{background:var(--card2);border:2px solid #2a2f42;
+    border-radius:10px;color:var(--text);font-size:16px;padding:10px 12px;
+    outline:none;font-family:inherit}
+  input:focus,select:focus{border-color:var(--accent)}
+  .row{display:flex;gap:8px}
+  .row>*{flex:1}
+  button.add{background:var(--accent);color:#06281c;border:0;
+    border-radius:12px;font-size:16px;font-weight:700;padding:12px;
+    cursor:pointer}
+  .card{background:var(--card);border-radius:12px;padding:14px 16px;
+    margin-bottom:8px;display:flex;align-items:center;gap:10px}
+  .card .grow{flex:1}
+  .card .meta{color:var(--dim);font-size:13px}
+  .del{background:#2c1515;color:var(--danger);border:0;border-radius:10px;
+    padding:8px 12px;font-weight:700;cursor:pointer}
+  .empty{color:var(--dim)}
+</style>
+</head>
+<body>
+<div class="nav"><h1>Repeats</h1><a href="/api/ceo/dashboard">← Today</a></div>
+<form id="f">
+  <input id="title" placeholder="e.g. Send monthly reports to all clients" required>
+  <div class="row">
+    <select id="cadence">
+      <option value="daily">Every day</option>
+      <option value="weekly" selected>Weekly</option>
+      <option value="monthly">Monthly</option>
+    </select>
+    <select id="day"></select>
+    <select id="owner">
+      <option value="izzy" selected>Me</option>
+      <option value="dilshan">Dilshan</option>
+    </select>
+  </div>
+  <button class="add" type="submit">Add repeat</button>
+</form>
+<div id="list"></div>
+<script>
+const $ = id => document.getElementById(id);
+const api = (p,o) => fetch('/api/ceo'+p,o).then(r=>r.json());
+const WEEK = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+
+function dayOptions(){
+  const cad = $('cadence').value, day = $('day');
+  day.innerHTML = '';
+  day.style.display = cad==='daily' ? 'none' : '';
+  if(cad==='weekly')
+    WEEK.forEach((w,i)=>day.add(new Option(w,i)));
+  if(cad==='monthly')
+    for(let i=1;i<=28;i++) day.add(new Option(`Day ${i}`,i));
+}
+$('cadence').onchange = dayOptions;
+dayOptions();
+
+function describe(r){
+  if(r.cadence==='daily') return 'every day';
+  if(r.cadence==='weekly') return `every ${WEEK[r.day]}`;
+  return `monthly on day ${r.day}`;
+}
+
+async function load(){
+  const items = await api('/recurring');
+  const list = $('list');
+  list.innerHTML = items.length ? '' :
+    '<div class="empty">No repeats yet. Add "Sweep tax money" weekly and "Invoice clients" monthly — future you says thanks.</div>';
+  items.forEach(r=>{
+    const d = document.createElement('div'); d.className='card';
+    d.innerHTML = `<div class="grow"><b></b><div class="meta">${describe(r)} · ${r.owner==='dilshan'?'→ Dilshan':'me'}</div></div>`;
+    d.querySelector('b').textContent = r.title;
+    const del = document.createElement('button');
+    del.className='del'; del.textContent='✕';
+    del.onclick = async()=>{ await api(`/recurring/${r.id}`,{method:'DELETE'}); load(); };
+    d.appendChild(del);
+    list.appendChild(d);
+  });
+}
+
+$('f').onsubmit = async e=>{
+  e.preventDefault();
+  const cadence = $('cadence').value;
+  await api('/recurring',{method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      title: $('title').value.trim(),
+      cadence,
+      day: cadence==='daily' ? 0 : parseInt($('day').value),
+      owner: $('owner').value,
+    })});
+  $('title').value='';
+  load();
+};
+load();
+</script>
+</body>
+</html>

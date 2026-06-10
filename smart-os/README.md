@@ -28,6 +28,16 @@ right now?"**
   budget caps with automatic downgrade. Spend shown on the dashboard.
 - **ADHD dashboard** — one page, dark, big buttons, installable on iPhone
   as a PWA over LAN/Tailscale.
+- **Morning Brief push** — at 8am the system WhatsApps/emails *you* your
+  Top 3, unswept tax, and cold clients. The app chases you, not the other
+  way around. (`SMARTOS_IZZY_*` vars; manual trigger: `POST /api/ceo/brief/send`)
+- **Recurring tasks** (`/api/ceo/repeats`) — "invoice clients monthly",
+  "sweep tax every Monday" respawn themselves.
+- **Dilshan's page** (`/api/ceo/dilshan`) — his queue with Done (+status
+  note that feeds your wiki) and a Blocked button that pings you instantly.
+- **Siri capture** — "Hey Siri, Smart OS" → speak → classified task
+  ([setup](docs/IPHONE_CAPTURE.md)).
+- **Auto-backup** — daily SQLite snapshot, newest 14 kept.
 - **AI Studio** (`/api/ceo/studio`) — a sidebar of 15 labeled one-click
   actions: Create WP Website (live HTML preview + WordPress build notes),
   Create Logo (SVG), Create Landing Page, Ask a Question, Strategy Session,

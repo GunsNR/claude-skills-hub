@@ -7,8 +7,9 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
-from . import (auto_research, business, ceo_brief, notify, obsidian, studio,
-               tasks, tax_guard, wiki)
+from . import (auto_research, business, ceo_brief, notify, obsidian,
+               scheduler, studio, tasks, tax_guard, wiki)
+from .models import RecurringTemplate
 from .cost_router import CostRouter
 from .db import get_db
 from .gateway import build_gateway
@@ -34,6 +35,19 @@ class DoneIn(BaseModel):
 
 class OwnerIn(BaseModel):
     owner: str = Field(pattern="^(izzy|dilshan)$")
+
+
+class BlockerIn(BaseModel):
+    note: str = Field(min_length=1, max_length=2000)
+
+
+class RecurringIn(BaseModel):
+    title: str = Field(min_length=1, max_length=500)
+    details: str = ""
+    owner: str = Field(default="izzy", pattern="^(izzy|dilshan)$")
+    category: str = ""
+    cadence: str = Field(pattern="^(daily|weekly|monthly)$")
+    day: int = Field(default=0, ge=0, le=28)
 
 
 class ClientIn(BaseModel):
@@ -138,6 +152,67 @@ def reassign_task(task_id: int, body: OwnerIn, db: Session = Depends(get_db)):
     if body.owner == "dilshan":
         out["notified"] = notify.notify_dilshan(task.title, task.details)
     return out
+
+
+@router.post("/tasks/{task_id}/blocker")
+def report_blocker(task_id: int, body: BlockerIn,
+                   db: Session = Depends(get_db)):
+    """Dilshan flags a blocker; Izzy gets pinged immediately."""
+    task = db.get(tasks.Task, task_id)
+    if task is None:
+        raise HTTPException(404, "task not found")
+    sent = notify.notify_izzy(
+        f"[Smart OS] BLOCKER: {task.title}",
+        f"Dilshan is blocked on: {task.title}\n\n{body.note}")
+    return {"id": task.id, "notified": sent}
+
+
+# ---------- recurring tasks ----------
+
+def _recurring_out(r) -> dict:
+    return {"id": r.id, "title": r.title, "owner": r.owner,
+            "category": r.category, "cadence": r.cadence, "day": r.day,
+            "active": r.active, "last_spawned": r.last_spawned}
+
+
+@router.get("/recurring")
+def list_recurring(db: Session = Depends(get_db)):
+    from sqlalchemy import select
+    return [_recurring_out(r) for r in db.scalars(select(RecurringTemplate))]
+
+
+@router.post("/recurring")
+def create_recurring(body: RecurringIn, db: Session = Depends(get_db)):
+    template = RecurringTemplate(title=body.title, details=body.details,
+                                 owner=body.owner, category=body.category,
+                                 cadence=body.cadence, day=body.day)
+    db.add(template)
+    db.commit()
+    return _recurring_out(template)
+
+
+@router.delete("/recurring/{template_id}")
+def delete_recurring(template_id: int, db: Session = Depends(get_db)):
+    template = db.get(RecurringTemplate, template_id)
+    if template is None:
+        raise HTTPException(404, "template not found")
+    db.delete(template)
+    db.commit()
+    return {"deleted": template_id}
+
+
+# ---------- scheduler controls ----------
+
+@router.post("/brief/send")
+def send_brief_now(db: Session = Depends(get_db)):
+    result = scheduler.send_morning_brief(db, force=True)
+    return result
+
+
+@router.post("/backup/run")
+def backup_now(db: Session = Depends(get_db)):
+    path = scheduler.run_backup(db, force=True)
+    return {"backup": str(path) if path else None}
 
 
 # ---------- clients + delegation ----------
@@ -339,6 +414,16 @@ def usage(db: Session = Depends(get_db)):
 @router.get("/dashboard", include_in_schema=False)
 def dashboard():
     return FileResponse(STATIC_DIR / "dashboard.html")
+
+
+@router.get("/dilshan", include_in_schema=False)
+def dilshan_page():
+    return FileResponse(STATIC_DIR / "dilshan.html")
+
+
+@router.get("/repeats", include_in_schema=False)
+def repeats_page():
+    return FileResponse(STATIC_DIR / "repeats.html")
 
 
 @router.get("/manifest.json", include_in_schema=False)

@@ -116,6 +116,22 @@ class ModelUsage(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
+class RecurringTemplate(Base):
+    __tablename__ = "ceo_recurring_templates"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    title: Mapped[str] = mapped_column(String(500))
+    details: Mapped[str] = mapped_column(Text, default="")
+    owner: Mapped[str] = mapped_column(String(50), default="izzy")
+    category: Mapped[str] = mapped_column(String(50), default="")
+    cadence: Mapped[str] = mapped_column(String(20))  # daily|weekly|monthly
+    # weekly: 0=Mon..6=Sun; monthly: day of month (capped at 28)
+    day: Mapped[int] = mapped_column(Integer, default=0)
+    active: Mapped[bool] = mapped_column(Boolean, default=True)
+    last_spawned: Mapped[str] = mapped_column(String(10), default="")  # YYYY-MM-DD
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
 class StudioJob(Base):
     __tablename__ = "ceo_studio_jobs"
 
