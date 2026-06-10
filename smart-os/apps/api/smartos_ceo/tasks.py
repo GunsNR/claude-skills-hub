@@ -118,6 +118,17 @@ def complete(db: Session, task_id: int) -> Task | None:
     return task
 
 
+def set_owner(db: Session, task_id: int, owner: str) -> Task | None:
+    if owner not in ("izzy", "dilshan"):
+        raise ValueError("owner must be 'izzy' or 'dilshan'")
+    task = db.get(Task, task_id)
+    if task is None:
+        return None
+    task.owner = owner
+    db.commit()
+    return task
+
+
 def snooze(db: Session, task_id: int, hours: int = 24) -> Task | None:
     task = db.get(Task, task_id)
     if task is None:

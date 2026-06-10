@@ -7,7 +7,8 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
-from . import auto_research, business, ceo_brief, obsidian, tasks, tax_guard, wiki
+from . import (auto_research, business, ceo_brief, notify, obsidian, tasks,
+               tax_guard, wiki)
 from .cost_router import CostRouter
 from .db import get_db
 from .gateway import build_gateway
@@ -29,6 +30,10 @@ class SnoozeIn(BaseModel):
 
 class DoneIn(BaseModel):
     learning: str | None = None
+
+
+class OwnerIn(BaseModel):
+    owner: str = Field(pattern="^(izzy|dilshan)$")
 
 
 class ClientIn(BaseModel):
@@ -122,6 +127,17 @@ def snooze_task(task_id: int, body: SnoozeIn = SnoozeIn(),
     if task is None:
         raise HTTPException(404, "task not found")
     return _task_out(task)
+
+
+@router.post("/tasks/{task_id}/owner")
+def reassign_task(task_id: int, body: OwnerIn, db: Session = Depends(get_db)):
+    task = tasks.set_owner(db, task_id, body.owner)
+    if task is None:
+        raise HTTPException(404, "task not found")
+    out = _task_out(task)
+    if body.owner == "dilshan":
+        out["notified"] = notify.notify_dilshan(task.title, task.details)
+    return out
 
 
 # ---------- clients + delegation ----------

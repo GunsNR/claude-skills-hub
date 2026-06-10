@@ -97,6 +97,28 @@ function toast(msg){
   setTimeout(()=>t.classList.remove('show'), 1800);
 }
 
+function reassignBtn(t){
+  const btn = document.createElement('button');
+  const toDilshan = t.owner === 'izzy';
+  btn.className='btn snooze';
+  btn.textContent = toDilshan ? '→ DS' : '→ Me';
+  btn.title = toDilshan ? 'Hand to Dilshan (notifies him)' : 'Take this back';
+  btn.onclick = async () => {
+    const r = await post(`/tasks/${t.id}/owner`,
+                         {owner: toDilshan ? 'dilshan' : 'izzy'});
+    if(toDilshan && r.notified){
+      const sent = Object.entries(r.notified)
+        .filter(([,v]) => v === 'sent').map(([k]) => k);
+      toast(sent.length ? `Dilshan notified via ${sent.join(' + ')} ✓`
+                        : 'Moved to Dilshan (no notify channels set up)');
+    } else {
+      toast(toDilshan ? 'Moved to Dilshan →' : 'Back on your list');
+    }
+    load();
+  };
+  return btn;
+}
+
 function taskCard(t, i, actions=true){
   const div = document.createElement('div'); div.className='card';
   div.innerHTML = `<div class="num">${i!=null?i+1:''}</div>
@@ -115,7 +137,7 @@ function taskCard(t, i, actions=true){
     snooze.className='btn snooze'; snooze.textContent='Later';
     snooze.onclick = async () => { await post(`/tasks/${t.id}/snooze`, {hours:24});
       toast('Snoozed to tomorrow'); load(); };
-    div.append(done, snooze);
+    div.append(done, snooze, reassignBtn(t));
   }
   return div;
 }
@@ -143,6 +165,7 @@ async function load(){
   fill($('dilshan'), b.dilshan_queue, t=>{
     const d=taskCard(t,null,false);
     d.querySelector('.num').textContent='→';
+    d.append(reassignBtn(t));
     return d;
   }, 'Dilshan queue is empty — delegate something.');
 
