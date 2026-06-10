@@ -7,8 +7,8 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
-from . import (auto_research, business, ceo_brief, notify, obsidian, tasks,
-               tax_guard, wiki)
+from . import (auto_research, business, ceo_brief, notify, obsidian, studio,
+               tasks, tax_guard, wiki)
 from .cost_router import CostRouter
 from .db import get_db
 from .gateway import build_gateway
@@ -277,6 +277,54 @@ def research_run(item_id: int, db: Session = Depends(get_db)):
         raise HTTPException(404, "research item not found")
     return {"id": item.id, "status": item.status, "brief": item.brief,
             "model_used": item.model_used}
+
+
+# ---------- studio ----------
+
+class StudioRunIn(BaseModel):
+    action_id: str = Field(min_length=1, max_length=100)
+    input: str = Field(min_length=1, max_length=20000)
+
+
+def _job_out(j) -> dict:
+    return {"id": j.id, "action_id": j.action_id, "label": j.label,
+            "output_kind": j.output_kind, "output_text": j.output_text,
+            "file_name": j.file_name, "model_used": j.model_used,
+            "est_cost": j.est_cost, "status": j.status,
+            "created_at": j.created_at.isoformat(),
+            "input_preview": j.input_text[:120]}
+
+
+@router.get("/studio/actions")
+def studio_actions():
+    return studio.list_actions()
+
+
+@router.post("/studio/run")
+def studio_run(body: StudioRunIn, db: Session = Depends(get_db)):
+    cr = CostRouter(db)
+    job = studio.run(db, body.action_id, body.input, build_gateway(cr), cr)
+    if job is None:
+        raise HTTPException(404, "unknown action")
+    return _job_out(job)
+
+
+@router.get("/studio/jobs")
+def studio_jobs(limit: int = 30, db: Session = Depends(get_db)):
+    return [_job_out(j) for j in studio.history(db, limit)]
+
+
+@router.get("/studio/files/{job_id}/{file_name}")
+def studio_file(job_id: int, file_name: str):
+    try:
+        return FileResponse(studio.get_file(job_id, file_name))
+    except FileNotFoundError:
+        raise HTTPException(404, "file not found")
+
+
+@router.get("/studio", include_in_schema=False)
+def studio_page():
+    return FileResponse(STATIC_DIR / "studio.html")
 
 
 # ---------- model spend ----------

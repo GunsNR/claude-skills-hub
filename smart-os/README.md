@@ -28,6 +28,13 @@ right now?"**
   budget caps with automatic downgrade. Spend shown on the dashboard.
 - **ADHD dashboard** — one page, dark, big buttons, installable on iPhone
   as a PWA over LAN/Tailscale.
+- **AI Studio** (`/api/ceo/studio`) — a sidebar of 15 labeled one-click
+  actions: Create WP Website (live HTML preview + WordPress build notes),
+  Create Logo (SVG), Create Landing Page, Ask a Question, Strategy Session,
+  Write Blog Post, SEO Audit Plan, Keyword Ideas, Client Proposal, Cold
+  Outreach, Social Posts Pack, Rewrite, Summarize, Explain, Code Helper.
+  Every button is pre-routed to the right model tier, injects your business
+  playbooks, and keeps a clickable history.
 
 ## Quick start (standalone)
 

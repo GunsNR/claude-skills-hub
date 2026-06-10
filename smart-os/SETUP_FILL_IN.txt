@@ -1,0 +1,100 @@
+==============================================================
+SMART OS — EVERYTHING YOU NEED TO FILL IN (one-time setup)
+==============================================================
+
+HOW THIS WORKS
+Each section below has:
+  1. WHAT to get and WHERE to get it
+  2. The EXACT PowerShell command to run
+In every command: replace ONLY the text between the second pair of
+quotes. Keep all quotes. Keep "User") at the end.
+After running ALL your commands: close PowerShell, open a new one,
+restart the app (.\scripts\start_ceo_layer.ps1 from the smart-os folder).
+
+--------------------------------------------------------------
+1. OPENROUTER KEY  (required — powers all AI buttons)
+--------------------------------------------------------------
+Get it:  https://openrouter.ai/settings/keys  -> Create Key
+It looks like: sk-or-v1-xxxxxxxxxxxxxxxxxxxx
+(You already did this one. Skip if so.)
+
+[Environment]::SetEnvironmentVariable("OPENROUTER_API_KEY", "PASTE-KEY-HERE", "User")
+
+--------------------------------------------------------------
+2. OBSIDIAN VAULT PATH  (recommended — memory + Dilshan briefs)
+--------------------------------------------------------------
+Get it: open Obsidian -> click the vault name (bottom left) ->
+"Manage vaults" shows the folder path. Or right-click the vault
+folder in File Explorer -> Copy as path (remove the outer quotes).
+
+[Environment]::SetEnvironmentVariable("SMARTOS_VAULT", "C:\PASTE\VAULT\PATH\HERE", "User")
+
+--------------------------------------------------------------
+3. WHATSAPP TO DILSHAN  (free, via CallMeBot)
+--------------------------------------------------------------
+DILSHAN does this part on his phone (2 minutes):
+  a. Save contact:  +34 644 96 09 73
+     (if dead, current number is at
+      callmebot.com/blog/free-api-whatsapp-messages/)
+  b. WhatsApp it exactly:  I allow callmebot to send me messages
+  c. Bot replies with his APIKEY (a number). He sends it to you.
+
+YOU fill in:
+  - Dilshan's WhatsApp number WITH country code (e.g. +94771234567)
+  - The apikey the bot sent him
+
+[Environment]::SetEnvironmentVariable("SMARTOS_CALLMEBOT_PHONE", "+PASTE-DILSHANS-NUMBER", "User")
+[Environment]::SetEnvironmentVariable("SMARTOS_CALLMEBOT_APIKEY", "PASTE-APIKEY", "User")
+
+--------------------------------------------------------------
+4. EMAIL TO DILSHAN  (via your Gmail)
+--------------------------------------------------------------
+Get the app password:  https://myaccount.google.com/apppasswords
+  (needs 2-Step Verification ON; create one named "smartos")
+  It's 16 characters like: abcd efgh ijkl mnop
+  This is NOT your normal Gmail password.
+
+Fill in: your gmail, the app password, Dilshan's email.
+
+[Environment]::SetEnvironmentVariable("SMARTOS_SMTP_HOST", "smtp.gmail.com", "User")
+[Environment]::SetEnvironmentVariable("SMARTOS_SMTP_USER", "izzystheartist@gmail.com", "User")
+[Environment]::SetEnvironmentVariable("SMARTOS_SMTP_PASS", "PASTE-16-CHAR-APP-PASSWORD", "User")
+[Environment]::SetEnvironmentVariable("SMARTOS_NOTIFY_EMAIL", "PASTE-DILSHANS-EMAIL", "User")
+
+--------------------------------------------------------------
+5. OPTIONAL: ZAPIER WEBHOOK  (only if you want Slack/SMS/etc later)
+--------------------------------------------------------------
+Get it: zapier.com -> new Zap -> trigger "Webhooks by Zapier ->
+Catch Hook" -> copy the URL.
+
+[Environment]::SetEnvironmentVariable("SMARTOS_NOTIFY_WEBHOOK", "PASTE-HOOK-URL", "User")
+
+--------------------------------------------------------------
+6. IPHONE ACCESS  (no keys needed)
+--------------------------------------------------------------
+  a. On the PC run:  ipconfig
+     -> note "IPv4 Address" (e.g. 192.168.1.50)
+  b. One-time firewall rule (PowerShell AS ADMIN):
+     New-NetFirewallRule -DisplayName "Smart OS" -Direction Inbound -Protocol TCP -LocalPort 8100 -Action Allow -Profile Private
+  c. iPhone Safari (same Wi-Fi):  http://YOUR-IP:8100
+  d. Share button -> Add to Home Screen. Done — it's an app now.
+  Away from home? Install Tailscale on PC + iPhone (same login),
+  then use the PC's Tailscale IP instead. See docs/IPHONE_ACCESS.md.
+
+--------------------------------------------------------------
+AFTER FILLING EVERYTHING IN
+--------------------------------------------------------------
+  1. Close PowerShell. Open a NEW one.
+  2. cd to the smart-os folder, run:  .\scripts\start_ceo_layer.ps1
+  3. Open http://localhost:8100  -> Today page
+  4. Tap "🎨 Studio →" for the button library
+  5. Test Dilshan notify: tap "→ DS" on any task. His phone buzzes.
+
+RULES THAT KEEP YOU SAFE
+  - Keys/passwords live ONLY in these env vars. Never in files,
+    chats, notes, or screenshots.
+  - If a key ever appears anywhere visible, it's burned: revoke it
+    and make a new one.
+  - This file is safe to keep — it contains no real secrets, only
+    placeholders.
+==============================================================

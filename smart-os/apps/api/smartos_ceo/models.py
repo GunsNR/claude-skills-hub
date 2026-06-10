@@ -116,6 +116,23 @@ class ModelUsage(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
 
 
+class StudioJob(Base):
+    __tablename__ = "ceo_studio_jobs"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    action_id: Mapped[str] = mapped_column(String(100))
+    label: Mapped[str] = mapped_column(String(200))
+    input_text: Mapped[str] = mapped_column(Text)
+    output_kind: Mapped[str] = mapped_column(String(20))  # markdown|html|svg
+    output_text: Mapped[str] = mapped_column(Text, default="")
+    file_name: Mapped[str] = mapped_column(String(200), default="")
+    model_used: Mapped[str] = mapped_column(String(200), default="")
+    tokens: Mapped[int] = mapped_column(Integer, default=0)
+    est_cost: Mapped[float] = mapped_column(Float, default=0.0)
+    status: Mapped[str] = mapped_column(String(20), default="done")  # done|failed
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+
+
 class PendingAction(Base):
     __tablename__ = "ceo_pending_actions"
 
