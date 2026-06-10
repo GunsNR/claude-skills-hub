@@ -1,0 +1,28 @@
+# Rank Logic SEO — business profile seed for the Smart OS CEO Layer.
+# Edit this, then load it with: python -m smartos_ceo.seed config/rank_logic_seed.yaml
+business:
+  name: Rank Logic SEO
+  owner: Izzy
+  owner_role: CEO — clients, sales, growth strategy, finances
+  tax_rate: 0.30
+
+team:
+  - name: Dilshan
+    role: Main Dev — SEO delivery, systems, employee management
+    routes_categories: [seo_delivery, systems]
+
+# Add your real clients here (the system flags any active client with no
+# logged contact in 14 days).
+clients:
+  - name: Example Client
+    domain: example.com
+    mrr: 1500
+    status: active
+    notes: Replace with real clients before seeding.
+
+# Standing priorities used by the wiki seed playbooks.
+operating_rules:
+  - Every payment received → 30% set aside for tax immediately, sweep weekly.
+  - SEO production work goes to Dilshan with a written brief, never verbally.
+  - Izzy's calendar priority - clients first, sales second, strategy third.
+  - One growth experiment at a time.

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="/api/ceo/manifest.json">
+<title>Smart OS — Today</title>
+<style>
+  :root{
+    --bg:#0f1117; --card:#181b25; --card2:#1e2230; --text:#e8eaf2;
+    --dim:#8a90a6; --accent:#6ee7b7; --warn:#fbbf24; --danger:#f87171;
+    --blue:#7dd3fc; --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:17px;line-height:1.5;max-width:680px;margin:0 auto;
+    padding:20px 16px 80px}
+  h1{font-size:22px;margin-bottom:4px}
+  .sub{color:var(--dim);font-size:14px;margin-bottom:20px}
+  .capture{display:flex;gap:8px;margin-bottom:24px}
+  .capture input{flex:1;background:var(--card2);border:2px solid #2a2f42;
+    border-radius:var(--radius);color:var(--text);font-size:17px;
+    padding:14px 16px;outline:none}
+  .capture input:focus{border-color:var(--accent)}
+  .capture button{background:var(--accent);color:#06281c;border:0;
+    border-radius:var(--radius);font-size:17px;font-weight:700;
+    padding:0 22px;cursor:pointer}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;
+    color:var(--dim);margin:26px 0 10px}
+  .card{background:var(--card);border-radius:var(--radius);
+    padding:16px;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+  .card .grow{flex:1}
+  .card .title{font-weight:600}
+  .card .meta{color:var(--dim);font-size:13px;margin-top:2px}
+  .num{font-size:26px;font-weight:800;color:var(--accent);min-width:34px;
+    text-align:center}
+  .btn{border:0;border-radius:12px;padding:10px 14px;font-size:14px;
+    font-weight:700;cursor:pointer;white-space:nowrap}
+  .btn.done{background:#143828;color:var(--accent)}
+  .btn.snooze{background:#262a3a;color:var(--dim)}
+  .alert{border-left:4px solid var(--warn);background:var(--card);
+    border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:15px}
+  .alert.tax{border-color:var(--danger)}
+  .taxbar{background:var(--card);border-radius:var(--radius);padding:16px;
+    display:flex;justify-content:space-between;align-items:center}
+  .taxbar .amt{font-size:24px;font-weight:800;color:var(--warn)}
+  .taxbar .ok{color:var(--accent)}
+  .btn.sweep{background:#3a2c12;color:var(--warn)}
+  .empty{color:var(--dim);font-size:15px;padding:8px 4px}
+  .pill{display:inline-block;background:var(--card2);color:var(--blue);
+    border-radius:999px;font-size:12px;padding:2px 10px;margin-left:6px}
+  .spend{color:var(--dim);font-size:13px;text-align:center;margin-top:30px}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+    background:var(--accent);color:#06281c;font-weight:700;
+    padding:12px 24px;border-radius:999px;opacity:0;transition:.3s}
+  .toast.show{opacity:1}
+</style>
+</head>
+<body>
+<h1>Today</h1>
+<div class="sub" id="date"></div>
+
+<form class="capture" id="captureForm">
+  <input id="captureInput" placeholder="Brain dump it — Smart OS sorts it" autocomplete="off">
+  <button type="submit">Add</button>
+</form>
+
+<div id="alerts"></div>
+
+<h2>Your Top 3 — ignore everything else</h2>
+<div id="top3"></div>
+
+<h2>Quick wins (low energy? do one)</h2>
+<div id="quickwins"></div>
+
+<h2>Tax money</h2>
+<div id="tax"></div>
+
+<h2>Dilshan's queue</h2>
+<div id="dilshan"></div>
+
+<div class="spend" id="spend"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const api = (path, opts) => fetch('/api/ceo' + path, opts).then(r => r.json());
+const post = (path, body) => api(path, {method:'POST',
+  headers:{'Content-Type':'application/json'},
+  body: body ? JSON.stringify(body) : undefined});
+
+function toast(msg){
+  const t = $('toast'); t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+function taskCard(t, i, actions=true){
+  const div = document.createElement('div'); div.className='card';
+  div.innerHTML = `<div class="num">${i!=null?i+1:''}</div>
+    <div class="grow"><div class="title"></div>
+    <div class="meta">${t.category} · ~${t.minutes} min</div></div>`;
+  div.querySelector('.title').textContent = t.title;
+  if(actions){
+    const done = document.createElement('button');
+    done.className='btn done'; done.textContent='Done';
+    done.onclick = async () => {
+      const learning = prompt('Anything you learned? (optional — feeds your wiki)') || null;
+      await post(`/tasks/${t.id}/done`, learning ? {learning} : {});
+      toast('Done ✓'); load();
+    };
+    const snooze = document.createElement('button');
+    snooze.className='btn snooze'; snooze.textContent='Later';
+    snooze.onclick = async () => { await post(`/tasks/${t.id}/snooze`, {hours:24});
+      toast('Snoozed to tomorrow'); load(); };
+    div.append(done, snooze);
+  }
+  return div;
+}
+
+function fill(el, items, render, emptyMsg){
+  el.innerHTML='';
+  if(!items.length){ el.innerHTML = `<div class="empty">${emptyMsg}</div>`; return; }
+  items.forEach((it,i)=>el.appendChild(render(it,i)));
+}
+
+async function load(){
+  const b = await api('/brief');
+  $('date').textContent = new Date().toDateString() +
+    ` · ${b.open_task_count} open task${b.open_task_count===1?'':'s'}`;
+
+  const alerts = $('alerts'); alerts.innerHTML='';
+  b.alerts.forEach(a=>{
+    const d=document.createElement('div');
+    d.className='alert'+(a.kind==='tax'?' tax':'');
+    d.textContent = a.message; alerts.appendChild(d);
+  });
+
+  fill($('top3'), b.top3, (t,i)=>taskCard(t,i), 'Nothing urgent. Go sell or go rest.');
+  fill($('quickwins'), b.quick_wins, t=>taskCard(t,null), 'No quick wins queued.');
+  fill($('dilshan'), b.dilshan_queue, t=>{
+    const d=taskCard(t,null,false);
+    d.querySelector('.num').textContent='→';
+    return d;
+  }, 'Dilshan queue is empty — delegate something.');
+
+  const tax = $('tax'); const u = b.tax.unswept_balance;
+  tax.innerHTML = `<div class="taxbar">
+    <div><div class="meta" style="color:var(--dim);font-size:13px">set aside ${Math.round(b.tax.tax_rate*100)}% · total $${b.tax.total_set_aside.toFixed(2)}</div>
+    <div class="amt ${u===0?'ok':''}">${u===0?'All swept ✓':'$'+u.toFixed(2)+' to move'}</div></div>
+    ${u>0?'<button class="btn sweep" id="sweepBtn">I moved it</button>':''}
+  </div>`;
+  const sweepBtn = $('sweepBtn');
+  if(sweepBtn) sweepBtn.onclick = async()=>{ await post('/tax/sweep');
+    toast('Tax swept ✓'); load(); };
+
+  const usage = await api('/usage');
+  $('spend').textContent = `AI spend today: $${usage.spend_today_usd.toFixed(4)} / $${usage.daily_budget_usd.toFixed(2)} budget` +
+    (usage.downgraded ? ' · running on cheap models' : '');
+}
+
+$('captureForm').onsubmit = async e => {
+  e.preventDefault();
+  const text = $('captureInput').value.trim();
+  if(!text) return;
+  const t = await post('/capture', {text});
+  $('captureInput').value='';
+  toast(t.owner==='dilshan' ? 'Routed to Dilshan →' : 'Captured ✓');
+  load();
+};
+
+load();
+setInterval(load, 60000);
+</script>
+</body>
+</html>

@@ -1,0 +1,939 @@
+SMART OS / AI OS — FULL SYSTEM SPECIFICATION
+Version: Daily-Driver MVP v0.1 Working Specification
+Generated: 2026-06-09
+
+IMPORTANT SECURITY NOTE
+An OpenRouter API key was previously exposed in a pasted/uploaded log during setup. That key should be revoked and replaced. This specification intentionally does not include any raw API keys, tokens, credential values, Authorization headers, or secrets.
+
+============================================================
+1. PRODUCT DEFINITION
+============================================================
+
+Smart OS / AI OS is a safe, local-first personal AI command center.
+
+Its purpose is to centralize the user's projects, tools, local files, workflows, memory, models, automations, credentials, approvals, observability, and growth intelligence into one controlled operating layer.
+
+The system is designed to let the user ask AI to understand, plan, draft, propose, compare, route, evaluate, and coordinate work across real projects and AI tools while keeping risky actions behind approval gates.
+
+Core product promise:
+AI that can safely work across your tools, projects, memory, and workflows without giving up control.
+
+Primary category:
+Safe AI command center.
+
+Secondary categories:
+- Personal AI OS
+- AI operating layer
+- AI control plane
+- AI workflow automation system
+- Local-first AI assistant
+- AI project command center
+- Agent orchestration dashboard
+
+Primary user:
+A power user, developer, founder, operator, or creator who wants one local-first control center for projects, notes, coding agents, AI models, automations, SEO/growth work, and workflows.
+
+============================================================
+2. CURRENT VALIDATED STATE
+============================================================
+
+Latest verified checkpoint from the build:
+- Backend: FastAPI
+- Frontend: Next.js
+- Local persistence: SQLite
+- Optional production persistence: Postgres + pgvector path exists
+- OpenRouter: live and working
+- Model gateway: working
+- Assistant OpenRouter path: working
+- Model routing: implemented
+- Routing history/evals/alerts/recommendations: implemented
+- Approval-gated route config apply/rollback: implemented
+- Growth Intelligence Module: implemented
+- Project workspace registration: implemented
+- Safe project index preview: implemented
+- Approval-gated project indexing: implemented
+- Agent Connector Registry: implemented
+- Project-aware Command Center: implemented
+- Resume/checkpoint protocol: implemented
+- Backend tests at latest checkpoint: 181 passed, 2 skipped, 2 warnings
+- Frontend build: passed
+
+Current usable areas:
+- /settings/models
+- /settings/models/routing
+- /projects
+- /projects/[project_id]
+- /agent-connectors
+- /agent-connectors/[connector_id]
+- /agents
+- /command-center
+- /readiness
+- /settings/backup
+- Dashboard home page
+- Approvals page
+
+Current important scripts:
+- scripts/smoke_all.ps1
+- scripts/resume_status.ps1
+- scripts/hourly_resume_check.ps1
+- OpenRouter smoke scripts
+- Model gateway smoke script
+- Assistant OpenRouter smoke script
+
+============================================================
+3. CORE ARCHITECTURE
+============================================================
+
+Frontend:
+- Next.js app
+- Dashboard and workspace UI
+- Model settings and routing UI
+- Project onboarding and project pages
+- Connector registry UI
+- Command Center UI
+- Growth intelligence UI
+- Backup/settings/readiness pages
+- Approval UI and pending-action review surfaces
+
+Backend:
+- FastAPI
+- SQLite-first local mode
+- Alembic migrations
+- Workspace-scoped APIs
+- Model gateway
+- Model routing engine
+- Credential vault / credential references
+- Approval and pending-action system
+- Scheduler
+- System events / observability
+- Project workspace service
+- Agent connector registry
+- Growth intelligence service
+- Backup/restore service
+- Database/readiness service
+
+Storage:
+- SQLite by default
+- Postgres optional
+- pgvector optional
+- SQLite fallback search/vector behavior supported
+- Export/import records supported
+- Persistent provider configuration supported
+- Model routing history persisted
+- Project workspace and file-index metadata persisted
+- Growth intelligence records persisted
+
+Security architecture:
+- Credentials are represented by references/handles, not returned to frontend
+- Raw secrets are not stored in normal config tables
+- Secret-shaped fields are redacted or rejected in imports
+- Risky actions create pending actions
+- Approval resume path applies changes only after approval
+- Workspace boundaries are enforced
+- System events are sanitized
+- File indexing excludes secret-like files and folders
+- No automatic external writes by default
+
+============================================================
+4. MODEL AND PROVIDER LAYER
+============================================================
+
+Current model provider capabilities:
+- OpenRouter live provider connected
+- OpenRouter can use openrouter/auto
+- OpenRouter status shows:
+  - enabled/disabled
+  - provider mode
+  - credential source
+  - default model
+  - fast model
+  - reasoning model
+  - coding model
+  - fallback models
+  - mock fallback state
+  - no plaintext secrets returned
+- OpenRouter direct smoke test passed
+- Model gateway OpenRouter smoke test passed
+- Assistant OpenRouter smoke test passed
+
+Model gateway:
+- Routes model calls through configured provider
+- Supports metadata:
+  - selected provider
+  - requested model
+  - actual provider
+  - actual model
+  - fallback used
+  - attempted models
+  - latency
+  - total tokens
+  - estimated cost
+  - status
+  - error category
+  - approval requirement
+  - route class
+- Avoids silent mock fallback when strict OpenRouter mode is enabled
+- Mock/local behavior remains default-safe when no provider is configured
+
+Persistent provider config:
+- ModelProviderConfig exists
+- Stores non-secret provider settings:
+  - provider ID
+  - enabled state
+  - credential ref
+  - base URL
+  - model names
+  - fallback models
+  - timeout/retries
+  - routing mode
+  - config source
+- Does not store raw API keys in normal config tables
+- Supports env refs and runtime-only keys
+- UI shows persistent vs runtime-only status
+
+Current route classes:
+- fast
+- reasoning
+- coding
+- growth
+- summarization
+- safety_review
+- risky_action_planning
+- local_only
+- mock
+
+Routing policy:
+- Summary tasks route to summarization/fast
+- Growth/content tasks route to growth
+- Code/debug tasks route to coding
+- Planning/research tasks route to reasoning
+- Shell/browser/GitHub destructive plans route to safety/risky planning
+- Credential-related tasks do not expose secrets to models
+- Local-only preference avoids remote providers where configured
+
+============================================================
+5. MODEL OPERATIONS LAYER
+============================================================
+
+Persisted records:
+- ModelRouteDecision
+- ModelCallRecord
+- ModelEvalCase
+- ModelEvalResult
+- ModelFeedback
+- ModelPerformanceThreshold
+- ModelPerformanceAlert
+- ModelRouteRecommendation
+- ModelRoutingConfig
+- ModelProviderConfig
+
+Current capabilities:
+- Persist routing decisions
+- Persist model call metadata
+- Persist fallback information
+- Persist latency/cost/token data
+- Persist eval cases/results
+- Store feedback
+- Generate performance summaries
+- Generate route/provider/model breakdowns
+- Generate deterministic insights
+- Schedule deterministic eval runs
+- Alert on thresholds
+- Recommend routing improvements
+- Apply recommendations only through pending approval
+- Roll back routing config changes only through pending approval
+- Maintain routing config change history
+
+Thresholds and alerts:
+- Eval pass rate low
+- Fallback rate high
+- Failure rate high
+- Latency high
+- Cost high
+- Feedback low
+- Repeated eval failure
+- Repeated provider failure
+
+Recommendations:
+- switch_to_cheaper_model
+- switch_to_faster_model
+- switch_to_stronger_model
+- add_fallback_model
+- remove_bad_fallback_model
+- add_eval_case
+- improve_prompt
+- require_approval
+- investigate_provider
+
+Approval-gated model route changes:
+- Recommendation generates safe diff
+- Apply creates pending action
+- No change happens before approval
+- Approval resume applies once
+- Rollback payload stored
+- Rollback creates its own pending action
+- Config-state validation prevents unsafe rollback
+
+============================================================
+6. APPROVALS AND PENDING ACTIONS
+============================================================
+
+Purpose:
+All risky actions must go through pending actions and approval resume.
+
+Current approval-gated action types include:
+- model_routing_config_change
+- model_routing_config_rollback
+- project_index_apply
+- risky connector task apply
+- future shell/Git/file/browser writes
+
+Approval behavior:
+- Pending action created first
+- Review payload shown to user
+- Approval required before execution
+- Resume applies once
+- Repeat resume is idempotent
+- Rejection leaves system unchanged
+- System events are recorded
+- Rollback data is stored where relevant
+
+Approval UI:
+- Project indexing approval detail shows:
+  - project name
+  - preview counts
+  - files seen
+  - files indexable
+  - files ignored
+  - ignored reasons
+  - sample paths
+  - safety warnings
+  - approval consequences
+- Route config approval shows diff and rollback details
+- Connector risky actions show pending action IDs and policy metadata
+
+============================================================
+7. PROJECT WORKSPACE SYSTEM
+============================================================
+
+Current purpose:
+Let Smart OS safely understand approved project folders.
+
+Current features:
+- First-run current workspace registration
+- Safe idempotent registration of Smart OS repo
+- Project registry
+- Project pages
+- Project summary
+- Git detection/status read-only
+- Project memory
+- Project index preview
+- Approval-gated project indexing
+- ProjectFileIndex metadata rows after approval
+- .smartosignore support
+- Secret/file exclusion rules
+- Dashboard/readiness/command center onboarding cards
+
+Current endpoints include:
+- GET /api/projects
+- POST /api/projects
+- GET /api/projects/{project_id}
+- POST /api/projects/{project_id}/scan
+- POST /api/projects/{project_id}/index-preview
+- POST /api/projects/{project_id}/index-apply
+- GET /api/projects/{project_id}/files
+- GET /api/projects/{project_id}/summary
+- GET /api/projects/{project_id}/git/status
+- POST /api/projects/{project_id}/memory
+- GET /api/projects/current-workspace/suggestion
+- POST /api/projects/current-workspace/register
+- GET /api/onboarding/status
+
+Safety boundaries:
+- No auto-indexing
+- No arbitrary whole-computer indexing
+- No shell commands during registration/preview
+- No file contents returned by default
+- No raw root path in onboarding status
+- Index apply requires approval
+- Secret-like files ignored
+
+Default ignored patterns:
+- .env*
+- *.pem
+- *.key
+- secrets.*
+- node_modules
+- .venv
+- dist
+- build
+- .next
+- .git internals
+- binary files
+- huge files
+
+What is usable now:
+The user can register the current Smart OS workspace, preview safe metadata indexing, approve indexing, and view project summary without exposing secrets or running commands.
+
+Future purpose:
+Expand from current workspace to all approved project roots across the PC:
+- C:\Users\izzy\Projects
+- selected OneDrive project folders
+- GitHub repos
+- Obsidian vaults
+- business/growth/project folders
+Only approved roots should be indexed.
+
+============================================================
+8. AGENT CONNECTOR REGISTRY
+============================================================
+
+Current purpose:
+Let Smart OS coordinate external AI/coding tools safely as connectors.
+
+Current connector registry includes:
+- openrouter
+- openai_chatgpt
+- gemini
+- claude_code
+- codex
+- obsidian
+- github
+- powershell
+- local_shell
+- local_files
+- browser
+
+Current connector metadata:
+- connector_id
+- display_name
+- category
+- enabled
+- credential ref if any
+- capabilities
+- risk level
+- approval required
+- allowed operations
+- blocked operations
+- config schema
+- health-check support
+- test-connection support
+- plaintext_returned=false
+
+Capabilities include:
+- plan_task
+- review_code
+- propose_patch
+- summarize_project
+- generate_tests
+- compare_models
+- create_diff
+- read_notes
+- index_notes
+- git_status
+- git_diff
+- run_command_requires_approval
+- browser_read
+- browser_write_requires_approval
+
+Current endpoints:
+- GET /api/agent-connectors
+- GET /api/agent-connectors/{connector_id}
+- POST /api/agent-connectors/{connector_id}/test
+- POST /api/agent-connectors/{connector_id}/task-preview
+- POST /api/agent-connectors/{connector_id}/task-apply
+- GET /api/agent-tasks
+- GET /api/agent-tasks/{task_id}
+
+Current behavior:
+- Connector tests are safe/read-only
+- Missing CLIs reported safely
+- Missing credentials reported safely
+- Task preview creates a draft proposal
+- Task apply creates a pending action for risky work
+- No external write happens automatically
+- System events record connector activity
+- UI shows connector policy/safety metadata
+
+Future purpose:
+Connect real local/remote agents:
+- Codex remote/session integration
+- Claude Code CLI integration
+- Gemini CLI/API integration
+- GitHub read/write actions behind approvals
+- Obsidian indexing/write actions behind approvals
+- Browser automation behind domain allowlists and approvals
+- PowerShell commands classified and approval-gated
+
+============================================================
+9. COMMAND CENTER
+============================================================
+
+Current purpose:
+One project-aware command surface for Smart OS.
+
+Current capabilities:
+- Select project
+- Select connector or auto-route
+- Enter command
+- Use project context
+- Use model router
+- Create draft agent proposal
+- Record route metadata
+- Create pending approval for risky commands
+- Store command history
+- Show proposal and pending action IDs
+
+Supported examples:
+- “Summarize this project.”
+- “What changed since last session?”
+- “Find failing areas.”
+- “Create next build plan.”
+- “Ask OpenRouter for a strategy.”
+- “Create a Codex task brief.”
+- “Compare Claude/Gemini/OpenRouter suggestions.”
+- “Prepare a patch proposal.”
+- “Create approval for safe application.”
+
+Command flow:
+User command
+→ project context
+→ model routing
+→ project memory/index
+→ agent connector if needed
+→ draft/proposal/diff
+→ pending action if risky
+→ system event/log
+
+Current endpoints:
+- POST /api/command-center/execute
+- GET /api/command-center/history
+- GET /api/command-center/history/{command_id}
+
+Future purpose:
+The Command Center should become the main operating surface for:
+- project management
+- code planning
+- agent delegation
+- growth tasks
+- workflow automation
+- approval review
+- daily review actions
+- multi-model comparison
+
+============================================================
+10. GROWTH INTELLIGENCE MODULE
+============================================================
+
+Purpose:
+Turn Smart OS into an auto-improving SEO/AEO, branding, advertising, and content intelligence layer.
+
+Current capabilities:
+- Brand memory
+- Keyword records
+- Competitor records
+- Expert/source memory
+- Draft content generation
+- Content scoring
+- Campaign records
+- Experiment records
+- Growth learnings
+- Research document storage
+- Research findings
+- SERP snapshots
+- AEO observations
+- CSV import preview/apply
+- Analytics/performance records
+- Learning generation
+- Content refresh plans
+- Growth connector imports
+- Google Search Console connector shell
+- PostHog connector shell
+- Read-only preview/apply import pattern
+- No external publishing/ad mutation by default
+
+Current safety:
+- Generated assets are drafts
+- No publishing without approval
+- No ad spend mutation
+- No scraping by default
+- Secret-like imports rejected/redacted
+- Credential refs only
+
+Future purpose:
+- Live read-only Search Console import
+- Live analytics import
+- Content refresh recommendations
+- AEO monitoring
+- Publishing drafts through GitHub PR/Webflow/WordPress
+- Social draft generation
+- Paid ad draft generation
+- Approval-gated publishing only
+- Performance-driven content improvement loop
+
+============================================================
+11. DATABASE / PERSISTENCE / BACKUP
+============================================================
+
+Current:
+- SQLite default local mode
+- Optional Postgres mode
+- Optional pgvector mode
+- Database status endpoint
+- Readiness includes database/pgvector state
+- Export/import APIs
+- Backup UI
+- Export artifacts/import records
+- Credential metadata exported without secrets
+- Imports disable schedules and mark credential refs unchecked
+- Smoke tests exist
+
+Future:
+- Production Postgres profile
+- Managed backups for production
+- Real Postgres pgvector similarity
+- Larger-scale memory/RAG system
+- Full export/import of workspace state with restore verification
+- Scheduled backup reminders
+
+============================================================
+12. SCHEDULER AND AUTOMATION
+============================================================
+
+Current:
+- Scheduler foundation exists
+- Scheduled evals exist
+- Scheduled alert evaluation exists
+- System events emitted
+- Schedules disabled on import
+- Risky scheduled actions should remain approval-gated
+- Daily review scheduling is a target/foundation area
+
+Future:
+- Scheduled Daily Review
+- Scheduled project summaries
+- Scheduled growth reports
+- Scheduled model evals/alerts
+- Scheduled backup reminders
+- Approval-required scheduled write actions
+
+============================================================
+13. DAILY REVIEW / OPERATIONS
+============================================================
+
+Current:
+- Daily Review state/payload has been added or partially improved
+- Daily Review appears in checkpoint docs and dashboard direction
+- Current workspace registration/index state is surfaced
+- Pending approvals ordering bug fixed
+- Startup health includes current workspace registration state
+- Resume/status scripts exist
+
+Daily Review should show:
+- active projects
+- recent project changes
+- current workspace registration/index state
+- pending approvals
+- model alerts
+- failed evals
+- connector issues
+- growth tasks
+- backup/export status
+- scheduler status
+- recommended next actions
+
+Future:
+- Dedicated /daily-review page
+- Run Daily Review now
+- Scheduled Daily Review
+- Daily review history
+- Actionable next steps linked to Command Center
+
+============================================================
+14. STARTUP / SMOKE / RESUME OPS
+============================================================
+
+Current:
+- scripts/resume_status.ps1
+- scripts/hourly_resume_check.ps1
+- docs/agent-checkpoint.md
+- docs/next-agent-resume-prompt.md
+- docs/build-log.md
+- smoke_all.ps1 exists and has been expanded incrementally
+- start_smartos.ps1 is planned or partially available depending latest branch
+
+Resume protocol:
+- Write checkpoint before stopping
+- Record current phase
+- Record modified files
+- Record tests run/results
+- Record next task
+- Resume by reading checkpoint docs
+- Do not expose secrets
+- Hourly check script is read-only/status-only
+
+Future:
+- One-command startup helper
+- Smoke all systems
+- Local/iPhone LAN docs
+- Clear backend/frontend window instructions
+- Daily-driver checklist
+- “Tomorrow morning command” section
+
+============================================================
+15. SAFETY MODEL
+============================================================
+
+Non-negotiable constraints:
+- No raw API keys in frontend
+- No Authorization headers in logs
+- No raw secrets in normal DB config
+- No auto-indexing arbitrary folders
+- No shell/Git/browser/file writes without approval
+- No direct publishing or ad spend without approval
+- No credential values exposed to models
+- No model sees secrets unless explicitly and safely designed later
+- No unsafe fallback to mock in strict provider mode
+- No raw prompts stored by default unless trace policy allows
+- No external write in default tests
+
+Risky actions require:
+- pending action
+- approval detail review
+- risk level
+- diff/preview/summary
+- rollback plan where possible
+- idempotency key
+- system event
+- approval resume
+
+============================================================
+16. WHAT IS REAL NOW
+============================================================
+
+Real/implemented:
+- FastAPI backend
+- Next.js frontend
+- SQLite local mode
+- Alembic migrations
+- OpenRouter live provider
+- Model gateway
+- Assistant path
+- Model routing
+- Routing history
+- Evals
+- Scheduled evals
+- Performance summaries
+- Alerts
+- Recommendations
+- Approval-gated route config apply
+- Route config rollback
+- Persistent provider config
+- Project registration
+- Project index preview
+- Approval-gated indexing
+- Project summary
+- Agent connector registry
+- Command Center draft proposals
+- Risky command pending approvals
+- Growth Intelligence persistence
+- Backup/export/import foundation
+- Resume/checkpoint protocol
+- Smoke/status scripts
+- UI pages for major systems
+
+Mocked/default-safe:
+- Default eval provider calls
+- Codex/Claude/Gemini local agent execution if CLI not available
+- Live GSC/PostHog APIs unless feature flags/clients enabled
+- Browser automation writes
+- External publishing
+- Ad platform mutation
+- Real shell/Git writes unless future approval handlers are implemented
+
+============================================================
+17. WHAT THE SYSTEM IS SUPPOSED TO DO IN THE FUTURE
+============================================================
+
+Final intended system:
+Smart OS should be the user's always-on safe AI operating layer for all projects and tools.
+
+Future finished behavior:
+1. Register all approved project folders.
+2. Safely index metadata and selected content.
+3. Search across projects and Obsidian.
+4. Summarize each project.
+5. Track project memory and decisions.
+6. Route model calls by task/risk/cost/context.
+7. Coordinate OpenRouter, OpenAI, Gemini, Claude, Codex, local models.
+8. Send tasks to coding agents and compare outputs.
+9. Generate diffs/proposals.
+10. Require approval before modifying files, repos, browser, shell, schedules, publishing, or ad spend.
+11. Run Daily Review.
+12. Schedule evals, alerts, backups, reports.
+13. Improve model routing from feedback/performance.
+14. Generate SEO/AEO/growth assets.
+15. Draft publishing/social/ad actions behind approvals.
+16. Provide iPhone/LAN access for monitoring and approvals.
+17. Persist configuration safely across restarts.
+18. Export/import/backup workspace state.
+19. Act as the single safe command center for digital work.
+
+Future agent integrations:
+- Codex remote/session connector
+- Claude Code connector
+- Gemini connector
+- OpenAI/ChatGPT connector
+- OpenRouter router/provider
+- GitHub connector
+- PowerShell connector
+- Obsidian connector
+- Browser connector
+- Local files connector
+- CMS publishing draft connectors
+- Social draft connectors
+- Analytics/search console connectors
+
+Future UI goals:
+- Dashboard
+- Daily Review
+- Projects
+- Command Center
+- Agent Connectors
+- Approvals
+- Model Ops
+- Growth Intelligence
+- Scheduler
+- Backup/Restore
+- Readiness
+- Settings
+
+Future quality goals:
+- Stable daily usage
+- One-command startup
+- Clear health checks
+- Low-friction approvals
+- High trust through audit logs
+- Safe local-first behavior
+- Optional production deployment
+
+============================================================
+18. REMAINING DAILY-DRIVER GAPS
+============================================================
+
+Remaining high-priority:
+1. Final operations polish.
+2. Expand smoke_all.ps1 coverage.
+3. Improve start_smartos.ps1.
+4. Complete Daily Review page/endpoint if not fully done.
+5. Final dashboard cards.
+6. More connector docs/status clarity.
+7. Use Smart OS on real projects and patch rough edges.
+8. Add real Codex/Claude/Gemini CLI integration where available.
+9. Add real project-aware code proposal/diff pipeline.
+10. Add safe Obsidian project memory indexing.
+11. Add approval-gated GitHub PR draft workflows.
+12. Add iPhone/LAN docs and remote approval patterns.
+
+Medium priority:
+- More robust local file search/RAG
+- Project memory quality controls
+- Command Center multi-agent comparison
+- Auto-create eval cases from failures
+- Growth publishing draft connectors
+- Scheduled daily review history
+- Production packaging
+- Deployment hardening
+
+Low priority:
+- Fine-tuning narrow classifiers
+- Full cloud multi-user mode
+- Marketplace/templates
+- Advanced browser automation
+- Enterprise features
+
+============================================================
+19. RECOMMENDED NEXT PHASE
+============================================================
+
+Next phase:
+Smart OS Daily-Driver MVP v0.1 final operations polish.
+
+Goal:
+Make the system easy to run, verify, and use every day.
+
+Work:
+- smoke_all.ps1 coverage
+- start_smartos.ps1 polish
+- Daily Review completion
+- dashboard status cards
+- docs/local-run/iPhone LAN instructions
+- final acceptance checklist
+- final v0.1 milestone
+
+After that:
+Stop adding infrastructure and start using Smart OS on real projects daily. Capture bugs and friction. Let actual usage drive the next phase.
+
+============================================================
+20. DAILY USER COMMANDS
+============================================================
+
+Start backend:
+cd "C:\Users\izzy\OneDrive\Documents\Smart OS"
+$env:PYTHONPATH="apps/api"
+.\.venv\Scripts\python.exe apps\api\run.py
+
+Start frontend:
+cd "C:\Users\izzy\OneDrive\Documents\Smart OS"
+npm --workspace apps/web run dev
+
+Open app:
+http://localhost:3000
+
+Open backend docs:
+http://127.0.0.1:8000/docs
+
+Run tests:
+$env:PYTHONPATH="apps/api"
+.\.venv\Scripts\python -m pytest apps\api\tests -q
+
+Run frontend build:
+npm --workspace apps/web run build
+
+Run resume status:
+.\scripts\resume_status.ps1
+
+Run smoke:
+.\scripts\smoke_all.ps1 -SkipFrontend
+
+Optional OpenRouter smoke:
+.\.venv\Scripts\python apps\api\scripts\openrouter_smoke_test.py
+.\.venv\Scripts\python apps\api\scripts\model_gateway_smoke_test.py
+.\.venv\Scripts\python apps\api\scripts\assistant_openrouter_smoke_test.py
+
+============================================================
+21. ACCEPTANCE DEFINITION FOR “BUILT”
+============================================================
+
+Smart OS can be called daily-driver MVP when:
+
+- The app loads reliably.
+- Backend and frontend startup are documented.
+- Smoke script passes.
+- Current workspace can be registered.
+- Project index preview works.
+- Project indexing requires approval.
+- Project summary works.
+- OpenRouter is configured and persistent.
+- Model routing works.
+- Command Center can target projects/connectors.
+- Agent task proposals are draft-first.
+- Risky work creates pending approvals.
+- Approvals/resume/rollback work.
+- Daily Review summarizes what matters.
+- Dashboard shows next actions.
+- No secrets are exposed.
+- Tests pass.
+- Frontend build passes.
+
+END OF SPECIFICATION
