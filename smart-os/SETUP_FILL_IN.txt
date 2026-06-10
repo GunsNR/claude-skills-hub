@@ -62,7 +62,24 @@ Fill in: your gmail, the app password, Dilshan's email.
 [Environment]::SetEnvironmentVariable("SMARTOS_NOTIFY_EMAIL", "PASTE-DILSHANS-EMAIL", "User")
 
 --------------------------------------------------------------
-5. OPTIONAL: ZAPIER WEBHOOK  (only if you want Slack/SMS/etc later)
+5. MORNING BRIEF TO *YOU*  (the system texts you your Top 3 daily)
+--------------------------------------------------------------
+Same CallMeBot drill as Dilshan's, but from YOUR phone:
+  a. YOU save contact +34 644 96 09 73 and WhatsApp it:
+     I allow callmebot to send me messages
+  b. It replies with YOUR apikey.
+Fill in: your WhatsApp number with country code + your apikey.
+Your email reuses the Gmail setup from section 4.
+
+[Environment]::SetEnvironmentVariable("SMARTOS_IZZY_PHONE", "+PASTE-YOUR-NUMBER", "User")
+[Environment]::SetEnvironmentVariable("SMARTOS_IZZY_APIKEY", "PASTE-YOUR-APIKEY", "User")
+[Environment]::SetEnvironmentVariable("SMARTOS_IZZY_EMAIL", "izzystheartist@gmail.com", "User")
+
+Optional — change the send hour (default 8 = 8am):
+[Environment]::SetEnvironmentVariable("SMARTOS_BRIEF_HOUR", "8", "User")
+
+--------------------------------------------------------------
+6. OPTIONAL: ZAPIER WEBHOOK  (only if you want Slack/SMS/etc later)
 --------------------------------------------------------------
 Get it: zapier.com -> new Zap -> trigger "Webhooks by Zapier ->
 Catch Hook" -> copy the URL.
@@ -70,7 +87,7 @@ Catch Hook" -> copy the URL.
 [Environment]::SetEnvironmentVariable("SMARTOS_NOTIFY_WEBHOOK", "PASTE-HOOK-URL", "User")
 
 --------------------------------------------------------------
-6. IPHONE ACCESS  (no keys needed)
+7. IPHONE ACCESS  (no keys needed)
 --------------------------------------------------------------
   a. On the PC run:  ipconfig
      -> note "IPv4 Address" (e.g. 192.168.1.50)
@@ -80,6 +97,9 @@ Catch Hook" -> copy the URL.
   d. Share button -> Add to Home Screen. Done — it's an app now.
   Away from home? Install Tailscale on PC + iPhone (same login),
   then use the PC's Tailscale IP instead. See docs/IPHONE_ACCESS.md.
+  BONUS: "Hey Siri, Smart OS" voice capture -> docs/IPHONE_CAPTURE.md
+  DILSHAN's own page (his queue + Done/Blocked buttons):
+    http://YOUR-IP:8100/api/ceo/dilshan  (share via Tailscale)
 
 --------------------------------------------------------------
 AFTER FILLING EVERYTHING IN

@@ -9,9 +9,12 @@ import os
 import uvicorn
 
 from .app import create_app
+from .scheduler import start as start_scheduler
 
 app = create_app()
 
 if __name__ == "__main__":
+    if os.environ.get("SMARTOS_SCHEDULER", "on") != "off":
+        start_scheduler()
     port = int(os.environ.get("SMARTOS_CEO_PORT", "8100"))
     uvicorn.run(app, host="0.0.0.0", port=port)
