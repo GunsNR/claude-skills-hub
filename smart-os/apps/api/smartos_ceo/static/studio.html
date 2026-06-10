@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="/api/ceo/manifest.json">
+<title>Smart OS — Studio</title>
+<style>
+  :root{
+    --bg:#0f1117; --card:#181b25; --card2:#1e2230; --text:#e8eaf2;
+    --dim:#8a90a6; --accent:#6ee7b7; --blue:#7dd3fc; --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:17px;line-height:1.5}
+  .nav{display:flex;gap:16px;align-items:baseline;padding:18px 20px 6px}
+  .nav h1{font-size:22px}
+  .nav a{color:var(--dim);text-decoration:none;font-size:15px}
+  .nav a:hover{color:var(--accent)}
+  .layout{display:flex;gap:0;max-width:1100px;margin:0 auto}
+  .sidebar{width:230px;flex-shrink:0;padding:14px 10px 80px 16px;
+    display:flex;flex-direction:column;gap:4px}
+  .cat{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;
+    color:var(--dim);margin:14px 0 4px 8px}
+  .abtn{display:flex;align-items:center;gap:10px;background:none;border:0;
+    color:var(--text);font-size:15px;padding:10px 12px;border-radius:12px;
+    cursor:pointer;text-align:left;width:100%}
+  .abtn:hover{background:var(--card)}
+  .abtn.active{background:var(--card2);color:var(--accent);font-weight:700}
+  .main{flex:1;padding:14px 16px 80px;min-width:0}
+  .panel{background:var(--card);border-radius:var(--radius);padding:18px}
+  .panel h2{font-size:19px;margin-bottom:2px}
+  .panel .hint{color:var(--dim);font-size:14px;margin-bottom:12px}
+  textarea{width:100%;min-height:110px;background:var(--card2);
+    border:2px solid #2a2f42;border-radius:12px;color:var(--text);
+    font-size:16px;padding:12px;outline:none;resize:vertical;
+    font-family:inherit}
+  textarea:focus{border-color:var(--accent)}
+  .run{margin-top:10px;background:var(--accent);color:#06281c;border:0;
+    border-radius:12px;font-size:17px;font-weight:700;padding:12px 28px;
+    cursor:pointer}
+  .run:disabled{opacity:.5}
+  .out{margin-top:18px}
+  .out h3{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;
+    color:var(--dim);margin-bottom:8px}
+  .mdout{background:var(--card2);border-radius:12px;padding:16px;
+    white-space:pre-wrap;font-size:15px;overflow-x:auto}
+  iframe.preview{width:100%;height:480px;border:2px solid #2a2f42;
+    border-radius:12px;background:#fff}
+  .svgbox{background:#fff;border-radius:12px;padding:24px;text-align:center}
+  .svgbox svg{max-width:100%;height:auto}
+  .filelink{display:inline-block;margin-top:8px;color:var(--blue);
+    font-size:14px}
+  .meta{color:var(--dim);font-size:13px;margin-top:8px}
+  .hist{margin-top:26px}
+  .histitem{background:var(--card);border-radius:12px;padding:12px 14px;
+    margin-bottom:8px;cursor:pointer;font-size:14px}
+  .histitem:hover{background:var(--card2)}
+  .histitem .when{color:var(--dim);font-size:12px}
+  .spin{display:inline-block;width:18px;height:18px;border:3px solid #2a2f42;
+    border-top-color:var(--accent);border-radius:50%;
+    animation:spin .8s linear infinite;vertical-align:middle;margin-left:10px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @media (max-width: 700px){
+    .layout{flex-direction:column}
+    .sidebar{width:100%;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;
+      padding:8px 12px;gap:6px;-webkit-overflow-scrolling:touch}
+    .cat{display:none}
+    .abtn{flex-shrink:0;width:auto;background:var(--card);
+      border-radius:999px;padding:8px 14px;font-size:14px}
+  }
+</style>
+</head>
+<body>
+<div class="nav">
+  <h1>Studio</h1>
+  <a href="/api/ceo/dashboard">← Today</a>
+</div>
+<div class="layout">
+  <nav class="sidebar" id="sidebar"></nav>
+  <main class="main">
+    <div class="panel">
+      <h2 id="pTitle">Pick a button</h2>
+      <div class="hint" id="pHint">Every button is a specialist. Choose one on the side.</div>
+      <textarea id="pInput" placeholder=""></textarea>
+      <br>
+      <button class="run" id="pRun">Run</button><span id="pSpin"></span>
+      <div class="out" id="pOut"></div>
+    </div>
+    <div class="hist">
+      <h3 style="font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--dim);margin-bottom:8px">Recent work</h3>
+      <div id="histList"></div>
+    </div>
+  </main>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const api = (p, o) => fetch('/api/ceo' + p, o).then(r => r.json());
+const post = (p, b) => api(p, {method:'POST',
+  headers:{'Content-Type':'application/json'}, body: JSON.stringify(b)});
+
+let actions = [], current = null;
+
+function selectAction(a){
+  current = a;
+  document.querySelectorAll('.abtn').forEach(b =>
+    b.classList.toggle('active', b.dataset.id === a.id));
+  $('pTitle').textContent = a.icon + ' ' + a.label;
+  $('pHint').textContent = a.placeholder;
+  $('pInput').placeholder = a.placeholder;
+  $('pOut').innerHTML = '';
+  $('pInput').focus();
+}
+
+function renderOutput(job){
+  const out = $('pOut');
+  out.innerHTML = '<h3>Result</h3>';
+  if(job.status === 'failed'){
+    out.innerHTML += `<div class="mdout">⚠️ ${job.output_text}</div>`;
+    return;
+  }
+  if(job.output_kind === 'html' && job.file_name){
+    const url = `/api/ceo/studio/files/${job.id}/${job.file_name}`;
+    out.innerHTML += `<iframe class="preview" src="${url}"></iframe>
+      <a class="filelink" href="${url}" target="_blank">Open full size ↗</a>`;
+    if(job.output_text && job.output_text !== 'Site generated.'){
+      const notes = document.createElement('div');
+      notes.className = 'mdout'; notes.style.marginTop = '10px';
+      notes.textContent = job.output_text;
+      out.appendChild(notes);
+    }
+  } else if(job.output_kind === 'svg' && job.file_name){
+    const url = `/api/ceo/studio/files/${job.id}/${job.file_name}`;
+    const box = document.createElement('div'); box.className = 'svgbox';
+    box.innerHTML = job.output_text;
+    out.appendChild(box);
+    out.innerHTML += `<a class="filelink" href="${url}" target="_blank" download>Download SVG ↓</a>`;
+  } else {
+    const div = document.createElement('div');
+    div.className = 'mdout';
+    div.textContent = job.output_text;
+    out.appendChild(div);
+  }
+  const meta = document.createElement('div');
+  meta.className = 'meta';
+  meta.textContent = `${job.model_used || 'mock'} · $${(job.est_cost||0).toFixed(4)}`;
+  out.appendChild(meta);
+}
+
+$('pRun').onclick = async () => {
+  if(!current){ alert('Pick a button on the side first'); return; }
+  const input = $('pInput').value.trim();
+  if(!input) return;
+  $('pRun').disabled = true;
+  $('pSpin').innerHTML = '<span class="spin"></span>';
+  try {
+    const job = await post('/studio/run', {action_id: current.id, input});
+    renderOutput(job);
+    loadHistory();
+  } finally {
+    $('pRun').disabled = false;
+    $('pSpin').innerHTML = '';
+  }
+};
+
+async function loadHistory(){
+  const jobs = await api('/studio/jobs?limit=15');
+  const list = $('histList');
+  list.innerHTML = jobs.length ? '' :
+    '<div style="color:var(--dim);font-size:14px">Nothing yet — hit a button.</div>';
+  jobs.forEach(j => {
+    const d = document.createElement('div');
+    d.className = 'histitem';
+    d.innerHTML = `<b></b> <span class="when">${new Date(j.created_at).toLocaleString()}</span><br>`;
+    d.querySelector('b').textContent = j.label;
+    const span = document.createElement('span');
+    span.style.color = 'var(--dim)';
+    span.textContent = j.input_preview;
+    d.appendChild(span);
+    d.onclick = () => {
+      const a = actions.find(x => x.id === j.action_id);
+      if(a) selectAction(a);
+      $('pInput').value = j.input_preview;
+      renderOutput(j);
+      window.scrollTo({top:0, behavior:'smooth'});
+    };
+    list.appendChild(d);
+  });
+}
+
+async function init(){
+  actions = await api('/studio/actions');
+  const bar = $('sidebar');
+  let lastCat = null;
+  actions.forEach(a => {
+    if(a.category !== lastCat){
+      const c = document.createElement('div');
+      c.className = 'cat'; c.textContent = a.category;
+      bar.appendChild(c);
+      lastCat = a.category;
+    }
+    const b = document.createElement('button');
+    b.className = 'abtn'; b.dataset.id = a.id;
+    b.innerHTML = `<span>${a.icon}</span><span></span>`;
+    b.querySelectorAll('span')[1].textContent = a.label;
+    b.onclick = () => selectAction(a);
+    bar.appendChild(b);
+  });
+  loadHistory();
+}
+init();
+</script>
+</body>
+</html>
