@@ -1,0 +1,962 @@
+<title>Izzy · Day Board</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg: #F3F6F4;
+    --surface: #FFFFFF;
+    --surface2: #EAEFEB;
+    --ink: #1E2A26;
+    --ink2: #5C6B64;
+    --line: #D7DFDA;
+    --accent: #2F6D5F;
+    --accent-ink: #FFFFFF;
+    --accent-soft: #E2EEE8;
+    --bronze: #96601F;
+    --bronze-soft: #F4E9D8;
+    --launch: #57548F;
+    --launch-soft: #E7E6F4;
+    --danger: #A94F35;
+    --danger-soft: #F5E4DD;
+    --shadow: 0 1px 2px rgba(30,42,38,.06), 0 6px 24px rgba(30,42,38,.05);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141A17;
+      --surface: #1C2420;
+      --surface2: #242E29;
+      --ink: #E6EBE7;
+      --ink2: #93A29A;
+      --line: #2E3934;
+      --accent: #63A791;
+      --accent-ink: #0F1F1A;
+      --accent-soft: #23372F;
+      --bronze: #CB9756;
+      --bronze-soft: #382D1C;
+      --launch: #A3A0D8;
+      --launch-soft: #2B2A42;
+      --danger: #D07E5C;
+      --danger-soft: #3C271E;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 24px rgba(0,0,0,.25);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141A17;
+    --surface: #1C2420;
+    --surface2: #242E29;
+    --ink: #E6EBE7;
+    --ink2: #93A29A;
+    --line: #2E3934;
+    --accent: #63A791;
+    --accent-ink: #0F1F1A;
+    --accent-soft: #23372F;
+    --bronze: #CB9756;
+    --bronze-soft: #382D1C;
+    --launch: #A3A0D8;
+    --launch-soft: #2B2A42;
+    --danger: #D07E5C;
+    --danger-soft: #3C271E;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 24px rgba(0,0,0,.25);
+  }
+
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 660px; margin: 0 auto; padding: 20px 16px 64px; }
+
+  button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; padding: 0; }
+  button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px;
+  }
+  input, textarea {
+    font: inherit; color: var(--ink); background: var(--surface);
+    border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; width: 100%;
+  }
+  input::placeholder, textarea::placeholder { color: var(--ink2); opacity: .75; }
+
+  /* ---------- header ---------- */
+  header { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 6px; }
+  .eyebrow { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink2); font-weight: 600; }
+  h1 { font-family: var(--serif); font-size: 32px; font-weight: 500; line-height: 1.15; text-wrap: balance; }
+  .head-actions { display: flex; gap: 8px; flex-shrink: 0; padding-bottom: 4px; }
+  .icon-btn {
+    width: 36px; height: 36px; border-radius: 10px; display: grid; place-items: center;
+    background: var(--surface); border: 1px solid var(--line); color: var(--ink2); font-size: 16px;
+  }
+  .icon-btn:hover { color: var(--ink); }
+
+  .rule { border: none; border-top: 1px solid var(--line); margin: 14px 0; }
+
+  /* ---------- anchor + deliverable ---------- */
+  .anchor-row { display: flex; align-items: center; gap: 10px; margin: 14px 0 4px; }
+  .anchor-pill {
+    display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--line); font-weight: 600; font-size: 14px;
+  }
+  .anchor-pill .dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--ink2); }
+  .anchor-pill.done { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
+  .anchor-pill.done .dot { background: var(--accent); border-color: var(--accent); }
+  .anchor-note { font-size: 13px; color: var(--ink2); }
+
+  .deliv { margin: 14px 0 2px; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+  .deliv .eyebrow { margin-bottom: 2px; }
+  .deliv-text { font-family: var(--serif); font-style: italic; font-size: 17px; width: 100%; background: none; border: none; padding: 2px 0; color: var(--ink); }
+  .deliv-text::placeholder { font-style: italic; }
+
+  /* ---------- banners ---------- */
+  .banner { margin: 14px 0 0; padding: 12px 14px; border-radius: 12px; background: var(--surface2); border: 1px solid var(--line); font-size: 14px; }
+  .banner strong { font-weight: 600; }
+  .carry-item { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
+  .carry-item .t { flex: 1; }
+  .mini-btn {
+    font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--line);
+  }
+  .mini-btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .mini-btn.quiet { color: var(--ink2); }
+
+  /* ---------- tasks ---------- */
+  section { margin-top: 22px; }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 10px; }
+  .sec-head .eyebrow { font-size: 11.5px; }
+  .count { font-family: var(--mono); font-size: 12.5px; color: var(--ink2); font-variant-numeric: tabular-nums; }
+
+  .task { display: flex; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; box-shadow: var(--shadow); margin-bottom: 10px; }
+  .task.shipped { opacity: .62; }
+  .check {
+    flex-shrink: 0; width: 26px; height: 26px; margin-top: 1px; border-radius: 50%;
+    border: 2px solid var(--line); display: grid; place-items: center; color: transparent; font-size: 14px;
+    transition: background .15s, border-color .15s;
+  }
+  .task.shipped .check { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .task-body { flex: 1; min-width: 0; }
+  .task-title { font-weight: 600; font-size: 15.5px; }
+  .task-dod { font-size: 13.5px; color: var(--ink2); margin-top: 1px; }
+  .task-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; }
+  .pill .pd { width: 6px; height: 6px; border-radius: 50%; }
+  .pill.people { background: var(--accent-soft); color: var(--accent); }
+  .pill.people .pd { background: var(--accent); }
+  .pill.admin { background: var(--bronze-soft); color: var(--bronze); }
+  .pill.admin .pd { background: var(--bronze); }
+  .pill.launch { background: var(--launch-soft); color: var(--launch); }
+  .pill.launch .pd { background: var(--launch); }
+  .timer-btn {
+    display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600;
+    font-family: var(--mono); font-variant-numeric: tabular-nums;
+    padding: 3px 9px; border-radius: 999px; background: var(--surface2); border: 1px solid var(--line); color: var(--ink2);
+  }
+  .timer-btn.running { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .task-first { font-size: 13px; margin-top: 8px; color: var(--bronze); }
+  .task-first b, .task-proof b { font-weight: 600; }
+  .task-proof { font-size: 13px; margin-top: 4px; color: var(--launch); }
+
+  .add-card {
+    width: 100%; text-align: left; display: flex; align-items: center; gap: 10px;
+    border: 1.5px dashed var(--line); border-radius: 14px; padding: 14px; color: var(--ink2); font-weight: 600; font-size: 14.5px;
+  }
+  .add-card:hover { border-color: var(--accent); color: var(--accent); }
+  .add-card .plus { font-size: 20px; line-height: 1; }
+  .full-note { font-size: 13.5px; color: var(--ink2); padding: 4px 2px; }
+  .stuck-link { display: inline-block; margin-top: 10px; font-size: 13.5px; font-weight: 600; color: var(--accent); }
+
+  .hint { margin-bottom: 10px; padding: 10px 14px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); font-size: 13.5px; font-weight: 500; }
+
+  /* ---------- closed card ---------- */
+  .closed-card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; text-align: center; box-shadow: var(--shadow); }
+  .closed-card .big { font-family: var(--serif); font-size: 22px; margin-bottom: 4px; }
+  .closed-card .sub { color: var(--ink2); font-size: 14px; margin-bottom: 12px; font-variant-numeric: tabular-nums; }
+
+  /* ---------- week strip ---------- */
+  .week { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+  .day { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 4px; text-align: center; }
+  .day.today { border-color: var(--accent); }
+  .day .dl { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink2); font-weight: 600; }
+  .day .df { font-family: var(--mono); font-size: 12.5px; margin-top: 3px; font-variant-numeric: tabular-nums; }
+  .day .df.good { color: var(--accent); font-weight: 600; }
+  .day .df.none { color: var(--ink2); opacity: .5; }
+
+  /* ---------- quick links ---------- */
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .link-chip {
+    display: inline-flex; align-items: center; gap: 6px; padding: 7px 13px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--line); font-size: 13.5px; font-weight: 600;
+    color: var(--ink); text-decoration: none;
+  }
+  .link-chip:hover { border-color: var(--accent); color: var(--accent); }
+  .link-chip .lk { color: var(--ink2); font-size: 11px; }
+
+  /* ---------- collapsibles ---------- */
+  details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; margin-top: 10px; }
+  summary { cursor: pointer; padding: 12px 14px; font-weight: 600; font-size: 14px; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  summary::-webkit-details-marker { display: none; }
+  summary .count { font-weight: 400; }
+  summary::after { content: "+"; color: var(--ink2); font-size: 16px; }
+  details[open] summary::after { content: "–"; }
+  .det-body { padding: 0 14px 14px; }
+  .idea-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--line); font-size: 14px; }
+  .idea-row .t { flex: 1; }
+  .idea-add { display: flex; gap: 8px; margin-bottom: 10px; }
+  .routine-block { border-top: 1px solid var(--line); padding: 10px 0; }
+  .routine-block:first-child { border-top: none; }
+  .routine-block .rb-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .routine-block .rb-title { font-weight: 600; font-size: 14px; }
+  .routine-block .rb-sub { font-size: 12.5px; color: var(--ink2); margin-top: 2px; }
+
+  footer { margin-top: 28px; text-align: center; font-size: 12.5px; color: var(--ink2); }
+
+  /* ---------- dialogs ---------- */
+  dialog {
+    border: 1px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink);
+    padding: 20px; width: min(92vw, 480px); box-shadow: var(--shadow);
+  }
+  dialog::backdrop { background: rgba(15, 25, 21, .45); }
+  .dlg-title { font-family: var(--serif); font-size: 20px; margin-bottom: 12px; }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--ink2); margin-bottom: 5px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    padding: 6px 13px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+    font-size: 13.5px; font-weight: 600; color: var(--ink2);
+  }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .dlg-actions { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 16px; }
+  .dlg-actions .right { display: flex; gap: 8px; margin-left: auto; }
+  .btn { padding: 9px 18px; border-radius: 10px; font-weight: 600; font-size: 14px; border: 1px solid var(--line); background: var(--surface); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .btn.danger { color: var(--danger); border-color: var(--danger-soft); background: var(--danger-soft); }
+  .field-note { font-size: 12.5px; color: var(--ink2); margin-top: 4px; }
+  .gate-note { font-size: 12.5px; margin-top: 4px; font-weight: 500; }
+  .gate-note.admin { color: var(--bronze); }
+  .gate-note.launch { color: var(--launch); }
+
+  /* coach */
+  .coach-q { font-family: var(--serif); font-size: 19px; line-height: 1.4; margin-bottom: 6px; text-wrap: balance; }
+  .coach-sub { font-size: 14px; color: var(--ink2); margin-bottom: 14px; }
+  .coach-step { font-family: var(--mono); font-size: 12px; color: var(--ink2); margin-bottom: 10px; font-variant-numeric: tabular-nums; }
+
+  /* review */
+  .rev-row { padding: 10px 0; border-top: 1px solid var(--line); }
+  .rev-row:first-child { border-top: none; }
+  .rev-title { font-weight: 600; font-size: 14.5px; margin-bottom: 7px; }
+  .seg { display: flex; gap: 6px; }
+  .seg .chip { flex: 1; text-align: center; }
+  .seg .chip[data-v="shipped"][aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+  .seg .chip[data-v="moved"][aria-pressed="true"] { background: var(--bronze); border-color: var(--bronze); color: var(--accent-ink); }
+  .seg .chip[data-v="dropped"][aria-pressed="true"] { background: var(--danger); border-color: var(--danger); color: var(--accent-ink); }
+  .rev-sum { margin-top: 14px; font-family: var(--mono); font-size: 14px; text-align: center; font-variant-numeric: tabular-nums; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .check, .chip, .link-chip, .btn { transition: background .15s, border-color .15s, color .15s; }
+  }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">Day Board</div>
+      <h1 id="dateLine">—</h1>
+    </div>
+    <div class="head-actions">
+      <button class="icon-btn" id="reviewBtn" title="Close the day" aria-label="Close the day">✓</button>
+      <button class="icon-btn" id="settingsBtn" title="Settings" aria-label="Settings">⚙</button>
+    </div>
+  </header>
+
+  <div class="anchor-row">
+    <button class="anchor-pill" id="anchorBtn" aria-pressed="false">
+      <span class="dot"></span><span id="anchorLabel">Anchor first</span>
+    </button>
+    <span class="anchor-note">The day starts there. Not a task.</span>
+  </div>
+
+  <div class="deliv">
+    <div class="eyebrow">In flight — the one committed deliverable</div>
+    <input class="deliv-text" id="delivInput" placeholder="Name it. One. (Tap to write)" />
+  </div>
+
+  <div id="carryBox"></div>
+
+  <section id="todaySection">
+    <div class="sec-head">
+      <span class="eyebrow">Today's plan — you set it</span>
+      <span class="count" id="taskCount">0 of 3</span>
+    </div>
+    <div id="hintBox"></div>
+    <div id="taskList"></div>
+    <div id="addArea"></div>
+    <button class="stuck-link" id="stuckBtn">Unsure what today should be? →</button>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Last 7 days — shipped / planned</span></div>
+    <div class="week" id="weekStrip"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="eyebrow">Quick access</span></div>
+    <div class="links" id="linksGrid"></div>
+  </section>
+
+  <details>
+    <summary>Ideas — a line, not a folder <span class="count" id="ideaCount"></span></summary>
+    <div class="det-body">
+      <div class="idea-add">
+        <input id="ideaInput" placeholder="One line. It'll be here when the deliverable ships." />
+        <button class="mini-btn" id="ideaAddBtn">Add</button>
+      </div>
+      <div id="ideasList"></div>
+    </div>
+  </details>
+
+  <details>
+    <summary>Routines — paste into Claude</summary>
+    <div class="det-body" id="routinesBox"></div>
+  </details>
+
+  <footer>Data lives in this browser only. Back it up from ⚙ Settings.</footer>
+</div>
+
+<!-- ============ Add / Edit task ============ -->
+<dialog id="taskDlg">
+  <div class="dlg-title" id="taskDlgTitle">Add a task</div>
+  <div class="field">
+    <label for="fTitle">What</label>
+    <input id="fTitle" placeholder="One task, 10–45 minutes" maxlength="120" />
+  </div>
+  <div class="field">
+    <label for="fDod">Done means…</label>
+    <input id="fDod" placeholder="Checkable, not a vibe. e.g. “PDF sent to client”" maxlength="160" />
+  </div>
+  <div class="field">
+    <label>Time box</label>
+    <div class="chips" id="minsChips">
+      <button class="chip" data-mins="10" type="button">10 min</button>
+      <button class="chip" data-mins="25" type="button" aria-pressed="true">25 min</button>
+      <button class="chip" data-mins="45" type="button">45 min</button>
+    </div>
+  </div>
+  <div class="field">
+    <label>Kind</label>
+    <div class="chips" id="typeChips">
+      <button class="chip" data-type="people" type="button" aria-pressed="true">People</button>
+      <button class="chip" data-type="admin" type="button">Admin</button>
+      <button class="chip" data-type="launch" type="button">Launch</button>
+    </div>
+  </div>
+  <div class="field" id="firstField" hidden>
+    <label for="fFirst">First physical move</label>
+    <input id="fFirst" placeholder="The exact tab / file / click. e.g. “open GA4 exports page”" maxlength="140" />
+    <div class="gate-note admin">Admin stalls without this. Write the click, not the goal.</div>
+  </div>
+  <div class="field" id="proofField" hidden>
+    <label for="fProof">How will we know it worked?</label>
+    <input id="fProof" placeholder="Tracking number, QR, UTM, form source…" maxlength="140" />
+    <div class="gate-note launch">No launch without a proof loop. This ships first.</div>
+  </div>
+  <div class="dlg-actions">
+    <button class="btn danger" id="taskDeleteBtn" hidden>Delete</button>
+    <div class="right">
+      <button class="btn" id="taskCancelBtn">Cancel</button>
+      <button class="btn primary" id="taskSaveBtn">Save</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ Coach ============ -->
+<dialog id="coachDlg">
+  <div class="coach-step" id="coachStep"></div>
+  <div class="coach-q" id="coachQ"></div>
+  <div class="coach-sub" id="coachSub"></div>
+  <div class="chips" id="coachChoices"></div>
+  <div class="dlg-actions">
+    <button class="btn" id="coachCloseBtn">Close</button>
+    <div class="right">
+      <button class="btn" id="coachBackBtn">Back</button>
+      <button class="btn primary" id="coachNextBtn">Next</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ Close the day ============ -->
+<dialog id="revDlg">
+  <div class="dlg-title">Close the day — evidence only</div>
+  <div id="revList"></div>
+  <div class="rev-sum" id="revSum"></div>
+  <div class="field" style="margin-top:14px">
+    <label>Tomorrow's load</label>
+    <div class="chips" id="loadChips">
+      <button class="chip" data-load="same" type="button" aria-pressed="true">Same</button>
+      <button class="chip" data-load="lighter" type="button">Lighter — one task</button>
+    </div>
+  </div>
+  <div class="dlg-actions">
+    <button class="btn" id="revCancelBtn">Cancel</button>
+    <div class="right">
+      <button class="btn primary" id="revSaveBtn">Close the day</button>
+    </div>
+  </div>
+</dialog>
+
+<!-- ============ Settings ============ -->
+<dialog id="setDlg">
+  <div class="dlg-title">Settings</div>
+  <div class="field">
+    <label for="sLinks">Quick access links — one per line: Label | URL</label>
+    <textarea id="sLinks" rows="7" spellcheck="false"></textarea>
+  </div>
+  <div class="field">
+    <label>Backup</label>
+    <div class="chips">
+      <button class="chip" id="exportBtn" type="button">Export JSON</button>
+      <button class="chip" id="importBtn" type="button">Import from paste</button>
+    </div>
+    <div class="field-note" id="backupNote">Export saves a file; import reads the pasted JSON below.</div>
+    <textarea id="sImport" rows="3" spellcheck="false" placeholder="Paste a backup here, then press Import" style="margin-top:8px"></textarea>
+  </div>
+  <div class="dlg-actions">
+    <button class="btn danger" id="resetBtn">Reset all</button>
+    <div class="right">
+      <button class="btn" id="setCancelBtn">Cancel</button>
+      <button class="btn primary" id="setSaveBtn">Save</button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  "use strict";
+  var KEY = "izzy-day-board-v1";
+  var MAX = 3;
+
+  var DEFAULT_LINKS = [
+    { label: "Search Console", url: "https://search.google.com/search-console" },
+    { label: "GA4", url: "https://analytics.google.com" },
+    { label: "Ahrefs", url: "https://app.ahrefs.com" },
+    { label: "Google Business", url: "https://business.google.com" },
+    { label: "Gmail", url: "https://mail.google.com" },
+    { label: "WhatsApp", url: "https://web.whatsapp.com" },
+    { label: "Claude", url: "https://claude.ai" },
+    { label: "Skills hub", url: "https://github.com/GunsNR/claude-skills-hub" }
+  ];
+
+  var PROMPTS = [
+    {
+      title: "Morning brief",
+      sub: "5 min. Claude interviews you — it never writes your list.",
+      text:
+"You are my ADHD business coach for a 5-minute morning brief. Hard rules: never propose or write my task list — I set the tasks, you interview and shape. Direct tone; no flattery, no lectures, no shame. My morning anchor practice comes first and is not a task — just confirm it happened or is scheduled.\n\nRun this sequence, one question at a time, waiting for my answer:\n1. Anchor: done or scheduled?\n2. Energy: high, normal, or low/foggy? If low, today gets ONE task and you hold me to it — a 1-for-1 day beats a 0-for-3 day.\n3. What is the ONE committed deliverable in flight? If I name two, make me pick.\n4. What are today's 1–3 tasks? I name them; you shape each one: (a) 10–45 minutes — if bigger, help me cut a slice and confirm it; (b) \"Done =\" a checkable definition, not a vibe; (c) if it's admin/setup/measurement work, make me state the exact first physical move — the tab to open, the file to click — that's where I stall; (d) if it's a launch (ad, campaign, initiative), the FIRST task becomes the proof loop: how will we know it worked (tracking number, QR, UTM, form source). I launch faster than I measure; you close that gap.\n5. Overload check: more than 3 tasks, or more than one heavy admin task on a low day — tell me plainly and make me cut. Cuts go to my Ideas list, not the plan.\n6. Read the final plan back in 3 lines or fewer, then stop.\n\nIf I say \"I don't know\" at any step, ask the next-smallest question (\"What would done-by-5pm look like?\" / \"People problem or admin problem?\"). Do not fill my silence with generated tasks."
+    },
+    {
+      title: "Evening review",
+      sub: "3 min. Counts, not narrative.",
+      text:
+"You are my ADHD business coach for a 3-minute evening review. Hard rules: evidence only, counts not narrative, zero moralizing.\n1. Ask: for each task planned today — shipped, moved, or dropped? One line from me.\n2. Reflect it back as numbers only: \"Planned N · Shipped M · Moved X · Dropped Y.\"\n3. If I start criticizing myself, don't argue feelings and don't write reassurance essays — redirect once: \"Evidence: M shipped. What's the one 10-minute move for tomorrow morning?\"\n4. One decision, then stop: tomorrow's load — same or lighter? If today shipped 0–1, default to lighter (ONE task) unless I override.\n5. If anything shipped today closed a measurement loop (tracking live, report sent, export done), name it in one line. That's the metric that matters."
+    },
+    {
+      title: "Weekly review (Friday)",
+      sub: "15 min. Facts, one priority.",
+      text:
+"You are my ADHD business coach for a Friday weekly review, evidence-based, one question at a time:\n1. Shipped this week — facts only, what actually went out the door.\n2. Dropped balls — facts only: carried 3+ days, or promised-and-missed.\n3. Open measurement loops: anything launched that still has no way to know if it worked (ads, campaigns, reports)? Each becomes a candidate task; I pick.\n4. People-work vs admin: did admin stall again? If yes, which ONE admin task gets a 10-minute slice on Monday?\n5. Next week's ONE priority — I name it; you make me pick exactly one.\nEnd by seeding Monday: the ONE priority plus 1–3 Monday tasks that I set myself."
+    },
+    {
+      title: "Stuck mid-day",
+      sub: "When a task is stalling.",
+      text:
+"I'm stalling on a task. Don't do it for me and don't pep-talk me. Ask me, one question at a time: (1) Is this actually a 10–45 minute task, or did I hide a project inside it? (2) What is the exact next physical click? (3) Ten minutes on a timer, right now — yes or no? If the task turns out wrong for today, help me swap it for a smaller slice — my choice, not yours."
+    }
+  ];
+
+  var COACH = [
+    {
+      q: "Honest energy check: low or foggy today?",
+      sub: "Bad weeks widen the gap. A 1-for-1 day beats a 0-for-3 day.",
+      choices: ["Normal / high", "Low — plan ONE task"]
+    },
+    {
+      q: "What's the ONE deliverable in flight?",
+      sub: "It's written at the top of the board. If it's blank, that's today's first answer — write it there.",
+      choices: []
+    },
+    {
+      q: "What single task moves it one step today?",
+      sub: "10–45 minutes. Small enough to start before you can negotiate with yourself.",
+      choices: []
+    },
+    {
+      q: "Is that a people task or an admin task?",
+      sub: "People-work runs itself. Admin needs the exact first click written down before you save it — the tab, the file, the button.",
+      choices: []
+    },
+    {
+      q: "Launching anything? Then the proof loop ships first.",
+      sub: "Tracking number, QR, UTM, form source. “How will we know it worked” is task one, not a follow-up.",
+      choices: []
+    },
+    {
+      q: "Now set 1–3 tasks. You, not the AI.",
+      sub: "Still stuck? Open Routines below and paste the Morning brief into Claude — it will interview you, one question at a time. It won't write your list.",
+      choices: []
+    }
+  ];
+
+  /* ---------- state ---------- */
+  function todayStr(d) {
+    d = d || new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+  function defaults() {
+    return {
+      date: todayStr(), anchorDone: false, deliverable: "",
+      tasks: [], carry: [], ideas: [], history: {},
+      links: DEFAULT_LINKS.slice(), loadHint: null, closedDate: null
+    };
+  }
+  function load() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return defaults();
+      var s = JSON.parse(raw);
+      var d = defaults();
+      for (var k in d) if (!(k in s)) s[k] = d[k];
+      return s;
+    } catch (e) { return defaults(); }
+  }
+  var state = load();
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  function uid() { return "t" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+
+  function rollover() {
+    var t = todayStr();
+    if (state.date === t) return;
+    var wasClosed = state.closedDate === state.date;
+    if (!wasClosed && state.tasks.length) {
+      var shipped = state.tasks.filter(function (x) { return x.status === "shipped"; }).length;
+      state.history[state.date] = { planned: state.tasks.length, shipped: shipped };
+      state.carry = state.carry.concat(state.tasks.filter(function (x) { return x.status !== "shipped"; })
+        .map(function (x) { x.status = "open"; return x; }));
+    }
+    if (!wasClosed) state.loadHint = null;
+    state.tasks = [];
+    state.anchorDone = false;
+    state.closedDate = null;
+    state.date = t;
+    var keys = Object.keys(state.history).sort();
+    while (keys.length > 60) delete state.history[keys.shift()];
+    save();
+  }
+
+  /* ---------- utils ---------- */
+  function $(s) { return document.querySelector(s); }
+  function esc(x) {
+    return String(x == null ? "" : x).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function el(html) { var d = document.createElement("div"); d.innerHTML = html.trim(); return d.firstChild; }
+  function copyText(t, btn) {
+    var done = function () {
+      if (!btn) return;
+      var old = btn.textContent; btn.textContent = "Copied";
+      setTimeout(function () { btn.textContent = old; }, 1400);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(done, function () { fallbackCopy(t); done(); });
+    } else { fallbackCopy(t); done(); }
+  }
+  function fallbackCopy(t) {
+    var ta = document.createElement("textarea");
+    ta.value = t; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  /* ---------- timers (runtime only) ---------- */
+  var timers = {}; // id -> end epoch ms
+  setInterval(function () {
+    var any = false;
+    Object.keys(timers).forEach(function (id) {
+      var b = document.querySelector('[data-timer="' + id + '"]');
+      if (!b) { delete timers[id]; return; }
+      any = true;
+      var left = Math.max(0, timers[id] - Date.now());
+      var m = Math.floor(left / 60000), s = Math.floor((left % 60000) / 1000);
+      b.textContent = left > 0 ? (m + ":" + String(s).padStart(2, "0")) : "0:00 — ship or renew";
+      b.classList.toggle("running", left > 0);
+    });
+  }, 1000);
+
+  /* ---------- render ---------- */
+  function fmtDate() {
+    var d = new Date();
+    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var mons = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    return days[d.getDay()] + ", " + mons[d.getMonth()] + " " + d.getDate();
+  }
+
+  function render() {
+    $("#dateLine").textContent = fmtDate();
+
+    var ab = $("#anchorBtn");
+    ab.classList.toggle("done", state.anchorDone);
+    ab.setAttribute("aria-pressed", String(state.anchorDone));
+    $("#anchorLabel").textContent = state.anchorDone ? "Anchored" : "Anchor first";
+
+    if (document.activeElement !== $("#delivInput")) $("#delivInput").value = state.deliverable;
+
+    renderCarry(); renderTasks(); renderWeek(); renderLinks(); renderIdeas();
+  }
+
+  function renderCarry() {
+    var box = $("#carryBox"); box.innerHTML = "";
+    if (!state.carry.length) return;
+    var b = el('<div class="banner"><strong>From yesterday, unshipped.</strong> Move it or drop it — no third option, no story.</div>');
+    state.carry.forEach(function (t, i) {
+      var row = el('<div class="carry-item"><span class="t">' + esc(t.title) + '</span></div>');
+      var mv = el('<button class="mini-btn primary">Move to today</button>');
+      var dr = el('<button class="mini-btn quiet">Drop</button>');
+      mv.onclick = function () {
+        if (state.tasks.length >= MAX) { mv.textContent = "Today is full"; return; }
+        state.carry.splice(i, 1); t.status = "open"; state.tasks.push(t); save(); render();
+      };
+      dr.onclick = function () { state.carry.splice(i, 1); save(); render(); };
+      row.appendChild(mv); row.appendChild(dr); b.appendChild(row);
+    });
+    box.appendChild(b);
+  }
+
+  function renderTasks() {
+    var list = $("#taskList"), add = $("#addArea"), hint = $("#hintBox");
+    list.innerHTML = ""; add.innerHTML = ""; hint.innerHTML = "";
+    var shipped = state.tasks.filter(function (t) { return t.status === "shipped"; }).length;
+    $("#taskCount").textContent = shipped + " of " + state.tasks.length + " shipped";
+
+    if (state.closedDate === todayStr()) {
+      var h = state.history[todayStr()] || { planned: 0, shipped: 0 };
+      var c = el('<div class="closed-card"><div class="big">Day closed.</div>' +
+        '<div class="sub">Planned ' + h.planned + " · Shipped " + h.shipped + "</div></div>");
+      var re = el('<button class="mini-btn">Reopen the day</button>');
+      re.onclick = function () { state.closedDate = null; save(); render(); };
+      c.appendChild(re); list.appendChild(c);
+      return;
+    }
+
+    if (!state.tasks.length && state.loadHint === "lighter") {
+      hint.appendChild(el('<div class="hint">Last night you chose a lighter day. Plan ONE task — that’s the whole plan.</div>'));
+    }
+
+    state.tasks.forEach(function (t) {
+      var card = el('<div class="task' + (t.status === "shipped" ? " shipped" : "") + '"></div>');
+      var chk = el('<button class="check" aria-label="Mark shipped">✓</button>');
+      chk.onclick = function () { t.status = t.status === "shipped" ? "open" : "shipped"; save(); render(); };
+      var body = el('<div class="task-body"></div>');
+      body.appendChild(el('<div class="task-title">' + esc(t.title) + "</div>"));
+      if (t.dod) body.appendChild(el('<div class="task-dod">Done = ' + esc(t.dod) + "</div>"));
+      var meta = el('<div class="task-meta"></div>');
+      var names = { people: "People", admin: "Admin", launch: "Launch" };
+      meta.appendChild(el('<span class="pill ' + t.type + '"><span class="pd"></span>' + names[t.type] + "</span>"));
+      var tb = el('<button class="timer-btn" data-timer="' + t.id + '">' + t.mins + " min ▸</button>");
+      tb.onclick = function () {
+        if (timers[t.id] && timers[t.id] > Date.now()) { delete timers[t.id]; tb.textContent = t.mins + " min ▸"; tb.classList.remove("running"); }
+        else timers[t.id] = Date.now() + t.mins * 60000;
+      };
+      meta.appendChild(tb);
+      body.appendChild(meta);
+      if (t.type === "admin" && t.firstMove) body.appendChild(el('<div class="task-first"><b>First move →</b> ' + esc(t.firstMove) + "</div>"));
+      if (t.type === "launch" && t.measure) body.appendChild(el('<div class="task-proof"><b>Proof →</b> ' + esc(t.measure) + "</div>"));
+      body.style.cursor = "pointer";
+      body.onclick = function (e) { if (e.target.closest("button")) return; openTaskDlg(t); };
+      card.appendChild(chk); card.appendChild(body); list.appendChild(card);
+    });
+
+    if (state.tasks.length < MAX) {
+      var a = el('<button class="add-card"><span class="plus">+</span> Add a task — you set it (max 3)</button>');
+      a.onclick = function () { openTaskDlg(null); };
+      add.appendChild(a);
+    } else {
+      add.appendChild(el('<div class="full-note">Three is the plan. New thoughts go to Ideas below — they’ll keep.</div>'));
+    }
+  }
+
+  function renderWeek() {
+    var w = $("#weekStrip"); w.innerHTML = "";
+    var letters = ["S", "M", "T", "W", "T", "F", "S"];
+    for (var i = 6; i >= 0; i--) {
+      var d = new Date(); d.setDate(d.getDate() - i);
+      var ds = todayStr(d), isToday = i === 0;
+      var h = state.history[ds];
+      if (isToday && !h && state.tasks.length) {
+        h = { planned: state.tasks.length, shipped: state.tasks.filter(function (t) { return t.status === "shipped"; }).length };
+      }
+      var f = h ? h.shipped + "/" + h.planned : "·";
+      var cls = !h ? "none" : (h.shipped >= h.planned && h.planned > 0 ? "good" : "");
+      w.appendChild(el('<div class="day' + (isToday ? " today" : "") + '"><div class="dl">' + letters[d.getDay()] + '</div><div class="df ' + cls + '">' + f + "</div></div>"));
+    }
+  }
+
+  function renderLinks() {
+    var g = $("#linksGrid"); g.innerHTML = "";
+    state.links.forEach(function (l) {
+      g.appendChild(el('<a class="link-chip" href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + ' <span class="lk">↗</span></a>'));
+    });
+  }
+
+  function renderIdeas() {
+    var list = $("#ideasList"); list.innerHTML = "";
+    $("#ideaCount").textContent = state.ideas.length ? String(state.ideas.length) : "";
+    state.ideas.forEach(function (idea, i) {
+      var row = el('<div class="idea-row"><span class="t">' + esc(idea) + "</span></div>");
+      if (state.tasks.length < MAX && state.closedDate !== todayStr()) {
+        var p = el('<button class="mini-btn">→ task</button>');
+        p.onclick = function () { openTaskDlg(null, idea); };
+        row.appendChild(p);
+      }
+      var x = el('<button class="mini-btn quiet" aria-label="Delete idea">×</button>');
+      x.onclick = function () { state.ideas.splice(i, 1); save(); render(); };
+      row.appendChild(x); list.appendChild(row);
+    });
+  }
+
+  function renderRoutines() {
+    var box = $("#routinesBox"); box.innerHTML = "";
+    PROMPTS.forEach(function (p) {
+      var b = el('<div class="routine-block"><div class="rb-head"><div><div class="rb-title">' + esc(p.title) + '</div><div class="rb-sub">' + esc(p.sub) + "</div></div></div></div>");
+      var btn = el('<button class="mini-btn primary">Copy</button>');
+      btn.onclick = function () { copyText(p.text, btn); };
+      b.querySelector(".rb-head").appendChild(btn);
+      box.appendChild(b);
+    });
+  }
+
+  /* ---------- task dialog ---------- */
+  var editingId = null, selMins = 25, selType = "people", promotedIdea = null;
+  var taskDlg = $("#taskDlg");
+
+  function setChips(container, attr, value) {
+    container.querySelectorAll(".chip").forEach(function (c) {
+      c.setAttribute("aria-pressed", String(c.dataset[attr] === String(value)));
+    });
+  }
+  function openTaskDlg(task, ideaText) {
+    editingId = task ? task.id : null;
+    promotedIdea = ideaText || null;
+    $("#taskDlgTitle").textContent = task ? "Edit task" : "Add a task";
+    $("#fTitle").value = task ? task.title : (ideaText || "");
+    $("#fDod").value = task ? task.dod : "";
+    $("#fFirst").value = task ? (task.firstMove || "") : "";
+    $("#fProof").value = task ? (task.measure || "") : "";
+    selMins = task ? task.mins : 25;
+    selType = task ? task.type : "people";
+    setChips($("#minsChips"), "mins", selMins);
+    setChips($("#typeChips"), "type", selType);
+    syncTypeFields();
+    $("#taskDeleteBtn").hidden = !task;
+    taskDlg.showModal();
+    $("#fTitle").focus();
+  }
+  function syncTypeFields() {
+    $("#firstField").hidden = selType !== "admin";
+    $("#proofField").hidden = selType !== "launch";
+  }
+  $("#minsChips").addEventListener("click", function (e) {
+    var c = e.target.closest(".chip"); if (!c) return;
+    selMins = Number(c.dataset.mins); setChips(this, "mins", selMins);
+  });
+  $("#typeChips").addEventListener("click", function (e) {
+    var c = e.target.closest(".chip"); if (!c) return;
+    selType = c.dataset.type; setChips(this, "type", selType); syncTypeFields();
+  });
+  $("#taskCancelBtn").onclick = function () { taskDlg.close(); };
+  $("#taskDeleteBtn").onclick = function () {
+    state.tasks = state.tasks.filter(function (t) { return t.id !== editingId; });
+    save(); render(); taskDlg.close();
+  };
+  $("#taskSaveBtn").onclick = function () {
+    var title = $("#fTitle").value.trim();
+    var dod = $("#fDod").value.trim();
+    var first = $("#fFirst").value.trim();
+    var proof = $("#fProof").value.trim();
+    if (!title) { $("#fTitle").focus(); return; }
+    if (!dod) { $("#fDod").placeholder = "Required — what does done look like?"; $("#fDod").focus(); return; }
+    if (selType === "admin" && !first) { $("#fFirst").focus(); return; }
+    if (selType === "launch" && !proof) { $("#fProof").focus(); return; }
+    if (editingId) {
+      var t = state.tasks.find(function (x) { return x.id === editingId; });
+      if (t) { t.title = title; t.dod = dod; t.mins = selMins; t.type = selType; t.firstMove = first; t.measure = proof; }
+    } else {
+      if (state.tasks.length >= MAX) { taskDlg.close(); return; }
+      state.tasks.push({ id: uid(), title: title, dod: dod, mins: selMins, type: selType, firstMove: first, measure: proof, status: "open" });
+      if (promotedIdea) {
+        var ix = state.ideas.indexOf(promotedIdea);
+        if (ix > -1) state.ideas.splice(ix, 1);
+      }
+    }
+    save(); render(); taskDlg.close();
+  };
+
+  /* ---------- coach ---------- */
+  var coachDlg = $("#coachDlg"), coachIx = 0, coachLow = false;
+  function renderCoach() {
+    var step = COACH[coachIx];
+    $("#coachStep").textContent = (coachIx + 1) + " / " + COACH.length;
+    $("#coachQ").textContent = step.q;
+    var sub = step.sub;
+    if (coachIx === COACH.length - 1 && coachLow) sub = "Low-energy day: ONE task. " + sub;
+    $("#coachSub").textContent = sub;
+    var ch = $("#coachChoices"); ch.innerHTML = "";
+    step.choices.forEach(function (c, i) {
+      var b = el('<button class="chip" type="button">' + esc(c) + "</button>");
+      b.setAttribute("aria-pressed", String(coachIx === 0 && ((i === 1) === coachLow)));
+      b.onclick = function () { if (coachIx === 0) coachLow = i === 1; renderCoach(); };
+      ch.appendChild(b);
+    });
+    $("#coachBackBtn").style.visibility = coachIx === 0 ? "hidden" : "visible";
+    $("#coachNextBtn").textContent = coachIx === COACH.length - 1 ? "Set my tasks" : "Next";
+  }
+  $("#stuckBtn").onclick = function () { coachIx = 0; renderCoach(); coachDlg.showModal(); };
+  $("#coachBackBtn").onclick = function () { if (coachIx > 0) { coachIx--; renderCoach(); } };
+  $("#coachNextBtn").onclick = function () {
+    if (coachIx < COACH.length - 1) { coachIx++; renderCoach(); }
+    else { coachDlg.close(); if (state.tasks.length < MAX) openTaskDlg(null); }
+  };
+  $("#coachCloseBtn").onclick = function () { coachDlg.close(); };
+
+  /* ---------- close the day ---------- */
+  var revDlg = $("#revDlg"), revState = {}, revLoad = "same";
+  function openReview() {
+    if (!state.tasks.length) { openTaskDlg(null); return; }
+    revState = {};
+    state.tasks.forEach(function (t) { revState[t.id] = t.status === "shipped" ? "shipped" : "moved"; });
+    revLoad = "same";
+    setChips($("#loadChips"), "load", revLoad);
+    var list = $("#revList"); list.innerHTML = "";
+    state.tasks.forEach(function (t) {
+      var row = el('<div class="rev-row"><div class="rev-title">' + esc(t.title) + '</div></div>');
+      var seg = el('<div class="seg"></div>');
+      [["shipped", "Shipped"], ["moved", "Move"], ["dropped", "Drop"]].forEach(function (pair) {
+        var b = el('<button class="chip" type="button" data-v="' + pair[0] + '">' + pair[1] + "</button>");
+        b.setAttribute("aria-pressed", String(revState[t.id] === pair[0]));
+        b.onclick = function () {
+          revState[t.id] = pair[0];
+          seg.querySelectorAll(".chip").forEach(function (c) { c.setAttribute("aria-pressed", String(c.dataset.v === pair[0])); });
+          revSum();
+        };
+        seg.appendChild(b);
+      });
+      row.appendChild(seg); list.appendChild(row);
+    });
+    revSum();
+    revDlg.showModal();
+  }
+  function revSum() {
+    var n = state.tasks.length, s = 0;
+    Object.keys(revState).forEach(function (k) { if (revState[k] === "shipped") s++; });
+    $("#revSum").textContent = "Planned " + n + " · Shipped " + s;
+  }
+  $("#loadChips").addEventListener("click", function (e) {
+    var c = e.target.closest(".chip"); if (!c) return;
+    revLoad = c.dataset.load; setChips(this, "load", revLoad);
+  });
+  $("#reviewBtn").onclick = openReview;
+  $("#revCancelBtn").onclick = function () { revDlg.close(); };
+  $("#revSaveBtn").onclick = function () {
+    var shipped = 0;
+    var moved = [];
+    state.tasks.forEach(function (t) {
+      var v = revState[t.id] || "moved";
+      if (v === "shipped") shipped++;
+      if (v === "moved") { t.status = "open"; moved.push(t); }
+    });
+    state.history[todayStr()] = { planned: state.tasks.length, shipped: shipped };
+    state.carry = state.carry.concat(moved);
+    state.tasks = [];
+    state.loadHint = revLoad;
+    state.closedDate = todayStr();
+    save(); render(); revDlg.close();
+  };
+
+  /* ---------- settings ---------- */
+  var setDlg = $("#setDlg");
+  $("#settingsBtn").onclick = function () {
+    $("#sLinks").value = state.links.map(function (l) { return l.label + " | " + l.url; }).join("\n");
+    $("#sImport").value = "";
+    setDlg.showModal();
+  };
+  $("#setCancelBtn").onclick = function () { setDlg.close(); };
+  $("#setSaveBtn").onclick = function () {
+    var lines = $("#sLinks").value.split("\n");
+    var links = [];
+    lines.forEach(function (ln) {
+      var p = ln.split("|");
+      if (p.length >= 2) {
+        var label = p[0].trim(), url = p.slice(1).join("|").trim();
+        if (label && /^https?:\/\//i.test(url)) links.push({ label: label, url: url });
+      }
+    });
+    if (links.length) state.links = links;
+    save(); render(); setDlg.close();
+  };
+  $("#resetBtn").onclick = function () {
+    var b = $("#resetBtn");
+    if (b.dataset.arm !== "1") { b.dataset.arm = "1"; b.textContent = "Tap again to erase everything"; return; }
+    localStorage.removeItem(KEY); state = defaults(); save(); render();
+    b.dataset.arm = ""; b.textContent = "Reset all"; setDlg.close();
+  };
+  $("#exportBtn").onclick = function () {
+    var json = JSON.stringify(state, null, 2);
+    var note = $("#backupNote");
+    if (window.claude && window.claude.downloads) {
+      window.claude.downloads.save({ filename: "day-board-backup.json", data: json })
+        .then(function () { note.textContent = "Backup saved."; })
+        .catch(function (err) {
+          if (err && err.code === "declined") { note.textContent = "Save cancelled."; }
+          else { copyText(json); note.textContent = "Download unavailable — backup copied to clipboard instead."; }
+        });
+    } else {
+      copyText(json);
+      note.textContent = "Backup copied to clipboard. Paste it somewhere safe.";
+    }
+  };
+  $("#importBtn").onclick = function () {
+    var note = $("#backupNote");
+    try {
+      var s = JSON.parse($("#sImport").value);
+      if (!s || typeof s !== "object" || !Array.isArray(s.tasks)) throw new Error("shape");
+      var d = defaults();
+      for (var k in d) if (!(k in s)) s[k] = d[k];
+      state = s; save(); render();
+      note.textContent = "Imported.";
+    } catch (e) { note.textContent = "That doesn't look like a Day Board backup — nothing changed."; }
+  };
+
+  /* ---------- top-level bindings ---------- */
+  $("#anchorBtn").onclick = function () { state.anchorDone = !state.anchorDone; save(); render(); };
+  $("#delivInput").addEventListener("change", function () { state.deliverable = this.value.trim(); save(); });
+  $("#delivInput").addEventListener("blur", function () { state.deliverable = this.value.trim(); save(); });
+  function addIdea() {
+    var v = $("#ideaInput").value.trim();
+    if (!v) return;
+    state.ideas.push(v); $("#ideaInput").value = ""; save(); render();
+  }
+  $("#ideaAddBtn").onclick = addIdea;
+  $("#ideaInput").addEventListener("keydown", function (e) { if (e.key === "Enter") addIdea(); });
+
+  /* re-check date when the tab wakes up (phone left open overnight) */
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) { rollover(); render(); }
+  });
+
+  rollover();
+  renderRoutines();
+  render();
+})();
+</script>
