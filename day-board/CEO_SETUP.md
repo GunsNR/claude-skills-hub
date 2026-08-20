@@ -1,5 +1,10 @@
 # CEO Layer — setup
 
+> **This repository is public.** Nothing in this file contains real client names,
+> fees, salaries, or income figures. Anywhere you see `[FILL IN PRIVATELY]`, type
+> your real numbers directly into the Claude Project or the spreadsheet on your own
+> machine — never into a file in this repo.
+
 Three things, each with one job. Total setup time: about 30 minutes, once.
 
 | Layer | What it's for | Where it lives |
@@ -14,14 +19,14 @@ Three things, each with one job. Total setup time: about 30 minutes, once.
 
 Open your Day Board. There are now two tabs at the top: **Today** and **Clients**.
 
-Your five clients are already loaded with their real fees. Every one currently shows **red**, because none has a proof metric set yet. That's accurate, not a bug — it's the actual state of things.
+The board ships with one example client. **Add your real clients on your own device** — tap Edit on the example, rename it, then use "+ Add a client" for the rest. Your client names and fees stay in your browser and are never committed to this repository, which is public.
 
 ### What to do, once per client (about 5 minutes each)
 
 1. Tap a client
 2. **Proof metric** — type the one number they care about. Not a dashboard. Examples:
-   - ABA / medical intake (Bridge Care, Atlas Care, PHC): `form submissions`
-   - Dental (Toothology): `calls from Google` or `appointment requests`
+   - Medical / therapy intake: `form submissions`
+   - Dental and local services: `calls from Google` or `appointment requests`
 3. **Where it comes from** — tap one. All free, all things you already have:
    - **GA4 form submits** — for lead forms
    - **Calls from Google** — Google Business Profile Insights
@@ -45,7 +50,7 @@ Your five clients are already loaded with their real fees. Every one currently s
 | **Amber** | Metric declining two months running, or a report/contact getting late, or renewal inside 60 days |
 | **Green** | Reported, contacted, evidenced |
 
-**No proof metric outranks everything else.** An un-evidenced $2,700/month retainer is more at risk than a well-evidenced one you're a week late on.
+**No proof metric outranks everything else.** An un-evidenced retainer is more at risk than a well-evidenced one you're a week late on, whatever the fee.
 
 ---
 
@@ -72,7 +77,7 @@ I've sent you `ranklogic-money.xlsx`. It has your real numbers already in it.
 
 ### The number that matters
 
-The green row, **"Real take-home after set-aside"** — currently about **$3,500/month**, not the $4,997 net. The difference is tax money that isn't yours. Right now you aren't setting it aside, so treat that gap as a debt accumulating quietly.
+The green row, **"Real take-home after set-aside"** — this is lower than the net profit line, and the difference is tax money that isn't yours. If you aren't currently setting it aside, treat that gap as a debt accumulating quietly.
 
 ### Monthly, on the 1st (20 minutes)
 
@@ -100,15 +105,16 @@ WHO I AM
 I'm Izzy, majority owner and CEO. My edge is people — trust, de-escalation, reading a room, community relationships in the frum Jewish world. That's how clients come to me. My gap is follow-through on unglamorous technical and admin work; it stalls, then I feel bad about it, then it stalls more. I have ADHD. I understand concepts fine; I struggle with technical detail. My recovery program anchors my day and comes before all business work.
 
 THE BUSINESS (as of Aug 2026)
-- 5 clients: PHC Medical $2,700 (starts Sept), Bridge Care $2,500, Stageit $1,750, Toothology $1,650, Atlas Care $1,450. All on signed contracts with real terms.
-- MRR $10,050 from September. Net about $4,997/mo. After a 30% tax set-aside, real take-home is about $3,500/mo.
-- Dilshan (Sri Lanka) is team manager, developer, engineer and lead strategist on a 35% royalty. He manages a junior SEO (Dheelakah, $375/mo) and a designer (Lakshani, $320/mo).
-- Tracking budget is tight: clients won't fund more than ~$100/mo. We use GA4, GSC and Google Business Profile only. All free. Don't propose paid call-tracking.
+- [FILL IN PRIVATELY: number of clients, each client's name and monthly fee, and their contract status.]
+- [FILL IN PRIVATELY: monthly recurring revenue, net profit, tax set-aside rate, and real take-home.]
+- [FILL IN PRIVATELY: your delivery lead's name, location, role and compensation structure, plus the rest of the team.]
+(Do not commit these figures anywhere public. Paste them straight into the Claude Project, which is private to your account.)
+- Tracking budget is tight: clients won't fund much beyond the free tier. We use GA4, GSC and Google Business Profile only. Don't propose paid call-tracking.
 
 THE THREE RISKS — hold me to these
-1. Concentration: Bridge Care + PHC are 52% of revenue. Losing PHC costs about $1,755/mo net.
+1. Concentration: [FILL IN] — my top two clients are a large share of revenue. Losing the biggest costs me [FILL IN] per month in net income.
 2. Dilshan is a single point of failure and I can't evaluate technical work myself. If he left I couldn't service one account.
-3. I don't set aside tax money. About $1,500/mo should be moving to a separate account and isn't.
+3. Tax set-aside: [FILL IN whether you're doing this]. A fixed amount should move to a separate account every month.
 
 HOW TO WORK WITH ME
 - Never write my task list. I set tasks; you interview, shape, and hold limits.
@@ -182,8 +188,8 @@ I'm about to [spend / sign / commit to] this: [details]. You are my QC layer. As
 
 ### What you need to learn — in priority order
 1. **How to read a GA4 key-event report and a GBP Insights panel.** Under an hour to learn. It ends your dependence on someone else telling you whether your own clients are getting results. Highest-leverage technical skill on this list by a wide margin.
-2. **What each client costs you to serve, and what margin each carries.** You have five clients — this is arithmetic, not accounting.
-3. **Why 52% concentration is dangerous, and what number is safe.** (Rule of thumb: no client above 20%, no two above 35%.)
+2. **What each client costs you to serve, and what margin each carries.** With a small book this is arithmetic, not accounting.
+3. **Why high client concentration is dangerous, and what number is safe.** (Rule of thumb: no client above 20% of revenue, no two above 35%.)
 4. **What retention actually requires operationally** — a fixed reporting cadence and visible proof of value, not just a good relationship.
 5. **Enough SEO literacy to evaluate Dilshan's work** — not to do it. Different skill, much smaller.
 
@@ -191,8 +197,8 @@ I'm about to [spend / sign / commit to] this: [details]. You are my QC layer. As
 
 ## The honest summary
 
-Your margins are healthy — about 50% net, which is a well-run agency shape. Your constraint is scale, not efficiency. Five clients at ~$10K MRR is a real business but a small one, and the gap to where you want to be is years of steady client addition, not one clever move.
+If your net margin is around 50%, that's a well-run agency shape and your constraint is scale, not efficiency. A handful of clients is a real business but a small one, and the gap to a much larger number is years of steady client addition, not one clever move.
 
 The two things that would move your trajectory most, starting this week:
-1. **Get a proof metric on every client.** It's the cheapest retention insurance that exists, it costs $0, and right now you have none.
+1. **Get a proof metric on every client.** It's the cheapest retention insurance that exists and it costs nothing.
 2. **Start moving the tax money.** Every month you don't is a bill growing in the dark.
