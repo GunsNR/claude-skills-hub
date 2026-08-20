@@ -623,7 +623,7 @@
   </div>
   <div class="field">
     <label for="cMrr">Monthly fee (USD)</label>
-    <input id="cMrr" type="number" inputmode="numeric" min="0" step="50" placeholder="1650" />
+    <input id="cMrr" type="number" inputmode="numeric" min="0" step="50" placeholder="0" />
   </div>
 
   <div class="field">
@@ -758,11 +758,9 @@
   }
   function seedClients() {
     return [
-      { id: "c-phc",    name: "PHC Medical", mrr: 2700, soon: "starts Sept" },
-      { id: "c-bridge", name: "Bridge Care", mrr: 2500 },
-      { id: "c-stage",  name: "Stageit",     mrr: 1750 },
-      { id: "c-tooth",  name: "Toothology",  mrr: 1650 },
-      { id: "c-atlas",  name: "Atlas Care",  mrr: 1450 }
+      // Example row only. Add your real clients on your own device — they are
+      // stored in your browser and never committed to this repository.
+      { id: "c-example", name: "Example Client", mrr: 0 }
     ].map(function (c) {
       c.lastContact = ""; c.lastReport = ""; c.renewal = "";
       c.metricName = ""; c.source = ""; c.series = [];

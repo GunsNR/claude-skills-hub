@@ -1,4 +1,5 @@
-__pycache__/
-*.pyc
-*.db
-.pytest_cache/
+# Never commit business financials or client data to this repo — it is PUBLIC.
+*.xlsx
+*.csv
+ranklogic-money.*
+**/clients-private.*
