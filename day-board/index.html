@@ -350,6 +350,78 @@
     font-family: var(--mono); font-size: 14px; text-align: center; font-variant-numeric: tabular-nums;
   }
 
+
+  /* ---------- tabs ---------- */
+  .tabs { display: flex; gap: 4px; padding: 4px; background: var(--surface2); border-radius: 12px; }
+  .tab {
+    flex: 1; padding: 9px 10px; border-radius: 9px; font-size: 13.5px; font-weight: 650;
+    color: var(--ink2); text-align: center;
+  }
+  .tab[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--lift); }
+  .tab .tb { display: inline-block; min-width: 17px; padding: 0 5px; margin-left: 5px; border-radius: 999px;
+    background: var(--danger); color: var(--accent-ink); font-size: 10.5px; font-weight: 700;
+    font-variant-numeric: tabular-nums; }
+
+  /* ---------- aim headline ---------- */
+  .aim {
+    padding: 16px 17px; border-radius: var(--r); background: var(--surface);
+    border: 1px solid var(--line); border-left: 3px solid var(--danger); box-shadow: var(--lift);
+  }
+  .aim.ok { border-left-color: var(--accent); }
+  .aim .who { font-family: var(--serif); font-size: 20px; letter-spacing: -.01em; margin-top: 4px; text-wrap: balance; }
+  .aim .why { font-size: 13.5px; color: var(--ink2); margin-top: 5px; }
+  .aim .amt { font-family: var(--mono); font-size: 12.5px; color: var(--danger); font-weight: 650;
+    font-variant-numeric: tabular-nums; margin-top: 7px; }
+  .aim.ok .amt { color: var(--accent); }
+
+  /* ---------- money strip ---------- */
+  .money { display: flex; gap: 8px; }
+  .mcell {
+    flex: 1; padding: 11px 12px; border-radius: 11px; background: var(--surface);
+    border: 1px solid var(--line); box-shadow: var(--lift);
+  }
+  .mcell .mv { font-family: var(--mono); font-size: 16px; font-weight: 650; font-variant-numeric: tabular-nums; margin-top: 3px; }
+  .mcell.warn .mv { color: var(--bronze); }
+
+  /* ---------- client cards ---------- */
+  .client {
+    position: relative; padding: 15px 16px 15px 19px; background: var(--surface);
+    border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--lift); overflow: hidden;
+  }
+  .client::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }
+  .client.amber::before { background: var(--bronze); }
+  .client.red::before { background: var(--danger); }
+  .c-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; cursor: pointer; }
+  .c-name { font-weight: 650; font-size: 15.5px; letter-spacing: -.005em; }
+  .c-mrr { font-family: var(--mono); font-size: 13px; color: var(--ink2); font-variant-numeric: tabular-nums; }
+  .c-soon { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--launch); background: var(--launch-soft); padding: 3px 8px; border-radius: 999px; }
+
+  .proof { display: flex; align-items: center; gap: 11px; margin-top: 11px; padding: 10px 12px;
+    border-radius: 10px; background: var(--surface2); cursor: pointer; }
+  .proof .pt { flex: 1; min-width: 0; }
+  .proof .pname { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink3); }
+  .proof .pval { font-family: var(--mono); font-size: 14px; font-variant-numeric: tabular-nums; margin-top: 3px; }
+  .proof .pdelta { font-weight: 700; }
+  .proof .pdelta.up { color: var(--accent); }
+  .proof .pdelta.down { color: var(--danger); }
+  .proof.none { background: var(--danger-soft); }
+  .proof.none .pname { color: var(--danger); }
+  .proof.none .pval { font-family: var(--sans); font-size: 13px; color: var(--danger); font-weight: 600; }
+  .spark { flex-shrink: 0; }
+
+  .c-alerts { display: flex; flex-direction: column; gap: 5px; margin-top: 11px; }
+  .alert { font-size: 12.5px; display: flex; align-items: flex-start; gap: 7px; }
+  .alert .ad { width: 6px; height: 6px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+  .alert.red .ad { background: var(--danger); }
+  .alert.amber .ad { background: var(--bronze); }
+  .alert.red { color: var(--danger); }
+  .alert.amber { color: var(--bronze); }
+  .alert.green { color: var(--accent); }
+  .alert.green .ad { background: var(--accent); }
+
+  .c-acts { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+
   @media (prefers-reduced-motion: no-preference) {
     .check, .chip, .link-chip, .btn, .mini-btn, .icon-btn, .add-card, .anchor, .caret, .fill { transition: all .18s ease; }
     .task.enter { animation: rise .4s cubic-bezier(.2,.7,.3,1) both; }
@@ -381,6 +453,12 @@
     </div>
   </header>
 
+  <div class="tabs" role="tablist">
+    <button class="tab" id="tabToday" role="tab" aria-selected="true">Today</button>
+    <button class="tab" id="tabClients" role="tab" aria-selected="false">Clients<span class="tb" id="tabBadge" hidden>0</span></button>
+  </div>
+
+  <div id="todayView" style="display:flex;flex-direction:column;gap:26px">
   <button class="anchor" id="anchorBtn" aria-pressed="false">
     <span class="mark">✓</span>
     <span class="txt">
@@ -414,6 +492,23 @@
     </div>
     <div class="week" id="weekStrip"></div>
   </section>
+
+  </div><!-- /todayView -->
+
+  <div id="clientsView" hidden style="flex-direction:column;gap:20px">
+    <div id="aimBox"></div>
+
+    <div class="money" id="moneyStrip"></div>
+
+    <section>
+      <div class="sec-head">
+        <span class="eyebrow">Clients — sorted by who needs you most</span>
+        <span class="count" id="clientCount"></span>
+      </div>
+      <div class="list" id="clientList"></div>
+      <button class="add-card" id="addClientBtn"><span class="plus">+</span> Add a client</button>
+    </section>
+  </div><!-- /clientsView -->
 
   <section>
     <div class="sec-head"><span class="eyebrow">Quick access</span></div>
@@ -520,6 +615,59 @@
   </div>
 </dialog>
 
+<dialog id="clientDlg">
+  <div class="dlg-title" id="clientDlgTitle">Client</div>
+  <div class="field">
+    <label for="cName">Client</label>
+    <input id="cName" placeholder="Client name" maxlength="60" />
+  </div>
+  <div class="field">
+    <label for="cMrr">Monthly fee (USD)</label>
+    <input id="cMrr" type="number" inputmode="numeric" min="0" step="50" placeholder="1650" />
+  </div>
+
+  <div class="field">
+    <label for="cMetric">Proof metric — the number they care about</label>
+    <input id="cMetric" placeholder="e.g. form submissions, calls from Google" maxlength="60" />
+    <div class="gate-note launch">Without this you cannot defend the retainer. Pick one outcome, not a dashboard.</div>
+  </div>
+  <div class="field">
+    <label>Where it comes from (all free)</label>
+    <div class="chips" id="cSourceChips">
+      <button class="chip" data-source="GA4 key event" type="button">GA4 form submits</button>
+      <button class="chip" data-source="GBP Insights" type="button">Calls from Google</button>
+      <button class="chip" data-source="GSC" type="button">GSC clicks</button>
+      <button class="chip" data-source="Client-reported" type="button">They tell me</button>
+    </div>
+  </div>
+  <div class="field">
+    <label for="cValue">This month's number</label>
+    <input id="cValue" type="number" inputmode="numeric" min="0" placeholder="Type the real figure from the source" />
+    <div class="field-note">Saved against <span id="cMonthLbl">this month</span>. Type the real number — never an estimate.</div>
+  </div>
+
+  <div class="field">
+    <label for="cReport">Last report sent</label>
+    <input id="cReport" type="date" />
+  </div>
+  <div class="field">
+    <label for="cContact">Last contact</label>
+    <input id="cContact" type="date" />
+  </div>
+  <div class="field">
+    <label for="cRenewal">Contract renewal date</label>
+    <input id="cRenewal" type="date" />
+  </div>
+
+  <div class="dlg-actions">
+    <button class="btn danger" id="cDeleteBtn" hidden>Remove</button>
+    <div class="right">
+      <button class="btn" id="cCancelBtn">Cancel</button>
+      <button class="btn primary" id="cSaveBtn">Save</button>
+    </div>
+  </div>
+</dialog>
+
 <dialog id="setDlg">
   <div class="dlg-title">Settings</div>
   <div class="field">
@@ -608,9 +756,23 @@
     d = d || new Date();
     return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
   }
+  function seedClients() {
+    return [
+      { id: "c-phc",    name: "PHC Medical", mrr: 2700, soon: "starts Sept" },
+      { id: "c-bridge", name: "Bridge Care", mrr: 2500 },
+      { id: "c-stage",  name: "Stageit",     mrr: 1750 },
+      { id: "c-tooth",  name: "Toothology",  mrr: 1650 },
+      { id: "c-atlas",  name: "Atlas Care",  mrr: 1450 }
+    ].map(function (c) {
+      c.lastContact = ""; c.lastReport = ""; c.renewal = "";
+      c.metricName = ""; c.source = ""; c.series = [];
+      return c;
+    });
+  }
   function defaults() {
     return { date: todayStr(), anchorDone: false, deliverable: "", tasks: [], carry: [], ideas: [],
-             history: {}, links: DEFAULT_LINKS.slice(), loadHint: null, closedDate: null };
+             history: {}, links: DEFAULT_LINKS.slice(), loadHint: null, closedDate: null,
+             clients: seedClients(), tab: "today" };
   }
   function load() {
     try {
@@ -679,6 +841,75 @@
     });
   }, 1000);
 
+  function monthKey(d) {
+    d = d || new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0");
+  }
+  function parseDay(s) { return s ? new Date(s + "T00:00:00") : null; }
+  function daysSince(s) {
+    var d = parseDay(s); if (!d) return null;
+    return Math.floor((new Date().setHours(0, 0, 0, 0) - d.getTime()) / 86400000);
+  }
+  function daysUntil(s) {
+    var d = parseDay(s); if (!d) return null;
+    return Math.ceil((d.getTime() - new Date().setHours(0, 0, 0, 0)) / 86400000);
+  }
+  function money(n) { return "$" + Number(n || 0).toLocaleString("en-US"); }
+
+  // Highest-severity alert wins. No-proof-loop outranks everything: an un-evidenced
+  // retainer is more at risk than a well-evidenced one that is a week overdue.
+  function clientAlerts(c) {
+    var out = [];
+    if (!c.metricName) {
+      out.push({ sev: 5, level: "red", text: "No ROI loop — you cannot defend this retainer",
+                 act: "Set a proof metric" });
+    } else {
+      var s = (c.series || []).slice(-2);
+      if (s.length === 2 && Number(s[1].value) < Number(s[0].value)) {
+        out.push({ sev: 4, level: "amber", text: "Results trending down two months running",
+                   act: "Get ahead of this before they raise it" });
+      }
+    }
+    var dr = daysSince(c.lastReport);
+    if (dr === null) out.push({ sev: 3.4, level: "red", text: "No report ever logged", act: "Send a report" });
+    else if (dr >= 45) out.push({ sev: 3.4, level: "red", text: dr + " days since last report", act: "Send this month's report" });
+    else if (dr >= 35) out.push({ sev: 2, level: "amber", text: dr + " days since last report", act: "Report is due" });
+
+    var dc = daysSince(c.lastContact);
+    if (dc !== null && dc >= 21) out.push({ sev: 3, level: "red", text: dc + " days since you spoke", act: "Call them" });
+    else if (dc !== null && dc >= 14) out.push({ sev: 1.5, level: "amber", text: dc + " days since you spoke", act: "Check in" });
+
+    var du = daysUntil(c.renewal);
+    if (du !== null && du >= 0 && du <= 30) out.push({ sev: 2.5, level: "red", text: "Renews in " + du + " days", act: "Have the renewal conversation now" });
+    else if (du !== null && du > 30 && du <= 60) out.push({ sev: 1, level: "amber", text: "Renews in " + du + " days", act: "Start planning the renewal" });
+
+    out.sort(function (a, b) { return b.sev - a.sev; });
+    return out;
+  }
+  function clientLevel(c) {
+    var a = clientAlerts(c);
+    if (!a.length) return "green";
+    return a[0].level;
+  }
+  function clientScore(c) {
+    var a = clientAlerts(c);
+    return (a.length ? a[0].sev : 0) * (Number(c.mrr) || 0);
+  }
+  function sparkline(series) {
+    var v = (series || []).slice(-6).map(function (x) { return Number(x.value) || 0; });
+    if (v.length < 2) return "";
+    var w = 58, h = 20, max = Math.max.apply(null, v), min = Math.min.apply(null, v);
+    var rng = max - min || 1;
+    var pts = v.map(function (n, i) {
+      return (i * (w / (v.length - 1))).toFixed(1) + "," + (h - ((n - min) / rng) * h).toFixed(1);
+    }).join(" ");
+    var last = v[v.length - 1], first = v[0];
+    var col = last >= first ? "var(--accent)" : "var(--danger)";
+    return '<svg class="spark" width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" aria-hidden="true">' +
+      '<polyline points="' + pts + '" fill="none" stroke="' + col + '" stroke-width="1.8" ' +
+      'stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  }
+
   function fmtDate() {
     var d = new Date();
     var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -696,6 +927,7 @@
     $("#anchorLabel").textContent = state.anchorDone ? "Anchored — the rest is extra" : "Anchor first";
     if (document.activeElement !== $("#delivInput")) $("#delivInput").value = state.deliverable;
     renderRing(); renderCarry(); renderTasks(); renderWeek(); renderLinks(); renderIdeas();
+    renderTabs(); renderAim(); renderMoney(); renderClients();
     firstPaint = false; popId = null;
   }
 
@@ -816,6 +1048,113 @@
       day.appendChild(el('<div class="dn">' + (h && h.planned > 0 ? h.shipped + "/" + h.planned : "—") + "</div>"));
       w.appendChild(day);
     }
+  }
+
+  function renderTabs() {
+    var isC = state.tab === "clients";
+    $("#tabToday").setAttribute("aria-selected", String(!isC));
+    $("#tabClients").setAttribute("aria-selected", String(isC));
+    $("#todayView").hidden = isC;
+    $("#todayView").style.display = isC ? "none" : "flex";
+    $("#clientsView").hidden = !isC;
+    $("#clientsView").style.display = isC ? "flex" : "none";
+    var reds = state.clients.filter(function (c) { return clientLevel(c) === "red"; }).length;
+    var b = $("#tabBadge");
+    b.hidden = reds === 0;
+    b.textContent = String(reds);
+  }
+
+  function renderAim() {
+    var box = $("#aimBox"); box.innerHTML = "";
+    var list = state.clients.slice().sort(function (a, b) { return clientScore(b) - clientScore(a); });
+    var top = list[0];
+    if (!top || clientScore(top) === 0) {
+      box.appendChild(el('<div class="aim ok"><div class="eyebrow">Where to aim today</div>' +
+        '<div class="who">Every client is current.</div>' +
+        '<div class="why">Nothing overdue, every retainer evidenced. Spend today on growth, not defence.</div></div>'));
+      return;
+    }
+    var a = clientAlerts(top)[0];
+    var card = el('<div class="aim"><div class="eyebrow">Where to aim today</div>' +
+      '<div class="who">' + esc(top.name) + '</div>' +
+      '<div class="why">' + esc(a.text) + ' — ' + esc(a.act) + '.</div>' +
+      '<div class="amt">' + money(top.mrr) + '/mo at risk</div></div>');
+    box.appendChild(card);
+  }
+
+  function renderMoney() {
+    var strip = $("#moneyStrip"); strip.innerHTML = "";
+    var mrrs = state.clients.map(function (c) { return Number(c.mrr) || 0; });
+    var total = mrrs.reduce(function (a, b) { return a + b; }, 0);
+    var top2 = mrrs.slice().sort(function (a, b) { return b - a; }).slice(0, 2)
+      .reduce(function (a, b) { return a + b; }, 0);
+    var conc = total ? Math.round((top2 / total) * 100) : 0;
+    var noProof = state.clients.filter(function (c) { return !c.metricName; }).length;
+    strip.appendChild(el('<div class="mcell"><div class="eyebrow">MRR</div><div class="mv">' + money(total) + "</div></div>"));
+    strip.appendChild(el('<div class="mcell' + (conc > 50 ? " warn" : "") + '"><div class="eyebrow">Top 2</div><div class="mv">' + conc + "%</div></div>"));
+    strip.appendChild(el('<div class="mcell' + (noProof > 0 ? " warn" : "") + '"><div class="eyebrow">No proof</div><div class="mv">' + noProof + " of " + state.clients.length + "</div></div>"));
+  }
+
+  function renderClients() {
+    var list = $("#clientList"); list.innerHTML = "";
+    var sorted = state.clients.slice().sort(function (a, b) { return clientScore(b) - clientScore(a); });
+    $("#clientCount").textContent = sorted.length + " clients";
+
+    sorted.forEach(function (c) {
+      var lvl = clientLevel(c);
+      var card = el('<div class="client ' + lvl + '"></div>');
+
+      var top = el('<div class="c-top"><div><div class="c-name">' + esc(c.name) + "</div></div>" +
+        '<div class="c-mrr">' + money(c.mrr) + "/mo</div></div>");
+      if (c.soon) top.querySelector("div > div").insertAdjacentHTML("afterend", '<span class="c-soon">' + esc(c.soon) + "</span>");
+      top.onclick = function () { openClientDlg(c); };
+      card.appendChild(top);
+
+      var s = (c.series || []).slice(-2);
+      var proof;
+      if (!c.metricName) {
+        proof = el('<div class="proof none"><div class="pt"><div class="pname">Proof metric</div>' +
+          '<div class="pval">Not set — tap to choose one</div></div></div>');
+      } else {
+        var cur = s.length ? s[s.length - 1].value : null;
+        var prev = s.length > 1 ? s[0].value : null;
+        var txt = cur === null ? "No number logged yet"
+          : Number(cur).toLocaleString("en-US") + " this month";
+        if (prev !== null && Number(prev) !== 0) {
+          var pct = Math.round(((Number(cur) - Number(prev)) / Number(prev)) * 100);
+          txt += ' <span class="pdelta ' + (pct >= 0 ? "up" : "down") + '">' +
+            (pct >= 0 ? "+" : "") + pct + "%</span>";
+        }
+        proof = el('<div class="proof"><div class="pt"><div class="pname">' + esc(c.metricName) +
+          (c.source ? " · " + esc(c.source) : "") + '</div><div class="pval">' + txt + "</div></div>" +
+          sparkline(c.series) + "</div>");
+      }
+      proof.onclick = function () { openClientDlg(c); };
+      card.appendChild(proof);
+
+      var alerts = clientAlerts(c);
+      var ab = el('<div class="c-alerts"></div>');
+      if (!alerts.length) {
+        ab.appendChild(el('<div class="alert green"><span class="ad"></span>Current — reported, contacted, evidenced.</div>'));
+      } else {
+        alerts.slice(0, 3).forEach(function (a) {
+          ab.appendChild(el('<div class="alert ' + a.level + '"><span class="ad"></span>' + esc(a.text) + "</div>"));
+        });
+      }
+      card.appendChild(ab);
+
+      var acts = el('<div class="c-acts"></div>');
+      var b1 = el('<button class="mini-btn">Spoke today</button>');
+      b1.onclick = function () { c.lastContact = todayStr(); save(); render(); };
+      var b2 = el('<button class="mini-btn">Report sent</button>');
+      b2.onclick = function () { c.lastReport = todayStr(); save(); render(); };
+      var b3 = el('<button class="mini-btn quiet">Edit</button>');
+      b3.onclick = function () { openClientDlg(c); };
+      acts.appendChild(b1); acts.appendChild(b2); acts.appendChild(b3);
+      card.appendChild(acts);
+
+      list.appendChild(card);
+    });
   }
 
   function renderLinks() {
@@ -1037,6 +1376,73 @@
     } catch (e) { note.textContent = "That doesn't look like a Day Board backup — nothing changed."; }
   };
 
+  /* ---------- tabs ---------- */
+  $("#tabToday").onclick = function () { state.tab = "today"; save(); render(); window.scrollTo(0, 0); };
+  $("#tabClients").onclick = function () { state.tab = "clients"; save(); render(); window.scrollTo(0, 0); };
+
+  /* ---------- client dialog ---------- */
+  var clientDlg = $("#clientDlg"), editingClient = null, cSource = "";
+
+  function openClientDlg(c) {
+    editingClient = c || null;
+    $("#clientDlgTitle").textContent = c ? c.name : "Add a client";
+    $("#cName").value = c ? c.name : "";
+    $("#cMrr").value = c ? (c.mrr || "") : "";
+    $("#cMetric").value = c ? (c.metricName || "") : "";
+    $("#cReport").value = c ? (c.lastReport || "") : "";
+    $("#cContact").value = c ? (c.lastContact || "") : "";
+    $("#cRenewal").value = c ? (c.renewal || "") : "";
+    cSource = c ? (c.source || "") : "";
+    setChips($("#cSourceChips"), "source", cSource);
+    var mk = monthKey();
+    $("#cMonthLbl").textContent = mk;
+    var existing = c && (c.series || []).filter(function (x) { return x.month === mk; })[0];
+    $("#cValue").value = existing ? existing.value : "";
+    $("#cDeleteBtn").hidden = !c;
+    clientDlg.showModal();
+    $("#cName").focus();
+  }
+  $("#cSourceChips").addEventListener("click", function (e) {
+    var b = e.target.closest(".chip"); if (!b) return;
+    cSource = b.dataset.source; setChips(this, "source", cSource);
+  });
+  $("#cCancelBtn").onclick = function () { clientDlg.close(); };
+  $("#cDeleteBtn").onclick = function () {
+    var b = $("#cDeleteBtn");
+    if (b.dataset.arm !== "1") { b.dataset.arm = "1"; b.textContent = "Tap again to remove"; return; }
+    state.clients = state.clients.filter(function (x) { return x.id !== editingClient.id; });
+    b.dataset.arm = ""; b.textContent = "Remove";
+    save(); render(); clientDlg.close();
+  };
+  $("#cSaveBtn").onclick = function () {
+    var name = $("#cName").value.trim();
+    if (!name) { $("#cName").focus(); return; }
+    var c = editingClient;
+    if (!c) {
+      c = { id: "c" + Date.now().toString(36), name: name, mrr: 0, lastContact: "", lastReport: "",
+            renewal: "", metricName: "", source: "", series: [] };
+      state.clients.push(c);
+    }
+    c.name = name;
+    c.mrr = Number($("#cMrr").value) || 0;
+    c.metricName = $("#cMetric").value.trim();
+    c.source = cSource;
+    c.lastReport = $("#cReport").value;
+    c.lastContact = $("#cContact").value;
+    c.renewal = $("#cRenewal").value;
+
+    var raw = $("#cValue").value.trim();
+    if (raw !== "") {
+      var mk = monthKey(), v = Number(raw);
+      c.series = (c.series || []).filter(function (x) { return x.month !== mk; });
+      c.series.push({ month: mk, value: v });
+      c.series.sort(function (a, b) { return a.month < b.month ? -1 : 1; });
+      c.series = c.series.slice(-6);
+    }
+    save(); render(); clientDlg.close();
+  };
+  $("#addClientBtn").onclick = function () { openClientDlg(null); };
+
   $("#anchorBtn").onclick = function () { state.anchorDone = !state.anchorDone; save(); render(); };
   $("#delivInput").addEventListener("change", function () { state.deliverable = this.value.trim(); save(); });
   $("#delivInput").addEventListener("blur", function () { state.deliverable = this.value.trim(); save(); });
@@ -1048,6 +1454,6 @@
   $("#ideaInput").addEventListener("keydown", function (e) { if (e.key === "Enter") addIdea(); });
   document.addEventListener("visibilitychange", function () { if (!document.hidden) { rollover(); render(); } });
 
-  rollover(); renderRoutines(); render();
+  rollover(); save(); renderRoutines(); render();
 })();
 </script>
