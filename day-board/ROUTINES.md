@@ -106,3 +106,28 @@ me swap it for a smaller slice — my choice, not yours.
 - **You set the tasks.** Nothing on the board or in these prompts generates
   tasks for you. When unsure, the board asks questions; Claude asks questions.
   The answers are yours.
+
+---
+
+# CEO rhythms
+
+Added alongside the Clients tab. Full setup instructions live in `CEO_SETUP.md`.
+
+## Monthly — the 1st, 20 minutes
+
+1. Log every client's proof metric from its real source (GA4 key events, GBP Insights). Type the real figure; never estimate.
+2. Update any fee or cost that changed in the money sheet.
+3. **Move the tax set-aside into a separate account.** An actual transfer, not a mental note.
+4. Check top-2 concentration. Above 50% means two phone calls can halve your income.
+
+## Weekly — Friday, on top of the existing weekly review
+
+Clear every red on the Clients tab before anything else. A red client is either un-evidenced, un-reported, or un-contacted — all three are cheaper to fix now than to explain later.
+
+## Why the Clients tab is shaped this way
+
+- **No proof metric is the highest-severity alert**, above an overdue report and above a bigger retainer. An un-evidenced retainer cannot be defended at renewal, whatever the relationship.
+- **Free sources only** — GA4 key events, GBP Insights, GSC. Clients won't fund more than ~$100/mo for tracking, and they don't need to. The gap is configuration, not budget.
+- **A business outcome beats a visibility stat.** Form submissions and calls, not impressions. A client told "impressions are up" while their phone isn't ringing will churn anyway.
+- **Sorted by revenue at risk × severity**, so the top card is always the highest-value thing you could do about retention today.
+- **Two-second upkeep** — "Spoke today" and "Report sent" stamp the date. Anything slower stops getting used.
