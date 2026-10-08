@@ -36,25 +36,17 @@ BIZ = {
     "website":     "https://impactwindowsseo.com",
     "email":       "",          # fill in before running
     "category":    "SEO Agency",
-    "lat":         "26.0942",   # Fort Lauderdale approximate
-    "lng":         "-80.1973",
+    # Descriptions match business-profile.txt: only facts you gave me, no guarantees.
     "desc_short":  (
-        "Impact Windows SEO is a Fort Lauderdale digital marketing agency "
-        "specializing exclusively in SEO for impact window and door contractors. "
-        "We help installation companies dominate local Google search results, "
-        "generate qualified leads, and lock out competitors — one client per "
-        "market, guaranteed."
+        "Impact Windows SEO is a Fort Lauderdale, Florida SEO agency for impact "
+        "window contractors and window and door installation companies. It is a "
+        "sister company of RankLogic SEO."
     ),
     "desc_long": (
-        "Impact Windows SEO is a Fort Lauderdale-based SEO agency dedicated "
-        "exclusively to impact window and door installation companies across "
-        "South Florida and beyond. We combine proven local SEO expertise with "
-        "deep niche knowledge of the impact window industry. Our services include "
-        "Google Business Profile optimization, review building, local content "
-        "strategy, citation management, and technical SEO. We work with only one "
-        "impact window company per city — permanently locking out local competitors. "
-        "Month-to-month contracts, 90-day performance guarantee. Serving Fort "
-        "Lauderdale, Miami, Boca Raton, West Palm Beach, Naples, and all of Florida."
+        "Impact Windows SEO is an SEO agency based in Fort Lauderdale, Florida. "
+        "We work with impact window contractors and window and door installation "
+        "companies on local search engine optimization, including Google Business "
+        "Profile, website pages, and reviews. It is a sister company of RankLogic SEO."
     ),
 }
 

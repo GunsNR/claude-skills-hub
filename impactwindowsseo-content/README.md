@@ -1,20 +1,30 @@
 # Impact Windows SEO: blog drafts and schema
 
-Six posts for impactwindowsseo.com, written for window and door companies, each with BlogPosting, WebPage, BreadcrumbList, FAQPage, and ProfessionalService JSON-LD. Nothing here has been published. This session cannot reach the WordPress site.
+Eight posts for impactwindowsseo.com, written for window and door companies, each with BlogPosting, WebPage, BreadcrumbList, FAQPage, and ProfessionalService JSON-LD.
 
-## What is in `dist/`
+**Nothing here is published.** This environment cannot reach the WordPress site. See "What it takes to publish automatically" at the bottom.
 
-| File | Primary keyword | US searches/mo* | Difficulty* |
-|---|---|---|---|
-| `seo-for-window-companies.html` | seo for window companies | 40 | 4 |
-| `window-replacement-leads.html` | window replacement leads | 90 | 4 |
-| `local-seo-for-contractors.html` | local seo for contractors | 1,600 | 19 |
-| `google-business-profile-for-window-companies.html` | google business profile for contractors | 70 | 19 |
-| `impact-window-marketing-florida.html` | impact windows florida | 720 | 46 |
-| `how-to-hire-seo-agency-for-window-company.html` | window contractor marketing | 320 | 9 |
-| `schema-sitewide.json` | Organization + WebSite for the homepage | n/a | n/a |
+## Ground rules for every post
 
-*Semrush US database, 2026-10-08. The niche terms are small. The value is low difficulty and buyers who are ready to talk, not traffic volume. Broader terms like "seo for contractors" (3,600/mo, difficulty 19) are where growth is, and they take a longer content series to win.
+- No guarantees, no promised results, no promised timelines. `build.py` fails the build on phrases like "we guarantee" or "you will rank."
+- Every outside fact is logged in `SOURCES.md` with where it came from and how well it was checked. Starred items need a person to confirm them on the official page before publishing.
+- No em dashes, no fake ratings, no invented client results.
+
+## Posts in `dist/`
+
+| File | Primary keyword | US searches/mo* | Difficulty* | Batch |
+|---|---|---|---|---|
+| `seo-for-window-companies.html` | seo for window companies | 40 | 4 | start |
+| `window-replacement-leads.html` | window replacement leads | 90 | 4 | start |
+| `local-seo-for-contractors.html` | local seo for contractors | 1,600 | 19 | start |
+| `google-business-profile-for-window-companies.html` | google business profile for contractors | 70 | 19 | start |
+| `impact-window-marketing-florida.html` | impact windows florida | 720 | 46 | start |
+| `how-to-hire-seo-agency-for-window-company.html` | window contractor marketing | 320 | 9 | start |
+| `product-approvals-impact-window-pages.html` | florida product approval | 4,400 | 40 | Day 1 |
+| `wind-mitigation-inspection-window-companies.html` | wind mitigation inspection | 3,600 | 22 | Day 1 |
+| `schema-sitewide.json` | Organization + WebSite for the homepage | n/a | n/a | |
+
+*Semrush US database, 2026-10-08, monthly estimates.
 
 ## To publish each post
 
@@ -22,33 +32,36 @@ Six posts for impactwindowsseo.com, written for window and door companies, each 
 2. Add one **Custom HTML** block and paste the whole file, including the `<script type="application/ld+json">` block at the bottom.
 3. Set the SEO title and meta description in your SEO plugin from `posts.py` (`title`, `meta`).
 4. Add a featured image and one or two images inside the post. Use **your own install photos** with descriptive alt text, not stock.
-5. Test with Google's Rich Results Test before requesting indexing in Search Console.
+5. Update `date` in `posts.py` to the real publish date and run `python3 build.py` again, so the schema date is right.
+6. Test with Google's Rich Results Test before requesting indexing in Search Console.
 
 **If Yoast or Rank Math is active**, it already outputs Article/WebPage/Breadcrumb schema. Duplicates can confuse Google. In that case delete every node in the pasted JSON-LD except `FAQPage` and `ProfessionalService`.
 
 ## Confirm these before publishing
 
-I made these assumptions and could not check them:
+- **URLs.** Posts link to `https://impactwindowsseo.com/<slug>/`, the CTA points to `/contact/`, and the breadcrumb uses `/blog/`. If your permalinks differ, change `BASE`, `CONTACT_URL`, and the breadcrumb in `build.py`, then run `python3 build.py`.
+- **The free audit offer.** The CTA offers a free SEO audit with a written report. That came from RankLogic SEO's site. Remove it if Impact Windows SEO does not offer it.
+- **Wayne's Roofing mention** in the first post. The numbers come from RankLogic SEO's own client data. Keep it only if you are comfortable crediting the sister company this way.
+- **Starred items in `SOURCES.md`.** Have a person confirm the Florida statute, form, and product-approval details on the official pages. The Florida posts are the highest-risk content.
+- **Schema.** No ratings, reviews, logo, hours, or social profiles are included because none were provided. Add `logo`, `openingHours`, and `sameAs` when you have real ones. Never add an `aggregateRating` unless it reflects reviews customers can see on the page.
 
-- **URLs.** Posts link to `https://impactwindowsseo.com/<slug>/` and the CTA points to `/contact/`. The breadcrumb uses `/blog/`. If your permalinks differ, change `BASE`, `CONTACT_URL`, and the breadcrumb in `build.py` and run `python3 build.py`.
-- **The free audit offer.** The CTA promises a free SEO audit with a written report. That came from RankLogic SEO's site. Remove it if Impact Windows SEO does not offer it.
-- **Wayne's Roofing mention** in the first post. The facts (331+ Google reviews, number one rated roofing company in Ocean County) come from RankLogic SEO's own client data. Keep it only if you are comfortable crediting the sister company this way.
-- **Florida facts** in the Florida post: hurricane season dates, the High Velocity Hurricane Zone covering Miami-Dade and Broward, and insurers being required to offer wind-mitigation discounts. They are stated at a general level. Have someone in the trade read that post before it goes live.
-- **No ratings, reviews, logo, hours, or social profiles** are in the schema because you have not given me real ones. Add `logo`, `openingHours`, and `sameAs` when you have them. Never add an `aggregateRating` unless it reflects reviews customers can see on the page.
+## Daily cadence
 
-## A/B title options
+You asked for two posts and five backlinks per day. What that takes in practice:
 
-Each post has three alternates in `posts.py` under `alt_titles`. Run one at a time for at least a month, and judge by clicks in Search Console.
+- **Posts.** Each needs a topic with real search demand (check Semrush), facts checked against sources, and a person to confirm the Florida items. Add the next ones to `posts.py` and log their sources in `SOURCES.md`. Publishing daily is realistic only if the topics stay narrow enough to verify. Quantity should never outrun accuracy.
+- **Backlinks.** Each daily packet lives in `../impactwindowsseo-backlinks/daily/`. These need a person (or a browser-connected session) to fill in forms, pass CAPTCHAs, and verify by phone, postcard, or email.
 
-## Style notes (from the content-style-synthesizer pass)
+## What it takes to publish automatically
 
-- **Hook:** a specific number or a direct claim in the first two sentences, then a plain "short version" box.
-- **Structure:** hook, summary box, numbered or checklist sections, honest limits, FAQ, one CTA.
-- **Tone:** plain English, direct, no jargon, no guarantees of rankings.
-- **Engagement:** each post links to two or three others, so readers keep moving toward the audit.
-- **Format rule:** no em dashes.
+A cloud session can only publish if it can reach the site and has credentials. Neither is set up. Both are changed in the environment settings (the cloud environment menu in the session title bar, then Edit), never by pasting secrets into chat:
+
+1. **Network access.** Add `impactwindowsseo.com` under Allowed domains.
+2. **Credentials.** In WordPress, create an Application Password (Users, your profile, Application Passwords). Store the username and that password as environment secrets, for example `IWS_WP_USER` and `IWS_WP_APP_PASSWORD`, and the site address as `IWS_WP_URL`. A new session can then publish through WordPress's REST API over HTTPS.
+
+SSH to Cloudways is a different path and may not work through the environment's network proxy. The REST API route is the one to try first.
 
 ## Honest limits
 
-- These posts run roughly 600 to 900 words including the FAQ. That is enough to answer each question cleanly, but the competitors you are up against publish longer guides. The best upgrade is your own material: real install photos, local examples, actual numbers from clients you can name, and a short quote from someone doing the work.
-- The blog drafts alone will not build the 175-domain gap to the competitors. See `LINK-GAP.md`.
+- The posts run about 400 to 730 words, plus a FAQ. That answers each question cleanly, but competitors publish longer guides. The best upgrades are your own install photos, local examples, and real client numbers.
+- Drafts alone will not close the gap with competitors that have thousands of linking domains. See `LINK-GAP.md`.

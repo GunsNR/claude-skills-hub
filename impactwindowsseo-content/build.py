@@ -100,8 +100,8 @@ def graph(post):
                 "mainEntityOfPage": {"@id": url + "#webpage"},
                 "headline": post["title"],
                 "description": post["meta"],
-                "datePublished": PUBLISHED,
-                "dateModified": PUBLISHED,
+                "datePublished": post.get("date", PUBLISHED),
+                "dateModified": post.get("date", PUBLISHED),
                 "author": {"@id": BASE + "/#organization"},
                 "publisher": {"@id": BASE + "/#organization"},
                 "inLanguage": "en-US",
@@ -148,6 +148,18 @@ def check(post, rendered, ld):
     for q, a in post["faq"]:
         assert html.escape(q) in rendered and html.escape(a) in rendered, "FAQ mismatch in " + post["slug"]
     json.loads(json.dumps(ld))  # round-trips
+    # No promises from us. Hard-fail on first-person guarantees and promised outcomes.
+    banned = [r"\bwe guarantee\b", r"\bguaranteed? (results|leads|rankings|calls)\b(?! it)",
+              r"\byou will (rank|save|get more|see)\b", r"\bwill rank\b", r"\b100%\b",
+              r"\bpage one in\b(?! a week is guessing)"]
+    text = re.sub(r"<[^>]+>", " ", rendered)
+    for pat in banned:
+        for m in re.finditer(pat, text, flags=re.I):
+            ctx = text[max(0, m.start() - 60): m.end() + 60].replace("\n", " ")
+            # allowed only inside a "never write / red flag" warning
+            if re.search(r"never write|red flag|should end the call|not be|do not promise|cannot", ctx, re.I):
+                continue
+            raise AssertionError("possible guarantee in %s: ...%s..." % (post["slug"], ctx))
 
 
 def main():
