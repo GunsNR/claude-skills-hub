@@ -1,8 +1,14 @@
 # Impact Windows SEO — 30 Backlink Build Guide
 
+> **Corrections (2026-10-08):**
+> - The "Current DR: 0" below was wrong. Semrush shows 175 referring domains and Authority Score 2. See `../impactwindowsseo-content/LINK-GAP.md`.
+> - The DR numbers in the tables are rough figures from memory, not live data. Treat them as a ranking of likely value, not exact.
+> - `submit.py` is untested and posts to guessed form URLs. Do not run it until each form is checked in a browser.
+> - No submissions have been made by me.
+
 **Business:** Impact Windows SEO  
 **Target:** 30 high-quality citations & directory backlinks  
-**Current DR:** 0 (fresh domain — every link counts)
+**Current DR:** see correction above
 
 ---
 

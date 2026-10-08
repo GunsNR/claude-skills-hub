@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 """
+WARNING: UNTESTED. DO NOT RUN AS IS.
+The form URLs and field names below were guessed from memory. This session had no
+internet access, so none of them were checked. Most of these sites also require a
+CAPTCHA or email confirmation, so blind POSTs are likely to fail, and a successful
+one could create a listing with details you have not reviewed. Verify each form in a
+browser first. Also review the description text for claims that do not apply to
+Impact Windows SEO (see business-profile.txt).
+
 Impact Windows SEO — Automated Directory Submission Script
 Run this on the Cloudways server: python3 submit.py
 

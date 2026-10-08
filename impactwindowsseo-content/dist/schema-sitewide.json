@@ -1,0 +1,41 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://impactwindowsseo.com/#organization",
+      "name": "Impact Windows SEO",
+      "url": "https://impactwindowsseo.com/",
+      "telephone": "+1-954-706-6785",
+      "description": "SEO agency for impact window contractors and window and door installation companies.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "5840 Lakeshore Drive",
+        "addressLocality": "Fort Lauderdale",
+        "addressRegion": "FL",
+        "postalCode": "33312",
+        "addressCountry": "US"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Florida"
+      },
+      "knowsAbout": [
+        "Local SEO",
+        "Google Business Profile optimization",
+        "SEO for window and door contractors",
+        "Impact window marketing"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://impactwindowsseo.com/#website",
+      "url": "https://impactwindowsseo.com/",
+      "name": "Impact Windows SEO",
+      "publisher": {
+        "@id": "https://impactwindowsseo.com/#organization"
+      },
+      "inLanguage": "en-US"
+    }
+  ]
+}
