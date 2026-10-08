@@ -1,0 +1,85 @@
+/**
+ * RankLogic SEO — Design Tokens
+ * "Tactile Sunset" · layered frosted glass + refined neumorphism
+ *
+ * Palette: Magical Moonlight, Polar Drift, Sea Buckthorn,
+ * Neverything, Ateneo Blue, Miami Coral.
+ *
+ * Handoff note (Figma → Bricks Builder): paste this block into
+ * Bricks → Settings → Custom Code → Custom CSS, inside :root { }.
+ */
+
+:root {
+  /* ---- Surfaces ---- */
+  --bg: #f0eeeb;          /* Magical Moonlight */
+  --bg-raised: #f7f6f3;
+  --surface: #e6e4dd;
+  --mist: #ccd5da;        /* Polar Drift */
+  --glass-tint: rgba(255, 255, 255, 0.66);
+
+  /* ---- Dark ---- */
+  --navy: #003a6c;        /* Ateneo Blue */
+  --navy-deep: #13181b;   /* Neverything */
+
+  /* ---- Ink (text) ---- */
+  --ink: #13181b;
+  --ink-soft: #45515f;
+  --ink-faint: #8a93a0;
+  --cream: #f0eeeb;
+  --cream-soft: rgba(240, 238, 235, 0.72);
+
+  /* ---- Accents ---- */
+  --coral: #fd8973;       /* Miami Coral */
+  --coral-deep: #c2502e;  /* burnt coral — legible on light */
+  --amber: #ffbf65;       /* Sea Buckthorn */
+
+  /* ---- Neomorphic shadow channels (warm) ---- */
+  --neo-dark: rgba(182, 172, 156, 0.55);
+  --neo-light: rgba(255, 255, 255, 0.92);
+
+  /* ---- Gradients ---- */
+  --grad-hot: linear-gradient(130deg, #003a6c 0%, #c2502e 100%);
+  --grad-warm: linear-gradient(135deg, #fd8973 0%, #ffbf65 100%);
+  --grad-sunset: linear-gradient(
+    180deg,
+    #13181b 0%,
+    #003a6c 27%,
+    #6d5a7a 49%,
+    #fd8973 75%,
+    #ffbf65 100%
+  );
+  --grad-sunset-x: linear-gradient(
+    105deg,
+    #003a6c 0%,
+    #6d5a7a 38%,
+    #fd8973 72%,
+    #ffbf65 100%
+  );
+
+  /* ---- Shadows — soft, tactile ---- */
+  --shadow-glass: 0 22px 54px rgba(19, 24, 27, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --shadow-neo: 10px 10px 26px var(--neo-dark),
+    -9px -9px 22px var(--neo-light);
+  --shadow-neo-sm: 6px 6px 15px var(--neo-dark),
+    -5px -5px 12px var(--neo-light);
+  --shadow-neo-inset: inset 7px 7px 15px var(--neo-dark),
+    inset -6px -6px 13px var(--neo-light);
+  --shadow-cta: 0 14px 32px rgba(253, 137, 115, 0.42);
+  --shadow-lift: 0 30px 64px rgba(19, 24, 27, 0.18);
+
+  /* ---- Dot texture ---- */
+  --dot-ink: rgba(19, 24, 27, 0.055);
+  --dot-light: rgba(255, 255, 255, 0.08);
+
+  /* ---- Radii ---- */
+  --r-sm: 12px;
+  --r-md: 20px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+  --r-pill: 999px;
+
+  /* ---- Layout ---- */
+  --container: 1240px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}

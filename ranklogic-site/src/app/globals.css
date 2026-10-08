@@ -1,0 +1,295 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+@theme {
+  --color-bg: #f0eeeb;
+  --color-bg-raised: #f7f6f3;
+  --color-surface: #e6e4dd;
+  --color-mist: #ccd5da;
+  --color-ink: #13181b;
+  --color-ink-soft: #45515f;
+  --color-ink-faint: #8a93a0;
+  --color-navy: #003a6c;
+  --color-navy-deep: #13181b;
+  --color-cream: #f0eeeb;
+  --color-coral: #fd8973;
+  --color-coral-deep: #c2502e;
+  --color-amber: #ffbf65;
+
+  --font-display: var(--font-playfair);
+  --font-caps: var(--font-oswald);
+  --font-body: var(--font-inter);
+
+  --container-site: 1240px;
+}
+
+/* ---------- Base ---------- */
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--coral);
+  color: #fff;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-playfair), Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Frosted glass ---------- */
+.glass {
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.74),
+    rgba(255, 255, 255, 0.42)
+  );
+  backdrop-filter: blur(22px) saturate(165%);
+  -webkit-backdrop-filter: blur(22px) saturate(165%);
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Frosted glass for use on dark / navy surfaces */
+.glass-dark {
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.05)
+  );
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+/* ---------- Neumorphism (soft, tactile) ---------- */
+.neo {
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-neo);
+}
+.neo-sm {
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-neo-sm);
+}
+.neo-inset {
+  background: var(--surface);
+  box-shadow: var(--shadow-neo-inset);
+}
+
+/* Neumorphism on navy surfaces */
+.neo-navy {
+  background: #00386a;
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.42),
+    -7px -7px 18px rgba(255, 255, 255, 0.06);
+}
+.neo-navy-inset {
+  background: #00305c;
+  box-shadow: inset 6px 6px 14px rgba(0, 0, 0, 0.5),
+    inset -5px -5px 12px rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- Gradient text ---------- */
+.grad-text {
+  background: var(--grad-hot);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+/* Gradient text tuned for dark backgrounds */
+.grad-text-warm {
+  background: var(--grad-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ---------- Highlight bar ---------- */
+.highlight-bar {
+  position: relative;
+  display: inline-block;
+}
+.highlight-bar::before {
+  content: "";
+  position: absolute;
+  left: -0.14em;
+  right: -0.14em;
+  bottom: 0.04em;
+  height: 0.42em;
+  background: var(--amber);
+  border-radius: 3px;
+  z-index: -1;
+  transform: rotate(-1.4deg);
+}
+
+/* ---------- Dot texture (image-2 tactile field) ---------- */
+.dots {
+  background-image: radial-gradient(var(--dot-ink) 1.5px, transparent 1.7px);
+  background-size: 22px 22px;
+}
+.dots-light {
+  background-image: radial-gradient(var(--dot-light) 1.5px, transparent 1.7px);
+  background-size: 22px 22px;
+}
+
+/* ---------- Animated background blobs ---------- */
+.blob-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--bg);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: 0.7;
+  will-change: transform;
+}
+
+.blob-1 {
+  width: 46vw;
+  height: 46vw;
+  top: -12vw;
+  left: -8vw;
+  background: radial-gradient(circle, rgba(253, 137, 115, 0.5), transparent 70%);
+  animation: drift-1 26s var(--ease-out) infinite alternate;
+}
+.blob-2 {
+  width: 40vw;
+  height: 40vw;
+  top: -6vw;
+  right: -10vw;
+  background: radial-gradient(circle, rgba(0, 58, 108, 0.22), transparent 70%);
+  animation: drift-2 32s var(--ease-out) infinite alternate;
+}
+.blob-3 {
+  width: 50vw;
+  height: 50vw;
+  bottom: -18vw;
+  left: 26vw;
+  background: radial-gradient(circle, rgba(255, 191, 101, 0.42), transparent 70%);
+  animation: drift-3 38s var(--ease-out) infinite alternate;
+}
+.blob-4 {
+  width: 34vw;
+  height: 34vw;
+  top: 44%;
+  right: -6vw;
+  background: radial-gradient(circle, rgba(204, 213, 218, 0.5), transparent 70%);
+  animation: drift-1 30s var(--ease-out) infinite alternate-reverse;
+}
+
+@keyframes drift-1 {
+  to { transform: translate3d(8vw, 10vh, 0) scale(1.15); }
+}
+@keyframes drift-2 {
+  to { transform: translate3d(-10vw, 12vh, 0) scale(1.2); }
+}
+@keyframes drift-3 {
+  to { transform: translate3d(6vw, -8vh, 0) scale(0.88); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Faint global dot field ---------- */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(
+    rgba(19, 24, 27, 0.05) 1px,
+    transparent 1.4px
+  );
+  background-size: 26px 26px;
+}
+
+/* ---------- Layout utilities ---------- */
+.container-site {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-oswald), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.font-display { font-family: var(--font-playfair), Georgia, serif; }
+.font-caps { font-family: var(--font-oswald), sans-serif; }
+
+/* ---------- Motion utilities ---------- */
+.cta-pulse {
+  animation: cta-pulse 2.6s ease-in-out infinite;
+}
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 12px 30px rgba(253, 137, 115, 0.4); }
+  50% { box-shadow: 0 18px 46px rgba(255, 191, 101, 0.52); }
+}
+
+.lift {
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}
+.lift:hover {
+  transform: translateY(-6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-pulse { animation: none !important; }
+  .lift:hover { transform: none; }
+}
+
+/* ---------- Accordion ---------- */
+.acc-content {
+  overflow: hidden;
+}
+.acc-content[data-state="open"] {
+  animation: acc-down 0.32s var(--ease-out);
+}
+.acc-content[data-state="closed"] {
+  animation: acc-up 0.24s var(--ease-out);
+}
+@keyframes acc-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes acc-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+.acc-chevron {
+  transition: transform 0.3s var(--ease-out);
+}
+[data-state="open"] .acc-chevron {
+  transform: rotate(180deg);
+}
+.faq-item[data-state="open"] {
+  background: var(--surface);
+  box-shadow: var(--shadow-neo-inset);
+}
