@@ -22,6 +22,7 @@ export const nav = {
   links: [
     { label: "How It Works", href: "/#how" },
     { label: "Pricing", href: "/pricing" },
+    { label: "Blog", href: "/resources" },
     { label: "Results", href: "/#results" },
     { label: "FAQ", href: "/#faq" },
   ],

@@ -1,0 +1,265 @@
+IMPACT WINDOWS SEO: DAILY CONTENT, 2026-10-08
+
+Drafts and prepared packets only. Nothing here is published or submitted unless a line says so.
+Starred (*) facts in SOURCES.md (repo: impactwindowsseo-content) need a human check before publishing.
+
+============================================================
+PART 1: NEW BLOG POSTS
+============================================================
+
+TITLE: How to Show Product Approvals on Your Impact Window Pages
+SLUG: product-approvals-impact-window-pages
+META DESCRIPTION: Miami-Dade NOA or Florida Product Approval? What each one is, how to present approval numbers on product pages, and how to keep them accurate.
+PRIMARY KEYWORD: florida product approval
+WORDPRESS DRAFT: not created yet
+
+Homeowners, permit offices, and building officials all want to know one thing about an impact window: is this product approved for where it is going? Your product pages can answer that clearly, and clear answers build trust.
+
+The search numbers show people look for this. Semrush's US data puts "florida product approval" at about 4,400 searches a month and "miami dade noa" at about 1,000.
+
+The short version: Name the approval type and number on every product page, link to the official record, explain it in plain English, and recheck it on a schedule. Do not guess. If you are unsure, ask the manufacturer or the building department.
+
+## The terms, in plain English
+
+- High Velocity Hurricane Zone (HVHZ). The part of Florida with its own product approval requirements. Sources describe it as Miami-Dade and Broward counties.
+
+- Miami-Dade Notice of Acceptance (NOA). An approval issued by Miami-Dade County. Sources say building-envelope products installed in the HVHZ generally need a valid one.
+
+- Florida Product Approval (FPA). The statewide approval system run through the Florida Building Commission, used for products across Florida. The state maintains a database of approved products.
+
+The two are not interchangeable in every case. A statewide approval does not automatically satisfy a local building official, and whether an FPA is accepted in the HVHZ depends on the listing itself. Read the approval record for the exact product and use, and confirm current rules with the local building department before you publish a claim.
+
+## What to put on each product page
+
+- The product name and series.
+
+- The approval type (NOA or FPA) and the approval number.
+
+- A link to the official record, so a homeowner or inspector can check it themselves.
+
+- A plain-English line about what the approval covers.
+
+- The date you last checked it.
+
+- Warranty terms and photos of real installs.
+
+## Keep it accurate
+
+- Assign one person to own approval records.
+
+- Recheck every product page on a set schedule, and whenever you add or change a product.
+
+- Remove or update pages for discontinued products.
+
+- If a record changes, change the page the same day.
+
+## What not to do
+
+- Do not write that a product is "approved everywhere" or "hurricane proof." Approvals are specific to a product, a use, and a place.
+
+- Do not copy approval numbers from a brochure without checking the record.
+
+- Do not guess. If you cannot confirm it, leave the claim off the page.
+
+## The SEO angle
+
+Product pages with clear headings, a visible approvals section, and honest detail answer more of a buyer's questions than a page with a photo and a phone number. They also give you something specific to link to from your Florida marketing pages. Publishing approval numbers is a trust practice. This guide cannot tell you it is legally required, so ask your licensing or legal contact if you are unsure.
+
+## Frequently asked questions
+
+Q: What is the difference between a Miami-Dade NOA and a Florida Product Approval?
+A: An NOA is issued by Miami-Dade County, and sources say products installed in the High Velocity Hurricane Zone generally need one. A Florida Product Approval is the statewide system. A statewide approval does not automatically satisfy a local building official, so check the exact record and the local requirement.
+
+Q: Which counties are in Florida's High Velocity Hurricane Zone?
+A: Sources describe the zone as Miami-Dade and Broward counties. Confirm with the building code and your local building department.
+
+Q: Do I have to publish approval numbers on my website?
+A: Publishing them is a trust practice, and this guide cannot tell you it is legally required. If you are unsure, ask your licensing or legal contact.
+
+Q: How often should I recheck product approvals?
+A: Whenever you add or change a product, and on a schedule you set, such as quarterly. Update the page the same day if a record changes.
+
+------------------------------------------------------------
+
+TITLE: Wind Mitigation and Window Companies: What to Say Online
+SLUG: wind-mitigation-inspection-window-companies
+META DESCRIPTION: Homeowners ask about wind mitigation discounts when they shop for impact windows. Here is what window companies can explain, and what to leave to insurers.
+PRIMARY KEYWORD: wind mitigation inspection
+WORDPRESS DRAFT: not created yet
+
+Homeowners who shop for impact windows often ask whether they will save on insurance. Semrush's US data shows people searching for the topic: "wind mitigation inspection" gets about 3,600 searches a month and "wind mitigation form" about 320.
+
+A window company can help by explaining the basics clearly. The line to hold is simple: explain the process, do not promise a result.
+
+The short version: Explain what a wind mitigation inspection is, link to the official form, tell homeowners to ask their own insurer what applies, and never quote a discount amount.
+
+## What the law says, in brief
+
+Florida Statute 627.0629 requires insurers to provide discounts, credits, or other rate differentials for construction techniques that reduce damage and loss in windstorms. Opening protection and the strength of windows and doors are among the features it covers.
+
+Homeowners document those features with the state's Uniform Mitigation Verification Inspection Form (OIR-B1-1802). State law lists which licensed professionals may sign it, and the form is revised from time to time. Link to the current version on the Office of Insurance Regulation's website instead of copying details onto your pages.
+
+## What you can explain on your pages
+
+- What a wind mitigation inspection is, in two or three plain sentences.
+
+- That homeowners submit the form to their insurer to document features like opening protection.
+
+- That each insurer decides how it applies the credits, so the homeowner should ask theirs.
+
+- How your own process works: permits, installation, final inspection, and what paperwork you provide.
+
+## What to leave off
+
+- Discount amounts. They vary by insurer, policy, and home. If you quote a number, you own the claim.
+
+- Promises. Never write "you will save" or "guaranteed discount."
+
+- Insurance advice. You are a window company. Send homeowners to their insurer or agent for coverage questions.
+
+## How to build the page
+
+- Title it for the question: "Wind Mitigation and Impact Windows in Florida."
+
+- Open with a two-sentence answer, then a short explanation of the form.
+
+- Link to the official form and to the statute.
+
+- Add a FAQ for the questions your estimators hear most.
+
+- End with a plain call to action: request an estimate.
+
+- Review the page every few months, since forms and rules change.
+
+## Where this fits
+
+This page works best next to your product pages and your product approvals, and as part of the wider plan in impact window marketing in Florida.
+
+## Frequently asked questions
+
+Q: What is a wind mitigation inspection?
+A: It is an inspection that documents features of a home that reduce windstorm damage, such as opening protection, recorded on Florida's Uniform Mitigation Verification Inspection Form. The homeowner can submit the form to their insurer.
+
+Q: What does Florida law say about wind mitigation discounts?
+A: Florida Statute 627.0629 requires insurers to provide discounts, credits, or other rate differentials for construction techniques that reduce damage and loss in windstorms. How much a homeowner receives depends on the insurer and the policy.
+
+Q: Can a window company promise an insurance discount?
+A: No. Discounts depend on the insurer, the policy, and the home. Explain the process and send homeowners to their insurer.
+
+Q: Who can sign the wind mitigation form?
+A: State law lists the licensed professionals who may sign it, and the rules can change. Link to the Office of Insurance Regulation and the statute instead of repeating the list on your page.
+
+------------------------------------------------------------
+
+============================================================
+PART 2: BACKLINK TARGETS (prepared, not submitted)
+============================================================
+
+Backlink batch: Day 1 (2026-10-08)
+
+Status: prepared, not submitted. This session cannot reach these sites or log into accounts, so nothing below is live yet. Each target is ready for someone with a browser to complete in about 10 to 20 minutes.
+
+Use the exact text in ../business-profile.txt on every form.
+
+What a "backlink" means here. Each platform lets you list a website address. I could not check whether any of these links carry a nofollow tag, so I am not claiming any of them will pass ranking value. They are accurate, relevant listings that put your name and site in places buyers and journalists look.
+
+| # | Target | Cost | Acceptance | Why this one |
+|---|---|---|---|---|
+| 1 | GoodFirms | Free tier exists | Reviewed, not automatic | Semrush shows it links to all four competitors we compared and not to you |
+| 2 | Clutch | Free profile | Reviewed before publishing | Agency directory; free profile at clutch.co/get-listed |
+| 3 | Crunchbase | Free account | Profiles outside the tech ecosystem may be removed | Semrush shows it links to all four competitors and not to you |
+| 4 | Bing Places | See note | Verification required | Local listing on Microsoft's map |
+| 5 | Apple Business Connect | Free | Verification required | Local listing on Apple Maps |
+
+---
+
+1. GoodFirms
+
+- Start: https://www.goodfirms.co/goodfirms-pro, then "Apply for Free Listing."
+- What the page says: free tier with no payment required; applications are reviewed through a verification process and acceptance is not guaranteed. A search summary of the page quoted a 23% acceptance rate for free listings. Treat that figure as unconfirmed until you see it on the page.
+- Have ready: company overview, services, industries served, team size, pricing model, location, website. Complete profiles are said to rank better in their lists.
+- Paid tier: a verified-business badge sits behind a paid plan. Skip it for now.
+- Do not: invent a portfolio, case study, or client reviews. Add them only when real.
+
+2. Clutch
+
+- Start: https://clutch.co/get-listed
+- What the help center says: create a free company profile in three steps; sign in with LinkedIn, Google, or a company email; fill in company name, tagline, headcount, minimum project size, average hourly rate, website, locations, contact info, overview, and service focus. The profile goes to Clutch's team for review before it is published.
+- Reviews: Clutch verifies client reviews itself, either by interviewing the client or through its online form. Only ask real clients, and do not offer anything in exchange.
+- Have ready: the fields above. If you are not sure of an hourly rate or minimum project size, enter only what you can stand behind.
+
+3. Crunchbase
+
+- Start: log in or register, search first to make sure the company is not already listed, then Resources, Create Profile, choose organization. Official help: https://support.crunchbase.com/hc/en-us/articles/115011823988
+- Caveat: Crunchbase's help pages say contributions should focus on the tech ecosystem and that profiles outside it are likely to be removed. A local SEO agency may or may not qualify. Expect that it could be removed.
+- Control: verifying your employment gives you control over parts of the overview.
+- Have ready: logo, founded date, website, headquarters (Fort Lauderdale, FL), short description, industries.
+
+4. Bing Places
+
+- Start: https://www.bingplaces.com (confirm the address; I could not open it). Sign in with a Microsoft account.
+- Process (from third-party guides): search by phone or name first to avoid creating a duplicate; claim a match or create a new business; enter name and address exactly as on official documents; verify by one of the offered methods (postcard, phone or email PIN, others vary).
+- Cost: the sources I found did not say whether it is free. Check Microsoft's help pages before you start.
+- Use: exact NAP from ../business-profile.txt.
+
+5. Apple Business Connect
+
+- Start: https://businessconnect.apple.com (confirm the address; I could not open it). Sign in with an Apple ID.
+- Process (from third-party guides, Apple's own page not opened): search for the business or add a new location, confirm the map pin, add hours, category, website, phone, then submit company details and an identifiable business document for verification. Customization unlocks after Apple verifies.
+- Cost: guides describe it as free.
+
+---
+
+After you submit
+
+Log each one here with the date and the live URL. A link that is not live and checked does not count.
+
+| # | Target | Date submitted | Status | Live URL |
+|---|---|---|---|---|
+| 1 | GoodFirms | | | |
+| 2 | Clutch | | | |
+| 3 | Crunchbase | | | |
+| 4 | Bing Places | | | |
+| 5 | Apple Business Connect | | | |
+
+Sources
+
+- GoodFirms free-listing page and summaries: https://www.goodfirms.co/goodfirms-pro
+- Clutch help center: https://help.clutch.co/en/knowledge/get-listed-on-clutch
+- Crunchbase help center: https://support.crunchbase.com/hc/en-us/articles/115011823988 and https://support.crunchbase.com/hc/en-us/articles/115010477107
+- Bing Places and Apple Business Connect: third-party guides only. Verify on Microsoft's and Apple's own pages.
+- Competitor link gap: Semrush backlink gap report, 2026-10-08 (see ../../impactwindowsseo-content/LINK-GAP.md).
+
+
+============================================================
+BUSINESS DETAILS TO USE ON EVERY FORM
+============================================================
+
+IMPACT WINDOWS SEO: MASTER NAP PROFILE
+Use this EXACT data on every directory. Keep it identical everywhere.
+========================================================================
+
+BUSINESS NAME:      Impact Windows SEO
+PHONE:              (954) 706-6785
+ADDRESS:            5840 Lakeshore Drive, Fort Lauderdale, FL 33312
+WEBSITE:            https://impactwindowsseo.com
+EMAIL:              [enter your business email]
+HOURS:              [NOT PROVIDED. Enter real hours or leave blank.]
+CATEGORY:           SEO Agency. (Pick the closest option from each platform's own category list.)
+
+Only facts you gave me are used below. No guarantees, no exclusivity claims, no
+performance promises, no list of cities served. Add anything else only if it is true.
+
+DESCRIPTION: SHORT (about 35 words)
+Impact Windows SEO is a Fort Lauderdale, Florida SEO agency for impact window
+contractors and window and door installation companies. It is a sister company of
+RankLogic SEO.
+
+DESCRIPTION: MEDIUM (about 50 words)
+Impact Windows SEO is an SEO agency based in Fort Lauderdale, Florida. We work with
+impact window contractors and window and door installation companies on local search
+engine optimization, including Google Business Profile, website pages, and reviews.
+It is a sister company of RankLogic SEO.
+
+[CONFIRM] The medium description names three services (Google Business Profile,
+website pages, reviews). You did not list services, so delete any that do not apply.

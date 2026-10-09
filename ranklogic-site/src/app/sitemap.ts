@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 import { trades } from "@/lib/trades";
 import { caseStudyList } from "@/lib/clients";
+import { blogPosts } from "@/lib/blog";
 
 /** XML sitemap. /book is intentionally excluded (low SEO value, scheduler page). */
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -28,5 +29,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...core, ...tradePages, ...caseStudyPages];
+  const blogHub = [{
+    url: `${site.url}/resources`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }];
+
+  const blogPages = blogPosts.map((p) => ({
+    url: `${site.url}/resources/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...core, ...tradePages, ...caseStudyPages, ...blogHub, ...blogPages];
 }
