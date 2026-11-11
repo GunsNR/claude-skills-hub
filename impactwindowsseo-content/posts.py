@@ -544,4 +544,136 @@ POSTS = [
              "State law lists the licensed professionals who may sign it, and the rules can change. Link to the Office of Insurance Regulation and the statute instead of repeating the list on your page."),
         ],
     },
+    # ------------------------------------------------------------------ 9  (Day 2, 2026-11-11)
+    {
+        "slug": "google-review-request-wording-window-companies",
+        "date": "2026-11-11",
+        "title": "How to Ask for Google Reviews Without Breaking Google's Rules",
+        "meta": "Review request wording for window and door companies that stays inside Google's review policy and the FTC review rule. Text, email, and in-person scripts.",
+        "primary_kw": "how to ask for google reviews",
+        "secondary_kw": ["google review request template", "google review policy", "review gating"],
+        "alt_titles": [
+            "Review Request Wording for Window Companies That Follows Google's Policy",
+            "Asking for Google Reviews: Scripts That Stay Inside the Rules",
+            "The Review Request Text Every Window Installer Can Copy",
+        ],
+        "body": """
+<p>Reviews matter to a window company because homeowners read them before they call. But the way you ask for them matters too. Google's review policy and a federal rule both draw lines around what a business can and cannot do when it asks.</p>
+<p>This guide gives you wording you can copy, and explains which kinds of requests cross those lines.</p>
+<aside class="iws-tldr"><strong>The short version:</strong> Ask every customer the same way, ask for an honest review, never offer anything in return, and never screen out unhappy customers first. Use the review link or QR code from your own Business Profile. Keep staff names and quotas out of it.</aside>
+
+<h2>What Google's policy allows</h2>
+<p>Google's policy for user contributed content lets businesses ask customers for reviews that reflect a genuine experience. Asking is fine. The problems start with how you ask and what you offer.</p>
+<p>Google Business Profile even gives you a tool for it. In your profile, open your reviews and look for the option to get more reviews. It creates a review link you can copy and a QR code you can download. Google's help page says the QR code can only be generated from a computer browser, and suggests sharing the link in places like thank-you emails and receipts.</p>
+
+<h2>What Google's policy does not allow</h2>
+<ul>
+<li><strong>Incentives.</strong> No money, discounts, gift cards, free service, or prize drawings for posting a review. The same goes for offering something to get a customer to change or remove a negative review.</li>
+<li><strong>Review gating.</strong> Google's policy says merchants may not discourage negative reviews or selectively ask only happy customers for positive ones. A "Were you happy? If yes, review us on Google" flow is the classic example.</li>
+<li><strong>Staff quotas and staff names.</strong> Google's policy now also lists requiring staff to collect a certain number of reviews and asking customers to include specific content, such as naming a staff member.</li>
+<li><strong>Reviews from your own side.</strong> Google's conflict of interest rule says people who own or work at a business should not review it.</li>
+</ul>
+
+<h2>The federal rule to know about</h2>
+<p>The Federal Trade Commission's rule on consumer reviews and testimonials took effect in October 2024. Among other things, it bars buying fake reviews, paying or rewarding customers for reviews that express a particular sentiment, and certain reviews by company insiders that do not disclose the connection. The FTC can seek civil penalties for knowing violations. If you have questions about how it applies to you, ask your attorney.</p>
+
+<h2>Wording you can copy</h2>
+<p>Each script below asks for an honest review, offers nothing in return, and goes to every customer.</p>
+<p><strong>Text message, the day the job is signed off:</strong></p>
+<p>"Hi [first name], this is [your name] from [company]. Thanks for having us install your windows. If you have a minute, we would appreciate an honest review of your experience on Google: [review link]. Any feedback helps us and helps your neighbors choose."</p>
+<p><strong>Email follow-up:</strong></p>
+<p>"Subject: How did your installation go? Hi [first name], thank you for choosing [company]. We read every review, good or bad, and use what customers tell us to improve. If you are willing, you can leave a review here: [review link]. Thank you for your time."</p>
+<p><strong>In person, at the final walkthrough:</strong></p>
+<p>"We ask every customer for an honest review on Google. Here is a card with a QR code if you would like to leave one."</p>
+
+<h2>Wording to avoid</h2>
+<ul>
+<li>"Leave us a 5-star review." That asks for a particular sentiment, not an honest review.</li>
+<li>"Review us and get $25 off your next service." That is an incentive.</li>
+<li>"Please mention Mike by name." That asks for specific staff content.</li>
+<li>"If you were not happy, call us instead of posting." That discourages negative reviews.</li>
+</ul>
+
+<h2>A note on other review sites</h2>
+<p>Each platform sets its own rules. Yelp, for example, is widely reported to discourage businesses from asking for reviews at all. Read each site's current guidelines before you add it to your follow-up messages.</p>
+
+<h2>Where this fits</h2>
+<p>Reviews are one part of a complete profile. See our <a href="{{LINK:google-business-profile-for-window-companies}}">Google Business Profile checklist for window companies</a>, the wider plan in <a href="{{LINK:seo-for-window-companies}}">SEO for window companies</a>, and our guide to <a href="{{LINK:reply-to-negative-reviews-window-companies}}">replying to negative reviews</a> for what to do once the reviews come in.</p>
+""",
+        "faq": [
+            ("Is it against Google's rules to ask customers for reviews?",
+             "No. Google's policy lets businesses ask for reviews that reflect a genuine experience. What it prohibits is offering incentives, discouraging negative reviews, and asking only satisfied customers."),
+            ("Can I offer a discount or gift card for a Google review?",
+             "No. Google's policy prohibits incentives for reviews, and the FTC's review rule bars paying or rewarding customers for reviews that express a particular sentiment."),
+            ("What is review gating?",
+             "Review gating means screening customers first and sending only happy ones to Google. Google's policy says merchants may not discourage negative reviews or selectively solicit positive ones."),
+            ("Where do I get my Google review link?",
+             "In your Google Business Profile, open your reviews and choose the option to get more reviews. Google provides a link to copy and a QR code to download from a computer browser."),
+        ],
+    },
+    # ------------------------------------------------------------------ 10 (Day 2, 2026-11-11)
+    {
+        "slug": "reply-to-negative-reviews-window-companies",
+        "date": "2026-11-11",
+        "title": "How Window Companies Should Reply to Negative Reviews",
+        "meta": "A calm, practical way for window and door companies to reply to negative Google reviews, report ones that break policy, and avoid replies that backfire.",
+        "primary_kw": "how to respond to negative reviews",
+        "secondary_kw": ["reply to google reviews", "remove google review", "negative review response example"],
+        "alt_titles": [
+            "Replying to a Bad Review: A Guide for Window and Door Installers",
+            "What to Say When a Customer Leaves a One-Star Review",
+            "Negative Reviews for Window Companies: Reply, Report, or Both",
+        ],
+        "body": """
+<p>Every window company that does enough installs will get a negative review eventually. A delayed permit, a missed appointment, a scratched frame. The review is public, and so is your reply.</p>
+<p>That second part is the opportunity. The reviewer reads your reply, but so does every homeowner who looks at your profile afterward.</p>
+<aside class="iws-tldr"><strong>The short version:</strong> Reply calmly and briefly, protect the customer's privacy, move the details offline, and fix what you can. Report a review only if it breaks Google's policy. Never offer anything to get a review removed, and never threaten a reviewer.</aside>
+
+<h2>What Google says about replies</h2>
+<p>Google's Business Profile help pages describe replies as public and recommend keeping them positive and relevant. For negative reviews, Google advises protecting the reviewer's privacy and avoiding personal attacks.</p>
+<p>Google also notes that the reviewer is notified when you reply and can update their review afterward. A constructive reply gives them a reason to.</p>
+
+<h2>A simple structure for every negative reply</h2>
+<ol>
+<li><strong>Thank them and acknowledge the problem.</strong> Name the issue in plain words without arguing about it.</li>
+<li><strong>Take responsibility for your part.</strong> If the crew was late, say so.</li>
+<li><strong>Move it offline.</strong> Give a name and a direct way to reach you.</li>
+<li><strong>Keep private details private.</strong> No invoice amounts, addresses, or job history in a public reply.</li>
+<li><strong>Follow up.</strong> If you fix the problem, the customer may choose to update the review. Do not ask for that in exchange for the fix.</li>
+</ol>
+
+<h2>Example replies</h2>
+<p><strong>A scheduling problem:</strong></p>
+<p>"Thank you for letting us know, [first name]. You should not have had to wait on a missed install date, and we are sorry. I would like to make this right. Please call me directly at [number] so I can look into what happened. [Your name], [title]."</p>
+<p><strong>A workmanship complaint:</strong></p>
+<p>"We are sorry the finish on your new windows was not what you expected. We want to take a look. Please contact our service manager, [name], at [number] or [email] so we can schedule a visit."</p>
+<p><strong>A review you do not recognize:</strong></p>
+<p>"We take every review seriously, but we could not find a record matching this description. If you worked with us, please call [number] so we can help."</p>
+
+<h2>Replies that backfire</h2>
+<ul>
+<li>Arguing the facts point by point in public.</li>
+<li>Sharing the customer's job details, price, or address.</li>
+<li>Copying the same reply onto every review.</li>
+<li>Hinting at legal action. The FTC's consumer review rule bars using unfounded legal threats, intimidation, or certain false public accusations to prevent or remove a negative review.</li>
+</ul>
+
+<h2>When to report a review instead</h2>
+<p>Disagreeing with a review is not a reason to report it. Reporting is for reviews that break Google's policies, such as spam, conflicts of interest, or off-topic content. Google's help pages describe a Reviews Management Tool where you can check the status of reviews you have reported and, in some cases, appeal a decision.</p>
+<p>Whatever happens, do not offer a customer a refund, discount, or anything else to remove or change a review. Google's policy prohibits incentives for revising or removing reviews.</p>
+
+<h2>Where this fits</h2>
+<p>The best protection against one bad review is a steady flow of honest ones. Use the scripts in <a href="{{LINK:google-review-request-wording-window-companies}}">how to ask for Google reviews without breaking Google's rules</a>, keep your <a href="{{LINK:google-business-profile-for-window-companies}}">Business Profile</a> complete, and see how reviews fit into <a href="{{LINK:local-seo-for-contractors}}">local SEO for contractors</a>.</p>
+""",
+        "faq": [
+            ("Should a window company reply to every negative review?",
+             "Replying is recommended. Google describes replies as public and suggests keeping them positive and relevant, and the reviewer is notified when you reply and can update their review."),
+            ("Can I get a negative Google review removed?",
+             "Only if it breaks Google's policies, such as spam or a conflict of interest. You can report it and check its status in Google's Reviews Management Tool. Disagreeing with a review is not grounds for removal."),
+            ("Can I offer a refund if the customer deletes their review?",
+             "No. Google's policy prohibits offering incentives to revise or remove reviews. Fix the problem because it is the right thing to do, and let the customer decide about the review."),
+            ("Can I threaten legal action over a bad review?",
+             "Be careful. The FTC's consumer review rule bars using unfounded legal threats, intimidation, or certain false public accusations to prevent or remove a negative review. Talk to an attorney before taking any step."),
+        ],
+    },
 ]

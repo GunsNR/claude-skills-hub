@@ -1,6 +1,6 @@
 # Impact Windows SEO: blog drafts and schema
 
-Eight posts for impactwindowsseo.com, written for window and door companies, each with BlogPosting, WebPage, BreadcrumbList, FAQPage, and ProfessionalService JSON-LD.
+Ten posts for impactwindowsseo.com, written for window and door companies, each with BlogPosting, WebPage, BreadcrumbList, FAQPage, and ProfessionalService JSON-LD.
 
 **Nothing here is published.** This environment cannot reach the WordPress site. See "What it takes to publish automatically" at the bottom.
 
@@ -22,9 +22,13 @@ Eight posts for impactwindowsseo.com, written for window and door companies, eac
 | `how-to-hire-seo-agency-for-window-company.html` | window contractor marketing | 320 | 9 | start |
 | `product-approvals-impact-window-pages.html` | florida product approval | 4,400 | 40 | Day 1 |
 | `wind-mitigation-inspection-window-companies.html` | wind mitigation inspection | 3,600 | 22 | Day 1 |
+| `google-review-request-wording-window-companies.html` | how to ask for google reviews | not checked** | not checked** | Day 2 |
+| `reply-to-negative-reviews-window-companies.html` | how to respond to negative reviews | not checked** | not checked** | Day 2 |
 | `schema-sitewide.json` | Organization + WebSite for the homepage | n/a | n/a | |
 
 *Semrush US database, 2026-10-08, monthly estimates.
+
+**Semrush was not available in the 2026-11-11 session, so Day 2 topics have no demand data. Check them in Semrush before investing in promotion.
 
 ## To publish each post
 
@@ -65,3 +69,10 @@ SSH to Cloudways is a different path and may not work through the environment's 
 
 - The posts run about 400 to 730 words, plus a FAQ. That answers each question cleanly, but competitors publish longer guides. The best upgrades are your own install photos, local examples, and real client numbers.
 - Drafts alone will not close the gap with competitors that have thousands of linking domains. See `LINK-GAP.md`.
+
+## Daily run log
+
+**2026-11-11 (Day 2).** 2 posts, 5 backlink targets.
+- Tools: WebSearch only. Semrush not available (no demand data for the new topics). Google Drive tools not available, so the digest was **not emailed**; it is in `digests/2026-11-11.txt`.
+- WordPress: `IWS_WP_URL`, `IWS_WP_USER`, and `IWS_WP_APP_PASSWORD` were all missing, and impactwindowsseo.com was blocked by the environment's network proxy. No drafts created.
+- All new facts are strength C (search summaries); support.google.com could not be opened directly. Starred items in `SOURCES.md` need a human check.
