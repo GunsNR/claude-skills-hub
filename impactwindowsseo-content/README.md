@@ -1,8 +1,8 @@
 # Impact Windows SEO: blog drafts and schema
 
-Ten posts for impactwindowsseo.com, written for window and door companies, each with BlogPosting, WebPage, BreadcrumbList, FAQPage, and ProfessionalService JSON-LD.
+Twelve posts for impactwindowsseo.com, written for window and door companies, each with BlogPosting, WebPage, BreadcrumbList, FAQPage, and ProfessionalService JSON-LD.
 
-**Nothing here is published.** This environment cannot reach the WordPress site. See "What it takes to publish automatically" at the bottom.
+**Nothing here is published.** Some posts exist as WordPress drafts (see `publish-log.csv`); none are live. A person must review and publish each draft.
 
 ## Ground rules for every post
 
@@ -24,11 +24,15 @@ Ten posts for impactwindowsseo.com, written for window and door companies, each 
 | `wind-mitigation-inspection-window-companies.html` | wind mitigation inspection | 3,600 | 22 | Day 1 |
 | `google-review-request-wording-window-companies.html` | how to ask for google reviews | not checked** | not checked** | Day 2 |
 | `reply-to-negative-reviews-window-companies.html` | how to respond to negative reviews | not checked** | not checked** | Day 2 |
+| `city-pages-for-window-companies.html` | location pages seo | 480 | 21 | Day 3*** |
+| `call-tracking-for-window-companies.html` | call tracking numbers | 390 | 21 | Day 3*** |
 | `schema-sitewide.json` | Organization + WebSite for the homepage | n/a | n/a | |
 
 *Semrush US database, 2026-10-08, monthly estimates.
 
 **Semrush was not available in the 2026-11-11 session, so Day 2 topics have no demand data. Check them in Semrush before investing in promotion.
+
+***Semrush US database, 2026-11-12.
 
 ## To publish each post
 
@@ -71,6 +75,12 @@ SSH to Cloudways is a different path and may not work through the environment's 
 - Drafts alone will not close the gap with competitors that have thousands of linking domains. See `LINK-GAP.md`.
 
 ## Daily run log
+
+**2026-11-12 (Day 3).** 2 posts, 5 backlink targets.
+- Tools: Semrush (demand data for both topics), WebSearch, and Firecrawl page reads in place of WebFetch. Google's spam policy page and Business Profile guidelines were opened and quoted directly.
+- WordPress: all three `IWS_WP_*` variables set and the site returned 200. Drafts created: post 1021 (`city-pages-for-window-companies`) and post 1022 (`call-tracking-for-window-companies`), status draft. Logged in `publish-log.csv`.
+- Delivery: digest in `digests/2026-11-12.txt`. No Drive share or email-send tool was available, so it was **not emailed** to office@ranklogicseo.com (see final summary for the Drive doc status).
+- Starred items: the vendor-recommended GBP tracking-number setup and the Florida all-party recording consent rule (statute page would not render; confirm at leg.state.fl.us).
 
 **2026-11-11 (Day 2).** 2 posts, 5 backlink targets.
 - Tools: WebSearch only. Semrush not available (no demand data for the new topics). Google Drive tools not available, so the digest was **not emailed**; it is in `digests/2026-11-11.txt`.

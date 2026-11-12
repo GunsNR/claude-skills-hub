@@ -676,4 +676,150 @@ POSTS = [
              "Be careful. The FTC's consumer review rule bars using unfounded legal threats, intimidation, or certain false public accusations to prevent or remove a negative review. Talk to an attorney before taking any step."),
         ],
     },
+    # ------------------------------------------------------------------ 11 (Day 3, 2026-11-12)
+    {
+        "slug": "city-pages-for-window-companies",
+        "date": "2026-11-12",
+        "title": "City Pages for Window Companies Without Duplicate Content",
+        "meta": "How window and door companies can build city and location pages that help homeowners, stay clear of Google's doorway policy, and avoid copy-paste content.",
+        "primary_kw": "location pages seo",
+        "secondary_kw": ["city landing pages", "local landing pages", "doorway pages"],
+        "alt_titles": [
+            "Location Pages for Window Installers: Useful, Not Copy-Paste",
+            "How to Build City Pages That Google and Homeowners Both Respect",
+            "One Page per City, Done Right: A Guide for Window Companies",
+        ],
+        "body": """
+<p>Most window companies work in more than one city, and most want a page for each. The common shortcut is to write one page, copy it, and swap the city name. That shortcut is the problem this guide is about.</p>
+<p>People search for this. Semrush's US data puts "location pages seo" at about 480 searches a month and "local landing pages" at about 390.</p>
+<aside class="iws-tldr"><strong>The short version:</strong> Build a city page only when you have something specific to say about that city: real jobs, local permit steps, the products you install there, and photos. Link every city page from a clear service-area hub. Never mass-produce near-identical pages with a new city name.</aside>
+
+<h2>What Google's spam policy says</h2>
+<p>Google's spam policies for web search describe "doorway abuse" as sites or pages created to rank for specific, similar search queries that lead users to intermediate pages less useful than the final destination. The examples Google lists include:</p>
+<ul>
+<li>Having multiple domain names or pages targeted at specific regions or cities that funnel users to one page.</li>
+<li>Creating substantially similar pages that are closer to search results than a clearly defined, browseable hierarchy.</li>
+</ul>
+<p>The same policy page describes "scaled content abuse": many pages generated mainly to manipulate rankings rather than help users, no matter how they are created. Google says these behaviors can lead to a page or a whole site ranking lower or being left out of results.</p>
+<p>None of that bans city pages. It bans city pages that exist only to catch a search and add nothing.</p>
+
+<h2>The test for every city page</h2>
+<p>Ask one question: would a homeowner in this city learn something here that they could not learn on your other city pages? If the honest answer is no, do not publish the page yet.</p>
+
+<h2>What a useful city page includes</h2>
+<ul>
+<li><strong>Jobs you actually did there.</strong> Photos of real installs in that city, with a sentence on what the job involved.</li>
+<li><strong>Local permit and inspection steps.</strong> How the process works with that building department, in plain English. Check it with the department before you publish.</li>
+<li><strong>Products you install there.</strong> If the city sits in an area with specific product approval needs, say which approvals your products carry and link to the records. Our guide to <a href="{{LINK:product-approvals-impact-window-pages}}">showing product approvals</a> covers how.</li>
+<li><strong>Questions you hear from that city.</strong> Older homes, condo association rules, HOA approvals, whatever your estimators actually get asked.</li>
+<li><strong>A clear next step.</strong> Phone number, estimate form, and honest expectations on timing.</li>
+</ul>
+
+<h2>A simple structure</h2>
+<ol>
+<li><strong>One service-area hub page.</strong> Lists every city you serve and links to each city page.</li>
+<li><strong>One page per city where you have real work to show.</strong> Linked from the hub and from relevant product pages.</li>
+<li><strong>Product pages stay product pages.</strong> Link from them to the city pages where you install that product, instead of cloning the product page per city.</li>
+</ol>
+<p>That gives homeowners, and Google, a browseable hierarchy instead of a pile of near-duplicates.</p>
+
+<h2>What not to do</h2>
+<ul>
+<li>Do not generate dozens of pages from a template and change only the city name.</li>
+<li>Do not create pages for cities you do not actually serve.</li>
+<li>Do not stuff a list of neighborhoods into a footer to catch searches.</li>
+<li>Do not use AI or spinning tools to churn out "unique" versions of the same page. Google's policy applies no matter how the pages are made.</li>
+</ul>
+
+<h2>How many city pages to start with</h2>
+<p>Start with the cities where you already have the most finished jobs and photos. Add a new city page when you have enough real material to make it useful. Fewer, better pages beat a long list of thin ones.</p>
+
+<h2>Where this fits</h2>
+<p>City pages are step three in our <a href="{{LINK:seo-for-window-companies}}">SEO plan for window companies</a>. Make sure the service area in your <a href="{{LINK:google-business-profile-for-window-companies}}">Google Business Profile</a> matches the cities your pages describe.</p>
+""",
+        "faq": [
+            ("Are city pages against Google's guidelines?",
+             "No. Google's spam policy targets doorway pages: pages aimed at specific cities that funnel users to one page, or substantially similar pages with little value. A city page with real local jobs, permit steps, and photos is not that."),
+            ("Can I reuse some text across city pages?",
+             "Some shared material, such as your warranty terms or contact details, is normal. The core of each page should be specific to that city: local jobs, local steps, and local questions."),
+            ("How many city pages should a window company have?",
+             "There is no set number. Build a page for each city where you have real work to show, and add more as you finish jobs in new areas."),
+            ("Should I use AI to write city pages faster?",
+             "Google's scaled content abuse policy applies to pages generated mainly to manipulate rankings, no matter how they are made. If you use any tool, add real local detail and check every fact before publishing."),
+        ],
+    },
+    # ------------------------------------------------------------------ 12 (Day 3, 2026-11-12)
+    {
+        "slug": "call-tracking-for-window-companies",
+        "date": "2026-11-12",
+        "title": "Call Tracking for Window Companies: A Setup That Stays Clean",
+        "meta": "How window companies can use call tracking numbers to see which pages and ads bring estimates, while keeping Google Business Profile details consistent.",
+        "primary_kw": "call tracking numbers",
+        "secondary_kw": ["dynamic number insertion", "call tracking for small business", "call tracking seo"],
+        "alt_titles": [
+            "Call Tracking Numbers for Window Installers, Explained",
+            "Which Ads and Pages Bring Your Window Estimates? Call Tracking Basics",
+            "Track Every Call Without Confusing Google: A Window Company Guide",
+        ],
+        "body": """
+<p>Homeowners often call before they fill out a form, especially for a big job like windows. If you cannot tell which search, ad, or page produced a call, you cannot tell which marketing is paying for itself.</p>
+<p>Semrush's US data shows people researching the tools: about 390 searches a month for "call tracking numbers" and about 880 for "dynamic number insertion."</p>
+<aside class="iws-tldr"><strong>The short version:</strong> Give each marketing source its own tracking number, keep your real local number published and consistent, follow Google's phone rules on your Business Profile, and get proper consent before recording calls. Judge everything on booked estimates and signed jobs.</aside>
+
+<h2>How call tracking works</h2>
+<p>A tracking number is a phone number that forwards to your real line and records which source the call came from. There are two common setups:</p>
+<ul>
+<li><strong>One number per source.</strong> A different number on your Business Profile, your ads, your truck wrap, and your mailers.</li>
+<li><strong>Dynamic number insertion.</strong> Your website shows a different number depending on how the visitor arrived, so a visitor from an ad sees one number and a visitor from organic search sees another.</li>
+</ul>
+
+<h2>What Google's Business Profile guidelines say about phone numbers</h2>
+<p>Google's guidelines for representing your business say:</p>
+<ul>
+<li>Provide a phone number that connects to your individual business location.</li>
+<li>Use a local phone number instead of a central call center helpline whenever possible.</li>
+<li>Do not provide phone numbers that redirect or refer users to numbers other than those of the actual business.</li>
+<li>The phone number must be under the direct control of the business.</li>
+<li>Additional phone numbers can be used on Business Profile and other local surfaces.</li>
+</ul>
+<p>The guideline text does not mention call tracking numbers by name. Many call tracking vendors describe the same setup: a local tracking number that rings your business goes in the primary phone field, and your main business number goes in the additional phone field. That is a vendor recommendation, not a Google statement, so read the current guidelines yourself before you change your profile.</p>
+
+<h2>Keep your real number consistent</h2>
+<p>Your main local number is the one that should appear on your website footer, your directory listings, and your paperwork. Tracking numbers are for measurement. Pick tracking numbers that are local, that you control, and that you can keep long term, because a number printed on a truck or a yard sign stays out there.</p>
+
+<h2>Recording calls in Florida</h2>
+<p>Many tracking tools can record calls, which helps with training and with checking which calls became estimates. Florida's law on intercepting communications makes recording lawful when all parties to the call have given prior consent. If you record, tell callers at the start and talk to your attorney about how to get consent properly. If callers can be outside Florida, ask about their states' rules too.</p>
+
+<h2>What to measure</h2>
+<p>A call count is a start, not an answer. For each source, track:</p>
+<ol>
+<li>Calls from real prospects, not vendors or existing customers.</li>
+<li>Booked estimates.</li>
+<li>Signed jobs.</li>
+<li>Spend, so you can work out cost per signed job.</li>
+</ol>
+<p>We walk through that math in <a href="{{LINK:window-replacement-leads}}">renting versus owning window replacement leads</a>.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+<li>Putting a different tracking number on every directory, which spreads several numbers across the web as if they were your main line.</li>
+<li>Using numbers that belong to a vendor's account, so you lose them if you switch vendors. Ask who controls the numbers before you sign.</li>
+<li>Recording calls without telling callers.</li>
+<li>Reporting calls without checking which ones became booked estimates.</li>
+</ul>
+
+<h2>Where this fits</h2>
+<p>Tracking is step five in our <a href="{{LINK:seo-for-window-companies}}">SEO plan for window companies</a> and part of month one in <a href="{{LINK:local-seo-for-contractors}}">the 90-day local SEO plan</a>.</p>
+""",
+        "faq": [
+            ("Can I use a call tracking number on my Google Business Profile?",
+             "Google's guidelines do not mention tracking numbers by name. They require a number that connects to your business, is under your direct control, and does not redirect callers to another business, and they allow additional phone numbers. Many vendors suggest a local tracking number as primary and your main number as additional. Check the current guidelines first."),
+            ("What is dynamic number insertion?",
+             "It is a website feature that shows a different phone number depending on how the visitor arrived, such as from an ad or from organic search, so each call can be traced to its source."),
+            ("Is it legal to record customer calls in Florida?",
+             "Florida's law makes recording lawful when all parties to the call have given prior consent. Tell callers at the start and ask your attorney how to handle consent properly."),
+            ("What should a window company measure with call tracking?",
+             "Calls from real prospects, booked estimates, signed jobs, and spend for each source, so you can compare cost per signed job across channels."),
+        ],
+    },
 ]

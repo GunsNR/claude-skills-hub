@@ -1,0 +1,304 @@
+IMPACT WINDOWS SEO: DAILY CONTENT, 2026-11-12
+
+Drafts and prepared packets only. Nothing here is published or submitted unless a line says so.
+Starred (*) facts in SOURCES.md (repo: impactwindowsseo-content) need a human check before publishing.
+
+============================================================
+PART 1: NEW BLOG POSTS
+============================================================
+
+TITLE: City Pages for Window Companies Without Duplicate Content
+SLUG: city-pages-for-window-companies
+META DESCRIPTION: How window and door companies can build city and location pages that help homeowners, stay clear of Google's doorway policy, and avoid copy-paste content.
+PRIMARY KEYWORD: location pages seo
+WORDPRESS DRAFT: https://impactwindowsseo.com/wp-admin/post.php?post=1021&action=edit
+
+Most window companies work in more than one city, and most want a page for each. The common shortcut is to write one page, copy it, and swap the city name. That shortcut is the problem this guide is about.
+
+People search for this. Semrush's US data puts "location pages seo" at about 480 searches a month and "local landing pages" at about 390.
+
+The short version: Build a city page only when you have something specific to say about that city: real jobs, local permit steps, the products you install there, and photos. Link every city page from a clear service-area hub. Never mass-produce near-identical pages with a new city name.
+
+## What Google's spam policy says
+
+Google's spam policies for web search describe "doorway abuse" as sites or pages created to rank for specific, similar search queries that lead users to intermediate pages less useful than the final destination. The examples Google lists include:
+
+- Having multiple domain names or pages targeted at specific regions or cities that funnel users to one page.
+
+- Creating substantially similar pages that are closer to search results than a clearly defined, browseable hierarchy.
+
+The same policy page describes "scaled content abuse": many pages generated mainly to manipulate rankings rather than help users, no matter how they are created. Google says these behaviors can lead to a page or a whole site ranking lower or being left out of results.
+
+None of that bans city pages. It bans city pages that exist only to catch a search and add nothing.
+
+## The test for every city page
+
+Ask one question: would a homeowner in this city learn something here that they could not learn on your other city pages? If the honest answer is no, do not publish the page yet.
+
+## What a useful city page includes
+
+- Jobs you actually did there. Photos of real installs in that city, with a sentence on what the job involved.
+
+- Local permit and inspection steps. How the process works with that building department, in plain English. Check it with the department before you publish.
+
+- Products you install there. If the city sits in an area with specific product approval needs, say which approvals your products carry and link to the records. Our guide to showing product approvals covers how.
+
+- Questions you hear from that city. Older homes, condo association rules, HOA approvals, whatever your estimators actually get asked.
+
+- A clear next step. Phone number, estimate form, and honest expectations on timing.
+
+## A simple structure
+
+- One service-area hub page. Lists every city you serve and links to each city page.
+
+- One page per city where you have real work to show. Linked from the hub and from relevant product pages.
+
+- Product pages stay product pages. Link from them to the city pages where you install that product, instead of cloning the product page per city.
+
+That gives homeowners, and Google, a browseable hierarchy instead of a pile of near-duplicates.
+
+## What not to do
+
+- Do not generate dozens of pages from a template and change only the city name.
+
+- Do not create pages for cities you do not actually serve.
+
+- Do not stuff a list of neighborhoods into a footer to catch searches.
+
+- Do not use AI or spinning tools to churn out "unique" versions of the same page. Google's policy applies no matter how the pages are made.
+
+## How many city pages to start with
+
+Start with the cities where you already have the most finished jobs and photos. Add a new city page when you have enough real material to make it useful. Fewer, better pages beat a long list of thin ones.
+
+## Where this fits
+
+City pages are step three in our SEO plan for window companies. Make sure the service area in your Google Business Profile matches the cities your pages describe.
+
+## Frequently asked questions
+
+Q: Are city pages against Google's guidelines?
+A: No. Google's spam policy targets doorway pages: pages aimed at specific cities that funnel users to one page, or substantially similar pages with little value. A city page with real local jobs, permit steps, and photos is not that.
+
+Q: Can I reuse some text across city pages?
+A: Some shared material, such as your warranty terms or contact details, is normal. The core of each page should be specific to that city: local jobs, local steps, and local questions.
+
+Q: How many city pages should a window company have?
+A: There is no set number. Build a page for each city where you have real work to show, and add more as you finish jobs in new areas.
+
+Q: Should I use AI to write city pages faster?
+A: Google's scaled content abuse policy applies to pages generated mainly to manipulate rankings, no matter how they are made. If you use any tool, add real local detail and check every fact before publishing.
+
+------------------------------------------------------------
+
+TITLE: Call Tracking for Window Companies: A Setup That Stays Clean
+SLUG: call-tracking-for-window-companies
+META DESCRIPTION: How window companies can use call tracking numbers to see which pages and ads bring estimates, while keeping Google Business Profile details consistent.
+PRIMARY KEYWORD: call tracking numbers
+WORDPRESS DRAFT: https://impactwindowsseo.com/wp-admin/post.php?post=1022&action=edit
+
+Homeowners often call before they fill out a form, especially for a big job like windows. If you cannot tell which search, ad, or page produced a call, you cannot tell which marketing is paying for itself.
+
+Semrush's US data shows people researching the tools: about 390 searches a month for "call tracking numbers" and about 880 for "dynamic number insertion."
+
+The short version: Give each marketing source its own tracking number, keep your real local number published and consistent, follow Google's phone rules on your Business Profile, and get proper consent before recording calls. Judge everything on booked estimates and signed jobs.
+
+## How call tracking works
+
+A tracking number is a phone number that forwards to your real line and records which source the call came from. There are two common setups:
+
+- One number per source. A different number on your Business Profile, your ads, your truck wrap, and your mailers.
+
+- Dynamic number insertion. Your website shows a different number depending on how the visitor arrived, so a visitor from an ad sees one number and a visitor from organic search sees another.
+
+## What Google's Business Profile guidelines say about phone numbers
+
+Google's guidelines for representing your business say:
+
+- Provide a phone number that connects to your individual business location.
+
+- Use a local phone number instead of a central call center helpline whenever possible.
+
+- Do not provide phone numbers that redirect or refer users to numbers other than those of the actual business.
+
+- The phone number must be under the direct control of the business.
+
+- Additional phone numbers can be used on Business Profile and other local surfaces.
+
+The guideline text does not mention call tracking numbers by name. Many call tracking vendors describe the same setup: a local tracking number that rings your business goes in the primary phone field, and your main business number goes in the additional phone field. That is a vendor recommendation, not a Google statement, so read the current guidelines yourself before you change your profile.
+
+## Keep your real number consistent
+
+Your main local number is the one that should appear on your website footer, your directory listings, and your paperwork. Tracking numbers are for measurement. Pick tracking numbers that are local, that you control, and that you can keep long term, because a number printed on a truck or a yard sign stays out there.
+
+## Recording calls in Florida
+
+Many tracking tools can record calls, which helps with training and with checking which calls became estimates. Florida's law on intercepting communications makes recording lawful when all parties to the call have given prior consent. If you record, tell callers at the start and talk to your attorney about how to get consent properly. If callers can be outside Florida, ask about their states' rules too.
+
+## What to measure
+
+A call count is a start, not an answer. For each source, track:
+
+- Calls from real prospects, not vendors or existing customers.
+
+- Booked estimates.
+
+- Signed jobs.
+
+- Spend, so you can work out cost per signed job.
+
+We walk through that math in renting versus owning window replacement leads.
+
+## Common mistakes
+
+- Putting a different tracking number on every directory, which spreads several numbers across the web as if they were your main line.
+
+- Using numbers that belong to a vendor's account, so you lose them if you switch vendors. Ask who controls the numbers before you sign.
+
+- Recording calls without telling callers.
+
+- Reporting calls without checking which ones became booked estimates.
+
+## Where this fits
+
+Tracking is step five in our SEO plan for window companies and part of month one in the 90-day local SEO plan.
+
+## Frequently asked questions
+
+Q: Can I use a call tracking number on my Google Business Profile?
+A: Google's guidelines do not mention tracking numbers by name. They require a number that connects to your business, is under your direct control, and does not redirect callers to another business, and they allow additional phone numbers. Many vendors suggest a local tracking number as primary and your main number as additional. Check the current guidelines first.
+
+Q: What is dynamic number insertion?
+A: It is a website feature that shows a different phone number depending on how the visitor arrived, such as from an ad or from organic search, so each call can be traced to its source.
+
+Q: Is it legal to record customer calls in Florida?
+A: Florida's law makes recording lawful when all parties to the call have given prior consent. Tell callers at the start and ask your attorney how to handle consent properly.
+
+Q: What should a window company measure with call tracking?
+A: Calls from real prospects, booked estimates, signed jobs, and spend for each source, so you can compare cost per signed job across channels.
+
+------------------------------------------------------------
+
+============================================================
+PART 2: BACKLINK TARGETS (prepared, not submitted)
+============================================================
+
+Backlink batch: Day 3 (2026-11-12)
+
+Status: prepared, not submitted. Nothing below is live. This session did not log into any account or submit any form. Each target is ready for someone with a browser to complete.
+
+Use the exact text in ../business-profile.txt on every form.
+
+How these were checked. WebSearch on 2026-11-12, plus direct reads of official pages where they loaded (marked "opened"). Yellow Pages details come only from third-party guides and forum threads.
+
+What a "backlink" means here. I did not check whether any of these links carry a nofollow tag, so I am not claiming any will pass ranking value. They are accurate listings where buyers can look the business up.
+
+| # | Target | Cost | Acceptance | Why this one |
+|---|---|---|---|---|
+| 1 | Yellow Pages (yellowpages.com) | Free basic listing reported; not confirmed on YP's own pages | Phone call with a code, per guides; forum users report free listings that never publish | Long-running US directory; keeps NAP consistent |
+| 2 | Nextdoor Business Page | Free (opened) | Must be owner, employee, or authorized rep; phone or document verification | Neighborhood platform homeowners use to find local services |
+| 3 | Foursquare for Business | Not stated on official page; one guide reports an optional $20 fee | Claim form (opened); phone, postcard, or card verification per guides | Location data source used by other apps and services |
+| 4 | DesignRush | Free tier referenced on DesignRush pages; not stated on the submission form | Reviewed before publishing (opened) | B2B agency directory, relevant to an SEO agency |
+| 5 | Trustpilot Business | Free account (opened signup page title) | Business website required; domain verification steps not confirmed | Review platform agency buyers check |
+
+---
+
+1. Yellow Pages
+
+- Start: yellowpages.com. Search for "Impact Windows SEO" in Fort Lauderdale first. If a listing exists, guides describe a "Claim This Business" link that leads to accounts.yellowpages.com. If none exists, guides describe a "Get Your Free Listing" path.
+- Verification: guides say YP calls the phone number on the listing with a short code. Have (954) 706-6785 ready.
+- Honest warning: Local Search Forum users report free listings that say they will publish in 48 hours and never do, and say Thryv (which runs Yellow Pages) pushes paid services. If it stalls, note it in the log and move on.
+- Do not: buy a Thryv or YP paid package as part of this task.
+- Not confirmed: cost on YP's own pages, website-link attributes, support phone numbers (forum-reported numbers were inconsistent, so none are listed here).
+
+2. Nextdoor Business Page
+
+- Start: business.nextdoor.com (official page opened: "Claim your free Business Page").
+- Who can claim: an owner, employee, or other authorized representative (official page).
+- Verification: per Nextdoor's help content in search results, claiming an existing page with a phone number on file allows phone call or text verification; a new page may require business documents from account settings.
+- What you can add: business information, contact details, photos (official page). Whether a website link field exists and how it is tagged was not confirmed.
+- Note: the business page is tied to a personal Nextdoor account.
+- Have ready: a personal Nextdoor account, exact NAP, short description, real photos.
+
+3. Foursquare for Business
+
+- Start: Foursquare's business portal. Official help article (opened): https://support.foursquare.com/hc/en-us/articles/23646714300444-Claiming-a-listing. Search for the business, click Claim on the matching listing, complete the claim form. If no listing exists, guides say you can create one.
+- Verification: the official article only says the form confirms your identity and role. Third-party guides list phone, postcard, or credit card options.
+- Cost: the official article does not mention a fee. One guide (Chatmeter) reports an optional one-time $20 fee for instant access. Unconfirmed. Use the free route if it is offered.
+- Not confirmed: website field and link attributes.
+
+4. DesignRush
+
+- Start: https://www.designrush.com/add-listing (opened; redirects to the agency submission form). Required to start: first name, last name, email, phone, password.
+- Review: the form page says DesignRush only accepts agencies it considers legitimate and professional, and reviews the website, portfolio, online reputation, and reviews before publishing (opened). Acceptance is not assured, especially for a newer agency without a portfolio.
+- Cost: DesignRush pages reference a free listing; the submission form itself does not state a price. Sponsorship packages are paid and are not part of this task.
+- Do not: invent a portfolio, client list, or case study. Note from search results: one account can hold one agency profile, and profiles reportedly cannot be deleted.
+
+5. Trustpilot Business
+
+- Start: https://business.trustpilot.com/signup (opened; page title "Create Your Free Account"). The form asks for business location, business name, and business website.
+- Verification: Trustpilot's developer docs mention a "Verify your domain" step; the exact methods (work email, file, DNS) were not confirmed. An @impactwindowsseo.com email will likely make this easier.
+- Caution: Trustpilot is a review platform. Do not invite reviews with any incentive, and only ask real clients. With no reviews, the page will look empty; that is fine.
+
+---
+
+Considered and not used today
+
+- Expertise.com. Its own pages describe research-driven selection, and review requests are currently limited to Legal and Home Improvement categories. An SEO agency does not fit. Customer reviews also describe paid listing pitches.
+- Roundup articles of window-marketing agencies. The 2026 lists found (gitnux.org, zipdo.co, wifitalents.com, worldmetrics.org) look like template rankings, and the others are published by competing agencies (hookagency.com, focus-digital.co). No editor contact or inclusion process found. Not worth pitching yet.
+- BBB and UpCity were already deferred on Day 2 and were not revisited.
+
+After you submit
+
+Log each one in ../backlink-log.csv and here, with the date and the live URL. A link that is not live and checked does not count.
+
+| # | Target | Date submitted | Status | Live URL |
+|---|---|---|---|---|
+| 1 | Yellow Pages | | prepared, not submitted | |
+| 2 | Nextdoor Business Page | | prepared, not submitted | |
+| 3 | Foursquare for Business | | prepared, not submitted | |
+| 4 | DesignRush | | prepared, not submitted | |
+| 5 | Trustpilot Business | | prepared, not submitted | |
+
+Sources (2026-11-12)
+
+- Yellow Pages: synup.com/en/how-to/claim-add-yellowpages-listing, birdeye.com/blog/yellow-pages-free-listing, localsearchforum.com threads (search summaries only).
+- Nextdoor: business.nextdoor.com/en-us/getting-started/business-page (opened); Nextdoor help content via search.
+- Foursquare: support.foursquare.com claiming article (opened); synup.com, chatmeter.com, birdeye.com via search.
+- DesignRush: designrush.com/add-listing (opened); designrush.com pricing and benefits pages via search.
+- Trustpilot: business.trustpilot.com/signup (opened); developers.trustpilot.com Business Signup API overview, socialpilot.co guide via search.
+- Expertise.com (not used): expertise.com selection process and contact pages via search.
+
+
+============================================================
+BUSINESS DETAILS TO USE ON EVERY FORM
+============================================================
+
+IMPACT WINDOWS SEO: MASTER NAP PROFILE
+Use this EXACT data on every directory. Keep it identical everywhere.
+========================================================================
+
+BUSINESS NAME:      Impact Windows SEO
+PHONE:              (954) 706-6785
+ADDRESS:            5840 Lakeshore Drive, Fort Lauderdale, FL 33312
+WEBSITE:            https://impactwindowsseo.com
+EMAIL:              [enter your business email]
+HOURS:              [NOT PROVIDED. Enter real hours or leave blank.]
+CATEGORY:           SEO Agency. (Pick the closest option from each platform's own category list.)
+
+Only facts you gave me are used below. No guarantees, no exclusivity claims, no
+performance promises, no list of cities served. Add anything else only if it is true.
+
+DESCRIPTION: SHORT (about 35 words)
+Impact Windows SEO is a Fort Lauderdale, Florida SEO agency for impact window
+contractors and window and door installation companies. It is a sister company of
+RankLogic SEO.
+
+DESCRIPTION: MEDIUM (about 50 words)
+Impact Windows SEO is an SEO agency based in Fort Lauderdale, Florida. We work with
+impact window contractors and window and door installation companies on local search
+engine optimization, including Google Business Profile, website pages, and reviews.
+It is a sister company of RankLogic SEO.
+
+[CONFIRM] The medium description names three services (Google Business Profile,
+website pages, reviews). You did not list services, so delete any that do not apply.

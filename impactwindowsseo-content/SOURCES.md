@@ -116,3 +116,54 @@ Recommendations such as "ask for reviews within a day or two," "post regularly,"
 - The exact FTC civil penalty amount. It is adjusted for inflation each year and the figure found was from 2024.
 - Whether Google requires a verified profile to reply to reviews. Only a third-party blog said so.
 - Any search-volume figure for "how to ask for google reviews" or "how to respond to negative reviews." Semrush was not available.
+
+---
+
+# Day 3 additions (checked 2026-11-12)
+
+**Tools available this session:** Semrush (A), WebSearch (C), and Firecrawl page scraping, used in place of WebFetch to open official pages directly. Where a row says "opened," the official page text was read in this session.
+
+## Semrush figures (A)
+
+US database, 2026-11-12, `phrase_these`. Monthly estimates.
+
+| Phrase | Volume | Avg CPC | Difficulty |
+|---|---|---|---|
+| dynamic number insertion | 880 | $20.96 | 17 |
+| location pages seo | 480 | $9.14 | 21 |
+| call tracking numbers | 390 | $14.28 | 21 |
+| local landing pages | 390 | $6.70 | 20 |
+| location pages | 390 | $14.24 | 21 |
+| doorway pages | 590 | $0 | 39 |
+| city landing pages | 90 | $8.94 | 4 |
+| call tracking for small business | 70 | $0 | 14 |
+| call tracking seo | 70 | $0 | 10 |
+| seo for window and door companies | 170 | $0 | 2 |
+
+Checked and not used as primaries: "seo for door companies" and "door installation marketing" returned 0; "google business profile photos" 30; "how to read google search console" 20. "seo for window and door companies" (170, KD 2) was skipped because it would compete with the existing `seo-for-window-companies` post.
+
+## City pages post (`city-pages-for-window-companies`)
+
+| Claim in post | Where it came from | Status |
+|---|---|---|
+| Google defines doorway abuse as pages created to rank for specific, similar queries that lead to intermediate pages less useful than the destination; examples include pages targeted at specific regions or cities that funnel users to one page, and substantially similar pages closer to search results than a browseable hierarchy | Google Search Central, "Spam policies for Google web search" (developers.google.com/search/docs/essentials/spam-policies) | Opened, quoted directly. Strong C. |
+| Scaled content abuse: many pages generated mainly to manipulate rankings and not help users, no matter how created; examples include using generative AI to generate many pages without adding value | Same page | Opened, quoted directly. |
+| These behaviors can lead to a page or a whole site ranking lower or being omitted | Same page (page description) | Opened. |
+
+## Call tracking post (`call-tracking-for-window-companies`)
+
+| Claim in post | Where it came from | Status |
+|---|---|---|
+| GBP guidelines: number must connect to the individual business location; use a local number instead of a central call center helpline when possible; no numbers that redirect or refer users to numbers other than the actual business; number must be under the business's direct control; additional numbers can be used | "Guidelines for representing your business on Google" (support.google.com/business/answer/3038177), Website & phone section | Opened, quoted directly. |
+| The guideline text does not mention call tracking numbers by name | Same page, as read today | Opened. Re-check, Google edits this page. |
+| Vendors commonly recommend the tracking number as primary and the main number as additional | 800.com support, Convirza, WhatConverts, CallTrackingMetrics (citing Sterling Sky), via search | \*C. Vendor sources, not Google. Post labels it as a vendor recommendation. |
+| Florida law makes interception lawful when all parties have given prior consent (s. 934.03(2)(d)) | Reporters Committee for Freedom of the Press Florida guide (rcfp.org), dmlp.org, law-firm pages, via search. The leg.state.fl.us statute page loaded but returned no readable text. | \*C. Confirm the statute text at leg.state.fl.us. The post gives no legal advice and sends readers to an attorney. |
+
+## Claims considered and left out (Day 3)
+
+- Whether Google penalizes or flags tracking numbers on profiles. Only a weak, unverified source said so; vendors say the opposite. Left out both ways.
+- How long Google takes to review a phone number edit ("2 to 3 business days"). Only in a search summary, not on an official page.
+- Florida's business-extension or ordinary-course exceptions to the recording law. No source covered them.
+- Criminal and civil penalties for illegal recording in Florida. Found only in search summaries; not needed for the post.
+- Any claim that city pages or call tracking improve rankings.
+- A recommended number of city pages. No source; the post says there is no set number.
