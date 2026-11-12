@@ -1,0 +1,23 @@
+GOOGLE BUSINESS PROFILE "UPDATE" POST: 2026-11-12
+Status: saved for manual posting. Not posted (no GBP API credentials in this environment).
+
+DO NOT POST YET. The linked article is a WordPress draft (post 1023), so the link would not work. Post this only after the article is published at the URL below.
+
+--- POST TEXT (copy from here) ---
+Are you still paying for FAQ schema? Google's own documentation says FAQ rich results stopped appearing in Google Search starting May 7, 2026.
+
+Our new guide for window and door contractors explains what changed, whether you need to remove existing FAQ markup, and which structured data still matters: accurate business name, address, and hours that match your Business Profile.
+
+It also includes four questions to ask any agency that sells schema work. Every point links to Google's published pages so you can check it yourself.
+--- END POST TEXT ---
+
+BUTTON: Learn more
+LINK: https://impactwindowsseo.com/faq-schema-for-contractors/
+(Confirm the live URL once published; permalink structure was not confirmed.)
+
+PHOTO NOTE: Use a real photo from your own work (for example, your team at a desk or a screenshot you are allowed to share). Do not use stock.
+
+RULES FOLLOWED (checked 2026-11-12 on Google's "Business Profile photos, videos & posts content policy", support.google.com/business/answer/7213077):
+- No phone number, email, or social handles in the text (Google may remove posts with unverified contact information; use a Call now button instead if wanted).
+- No prices, offers, or guarantees.
+- Character count: 529, under the 1,500 limit set by the owner.

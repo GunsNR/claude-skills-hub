@@ -167,3 +167,54 @@ Checked and not used as primaries: "seo for door companies" and "door installati
 - Criminal and civil penalties for illegal recording in Florida. Found only in search summaries; not needed for the post.
 - Any claim that city pages or call tracking improve rankings.
 - A recommended number of city pages. No source; the post says there is no set number.
+
+---
+
+# Run 2026-11-12 (second run, unattended)
+
+**Tools:** Semrush (A), WebSearch (C), Firecrawl page reads in place of WebFetch (official pages marked "opened"). Gmail connector failed to authenticate. No Drive share tool.
+
+## Google quality guidance checked today
+
+- "Creating helpful, reliable, people-first content" (developers.google.com/search/docs/fundamentals/creating-helpful-content): opened, page last updated 2026-10-05. Notable for this project: Who/How/Why questions; deceptive authorship (made-up names, false credentials) is a low-quality signal; AI or automation disclosures are useful where readers would expect them; do not change page dates without substantial changes.
+- "Spam policies for Google web search": opened, last updated 2026-08-28. Link spam examples include buying or selling links, excessive link exchanges, guest posts or press releases with paid ranking-passing links, and low-quality directory or bookmark links. Site reputation abuse and scaled content abuse definitions unchanged from what earlier runs relied on.
+- Change noticed vs earlier runs: the changelog also lists a new spam policy for "back button hijacking" and a clarification that Google may use spam reports for manual action. Neither affects these posts.
+
+## Semrush (A), US, 2026-11-12
+
+| Phrase | Volume | CPC | KD |
+|---|---|---|---|
+| faq schema | 2,400 | $13.85 | 22 |
+| local business schema | 590 | $4.04 | 60 |
+| localbusiness schema | 260 | $5.42 | 54 |
+| google search console performance report | 140 | $8.16 | 48 |
+| service area business google | 90 | $11.76 | 40 |
+| schema markup for local business | 70 | $1.49 | 43 |
+
+## New post (`faq-schema-for-contractors`)
+
+| Claim | Source | Status |
+|---|---|---|
+| FAQ rich result "will no longer appear in Google Search starting May 7, 2026" | Google Search Central documentation updates page, entry "Deprecating the FAQ rich result feature" (developers.google.com/search/updates) | Opened, quoted. |
+| Google removed the FAQ rich result documentation | Same page, entry "Removing documentation for the FAQ rich result feature"; the old FAQPage doc URL now redirects to that entry | Opened. |
+| August 8, 2023: FAQ rich results limited to well-known, authoritative government and health sites; no need to proactively remove markup; unused structured data does not cause problems and has no visible effects | Google Search Central Blog, "Changes to HowTo and FAQ rich results" | Opened, quoted. Post attributes the "no need to remove" statement to 2023. |
+| LocalBusiness: name and address required; telephone, url, openingHoursSpecification, geo among recommended; review markup described for sites capturing reviews about other businesses | developers.google.com/search/docs/appearance/structured-data/local-business (updated 2026-09-08) | Opened. |
+| Structured data must be a true representation of page content; do not mark up invisible, irrelevant, or misleading content such as fake reviews; provide up-to-date info; structured data issues can cause a manual action that removes rich result eligibility and does not affect web ranking | General structured data guidelines, sd-policies (updated 2026-07-10) | Opened. |
+
+Left out: secondary-source claims that Google still uses FAQPage markup to understand pages, that the FAQ Search Console report was removed in June 2026, and that API support ended in August 2026. Not on an official page read today.
+
+Observation for the owner: build.py still emits FAQPage JSON-LD on every post. Per Google's 2023 statement this is harmless but produces no rich result. Kept, because the run instructions require it.
+
+## Refresh (`city-pages-for-window-companies`)
+
+- Spam policy doorway and scaled-content wording re-checked on the live page today (opened). Unchanged.
+- Changes: 57-word direct answer, question-style H2s with short answers, Sources section, link to the new post. Date left at 2026-11-12 (same day).
+
+## GBP post rules
+
+- "Business Profile photos, videos & posts content policy" (support.google.com/business/answer/7213077): opened. Google may remove posts with unverified contact information including phone numbers, email addresses, and social handles; suggests a Call now button instead.
+- A third-party blog claimed phone numbers are now allowed if verified. Not followed; the post has no contact details.
+
+## Backlinks and outreach
+
+- Sortlist listing conditions (opened), Hotfrog add-business steps (opened), Brownbook (guides only, C), Hearth podcast page with guest email (opened). Details in day-04 packet and outreach file.

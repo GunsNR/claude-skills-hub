@@ -1,0 +1,306 @@
+IMPACT WINDOWS SEO: DAILY CONTENT, 2026-11-12-run2
+
+Drafts and prepared packets only. Nothing here is published or submitted unless a line says so.
+Starred (*) facts in SOURCES.md (repo: impactwindowsseo-content) need a human check before publishing.
+
+============================================================
+PART 1: NEW BLOG POSTS
+============================================================
+
+TITLE: FAQ Schema for Contractors: What Changed and What to Do Now
+SLUG: faq-schema-for-contractors
+META DESCRIPTION: Google stopped showing FAQ rich results in May 2026. What that means for window and door contractors, what to keep, and which structured data still matters.
+PRIMARY KEYWORD: faq schema
+WORDPRESS DRAFT: https://impactwindowsseo.com/wp-admin/post.php?post=1023&action=edit
+
+Short answer: FAQ schema is FAQPage structured data that marks up questions and answers on a page. Google stopped showing FAQ rich results in Search starting May 7, 2026, and removed the feature's documentation. Keep a visible FAQ if it helps homeowners, do not pay for FAQ schema to win rich results, and spend that effort on accurate business details.
+
+For years, contractors were told to add FAQ schema so their answers would show as expandable questions under their listing in Google. If someone is still selling you that idea, this guide explains what changed, using Google's own pages.
+
+The search numbers show the topic is still popular. Semrush's US data puts "faq schema" at about 2,400 searches a month.
+
+## What is FAQ schema?
+
+FAQ schema is code, usually JSON-LD, that labels the questions and answers on a page using the FAQPage type. It is invisible to visitors and is read by search engines.
+
+Structured data in general is a way to describe a page's content in a format machines can read. Google's general structured data guidelines say the markup must be a true representation of the page content.
+
+## Does Google still show FAQ rich results?
+
+No. Google's Search Central documentation changelog says the FAQ rich result feature "will no longer appear in Google Search starting May 7, 2026," and a later entry removed the documentation for the feature.
+
+This was the end of a longer change. In August 2023, Google announced that FAQ rich results would only be shown for well-known, authoritative government and health websites, and would no longer be shown regularly for all other sites. Most contractor sites stopped seeing them then.
+
+## Should a contractor remove FAQ schema from their site?
+
+There is no need to rush. In its 2023 announcement, Google said there was no need to proactively remove FAQ structured data, and that structured data that is not being used does not cause problems for Search but also has no visible effects.
+
+What matters more is whether the questions on the page help a homeowner. A short, honest FAQ that answers what your estimators hear every week is useful to readers with or without markup.
+
+## What structured data still matters for a window company?
+
+Local business details. Google's LocalBusiness structured data page says it can tell Google about business hours, departments, and more, and lists these properties:
+
+ | Property | Google's label | What to put in it
+
+ | name | Required | Your real business name, exactly as on your signs and Business Profile
+
+ | address | Required | Your real address, matching your Business Profile
+
+ | telephone | Recommended | Your main local number
+
+ | url | Recommended | The page for this location
+
+ | openingHoursSpecification | Recommended | Real hours only
+
+ | geo | Recommended | Latitude and longitude of the location
+
+Google's page also lists review and rating properties, and describes review markup for sites that capture reviews about other businesses. Do not add rating or review markup for your own company unless you have confirmed it fits Google's current rules.
+
+## What rules apply to any structured data?
+
+Google's general structured data guidelines say:
+
+- Your structured data must be a true representation of the page content.
+
+- Do not mark up content that is not visible to readers of the page.
+
+- Do not mark up irrelevant or misleading content, such as fake reviews.
+
+- Do not use structured data to deceive or mislead users.
+
+- Provide up-to-date information.
+
+The same page says a structured data issue can lead to a manual action. A structured data manual action means the page loses eligibility to appear as a rich result; Google says it does not affect how the page ranks in web search.
+
+## What should you ask an agency that sells schema?
+
+- Which rich result is this markup for, and is it still listed in Google's current documentation?
+
+- Does every marked-up item appear on the visible page?
+
+- Do the name, address, and phone in the markup match the Business Profile exactly?
+
+- Is any review or rating markup included, and why does it fit Google's rules?
+
+If the answers are vague, put the budget into work homeowners can see: a complete Google Business Profile and useful city pages. For more questions to ask before you hire, see 9 questions to ask an SEO agency.
+
+## Sources
+
+- Google Search Central: Latest documentation updates (entries "Deprecating the FAQ rich result feature" and "Removing documentation for the FAQ rich result feature")
+
+- Google Search Central Blog: Changes to HowTo and FAQ rich results (August 8, 2023)
+
+- Google Search Central: Local Business (LocalBusiness) structured data
+
+- Google Search Central: General structured data guidelines
+
+## Frequently asked questions
+
+Q: Does Google still show FAQ rich results in 2026?
+A: No. Google's documentation changelog says the FAQ rich result feature no longer appears in Google Search starting May 7, 2026, and Google has removed the feature's documentation.
+
+Q: Will FAQ schema hurt my contractor website?
+A: In 2023 Google said structured data that is not being used does not cause problems for Search and that there is no need to proactively remove FAQ markup. It also has no visible effect in results.
+
+Q: Should I still have an FAQ section on my pages?
+A: Yes, if it answers questions homeowners actually ask. A visible FAQ helps readers whether or not it is marked up.
+
+Q: What structured data should a window company use?
+A: LocalBusiness markup with accurate name and address, plus recommended details such as telephone, url, and opening hours, all matching your Google Business Profile. Follow Google's general structured data guidelines.
+
+------------------------------------------------------------
+
+TITLE: City Pages for Window Companies Without Duplicate Content
+SLUG: city-pages-for-window-companies
+META DESCRIPTION: How window and door companies can build city and location pages that help homeowners, stay clear of Google's doorway policy, and avoid copy-paste content.
+PRIMARY KEYWORD: location pages seo
+WORDPRESS DRAFT: https://impactwindowsseo.com/wp-admin/post.php?post=1021&action=edit
+
+Most window companies work in more than one city, and most want a page for each. The common shortcut is to write one page, copy it, and swap the city name. That shortcut is the problem this guide is about.
+
+People search for this. Semrush's US data puts "location pages seo" at about 480 searches a month and "local landing pages" at about 390.
+
+Short answer: A city page should exist only when you have something specific to say about that city: real jobs, local permit steps, the products you install there, and photos. Link each city page from one service-area hub. Google's spam policy lists city-targeted pages that funnel users to one page, and substantially similar pages, as doorway abuse.
+
+## Are city pages against Google's spam policies?
+
+No, but copy-paste city pages can be. Google's policy targets pages that exist only to catch a search, not pages with real local information.
+
+Google's spam policies for web search describe "doorway abuse" as sites or pages created to rank for specific, similar search queries that lead users to intermediate pages less useful than the final destination. The examples Google lists include:
+
+- Having multiple domain names or pages targeted at specific regions or cities that funnel users to one page.
+
+- Creating substantially similar pages that are closer to search results than a clearly defined, browseable hierarchy.
+
+The same policy page describes "scaled content abuse": many pages generated mainly to manipulate rankings rather than help users, no matter how they are created. Google says these behaviors can lead to a page or a whole site ranking lower or being left out of results.
+
+None of that bans city pages. It bans city pages that exist only to catch a search and add nothing.
+
+## How do you know if a city page is worth publishing?
+
+Ask one question: would a homeowner in this city learn something here that they could not learn on your other city pages? If the honest answer is no, do not publish the page yet.
+
+## What should a window company city page include?
+
+Local proof and local detail. Each item below should be specific to that city.
+
+- Jobs you actually did there. Photos of real installs in that city, with a sentence on what the job involved.
+
+- Local permit and inspection steps. How the process works with that building department, in plain English. Check it with the department before you publish.
+
+- Products you install there. If the city sits in an area with specific product approval needs, say which approvals your products carry and link to the records. Our guide to showing product approvals covers how.
+
+- Questions you hear from that city. Older homes, condo association rules, HOA approvals, whatever your estimators actually get asked.
+
+- A clear next step. Phone number, estimate form, and honest expectations on timing.
+
+## How should city pages be structured?
+
+As a simple hierarchy: one hub page that links to each city page.
+
+- One service-area hub page. Lists every city you serve and links to each city page.
+
+- One page per city where you have real work to show. Linked from the hub and from relevant product pages.
+
+- Product pages stay product pages. Link from them to the city pages where you install that product, instead of cloning the product page per city.
+
+That gives homeowners, and Google, a browseable hierarchy instead of a pile of near-duplicates.
+
+## What city page mistakes should you avoid?
+
+- Do not generate dozens of pages from a template and change only the city name.
+
+- Do not create pages for cities you do not actually serve.
+
+- Do not stuff a list of neighborhoods into a footer to catch searches.
+
+- Do not use AI or spinning tools to churn out "unique" versions of the same page. Google's policy applies no matter how the pages are made.
+
+## How many city pages should you start with?
+
+Start with the cities where you already have the most finished jobs and photos. Add a new city page when you have enough real material to make it useful. Fewer, better pages beat a long list of thin ones.
+
+## Where this fits
+
+City pages are step three in our SEO plan for window companies. Make sure the service area in your Google Business Profile matches the cities your pages describe. If you add structured data to city pages, keep it accurate and visible on the page; our guide to FAQ schema for contractors explains what changed and what still matters.
+
+## Sources
+
+- Google Search Central: Spam policies for Google web search (doorway abuse and scaled content abuse)
+
+## Frequently asked questions
+
+Q: Are city pages against Google's guidelines?
+A: No. Google's spam policy targets doorway pages: pages aimed at specific cities that funnel users to one page, or substantially similar pages with little value. A city page with real local jobs, permit steps, and photos is not that.
+
+Q: Can I reuse some text across city pages?
+A: Some shared material, such as your warranty terms or contact details, is normal. The core of each page should be specific to that city: local jobs, local steps, and local questions.
+
+Q: How many city pages should a window company have?
+A: There is no set number. Build a page for each city where you have real work to show, and add more as you finish jobs in new areas.
+
+Q: Should I use AI to write city pages faster?
+A: Google's scaled content abuse policy applies to pages generated mainly to manipulate rankings, no matter how they are made. If you use any tool, add real local detail and check every fact before publishing.
+
+------------------------------------------------------------
+
+============================================================
+PART 2: BACKLINK TARGETS (prepared, not submitted)
+============================================================
+
+Backlink batch: Day 4 (2026-11-12, second run)
+
+Status: prepared, not submitted. Nothing below is live. No account was created and no form was submitted.
+
+Use the exact text in ../business-profile.txt on every form.
+
+How these were checked. WebSearch plus direct reads of official pages where they loaded (marked "opened"), 2026-11-12.
+
+Read this first. Google's spam policies (checked today, page updated 2026-08-28) list "low-quality directory or bookmark site links" as link spam. Hotfrog and Brownbook are general directories: treat them as places to keep your business details consistent, not as ranking links. Skip them if you only want high-value links. Sortlist is an agency marketplace and is more relevant.
+
+| # | Target | Cost | Acceptance | Why this one |
+|---|---|---|---|---|
+| 1 | Sortlist | Free profile (opened) | Services must fit its categories; profile must be live; verification steps not stated | Agency marketplace that lists marketing agencies |
+| 2 | Hotfrog | Not stated on official page; guides say free basic profile | Email confirmation, then "Verify now" (opened) | Local directory; consistent NAP |
+| 3 | Brownbook | Guides say free tier plus paid upgrades | Email verification link (guides only) | Global business directory; consistent NAP |
+
+---
+
+1. Sortlist
+
+- Start: sortlist.com, provider registration (help center points to the providers page). Official listing conditions (opened): https://intercom.help/sortlist/en/articles/1714392-can-i-register-to-sortlist-listing-conditions
+- What the help center says: creating a provider profile is free; services must fit at least one category (Advertising & Marketing agencies is one); the profile must be live; freelancers and single-employee firms are allowed if stated. It also says Sortlist's marketing focuses on Benelux, French, and Spanish markets, so US buyer traffic may be limited.
+- Not confirmed: verification steps and timeline, website link attributes. An older help page mentions a weekly onboarding webinar.
+- Do not: add portfolio items or client reviews that are not real. Do not buy Sortlist+ as part of this task.
+
+2. Hotfrog
+
+- Start: hotfrog.com, "Add Business." Official steps (opened): https://support.hotfrog.com/getting-started/how-to-add-your-business-to-hotfrog
+- Steps from the official page: register with an email, confirm via the emailed link, set a password, enter company name and address and pin the map, submit, then click "Verify now" to verify ownership.
+- Cost: the official page does not state it. Third-party guides say a free basic profile exists and to choose the basic option.
+- Not confirmed: website field and link attributes.
+
+3. Brownbook
+
+- Start: brownbook.net, "Add a business" (from BrightLocal and AdviceLocal guides; Brownbook's own page not opened).
+- Process from guides: register, confirm by email link, add the business or claim an existing listing for free.
+- Cost: guides describe a free tier with paid upgrades. Use the free tier.
+- Not confirmed: anything on Brownbook's own pages. Treat all steps as unverified until you see them.
+
+---
+
+Considered and not used today
+
+- Agency Spotter. Its FAQ and agency pages loaded but did not show how an agency gets a profile or what it costs. Revisit if the owner wants it.
+- Window + Door magazine sponsored content. Paid placement; not a link target.
+
+After you submit
+
+| # | Target | Date submitted | Status | Live URL |
+|---|---|---|---|---|
+| 1 | Sortlist | | prepared, not submitted | |
+| 2 | Hotfrog | | prepared, not submitted | |
+| 3 | Brownbook | | prepared, not submitted | |
+
+Sources (2026-11-12)
+
+- Sortlist: intercom.help/sortlist listing conditions (opened); Sortlist help center via search.
+- Hotfrog: support.hotfrog.com add-business article (opened); brightlocal.com, advicelocal.com, synup.com via search.
+- Brownbook: brightlocal.com, advicelocal.com, yext.com via search.
+- Agency Spotter (not used): agencyspotter.com FAQ pages (opened, no answer shown).
+- Google link spam policy: developers.google.com/search/docs/essentials/spam-policies (opened).
+
+
+============================================================
+BUSINESS DETAILS TO USE ON EVERY FORM
+============================================================
+
+IMPACT WINDOWS SEO: MASTER NAP PROFILE
+Use this EXACT data on every directory. Keep it identical everywhere.
+========================================================================
+
+BUSINESS NAME:      Impact Windows SEO
+PHONE:              (954) 706-6785
+ADDRESS:            5840 Lakeshore Drive, Fort Lauderdale, FL 33312
+WEBSITE:            https://impactwindowsseo.com
+EMAIL:              [enter your business email]
+HOURS:              [NOT PROVIDED. Enter real hours or leave blank.]
+CATEGORY:           SEO Agency. (Pick the closest option from each platform's own category list.)
+
+Only facts you gave me are used below. No guarantees, no exclusivity claims, no
+performance promises, no list of cities served. Add anything else only if it is true.
+
+DESCRIPTION: SHORT (about 35 words)
+Impact Windows SEO is a Fort Lauderdale, Florida SEO agency for impact window
+contractors and window and door installation companies. It is a sister company of
+RankLogic SEO.
+
+DESCRIPTION: MEDIUM (about 50 words)
+Impact Windows SEO is an SEO agency based in Fort Lauderdale, Florida. We work with
+impact window contractors and window and door installation companies on local search
+engine optimization, including Google Business Profile, website pages, and reviews.
+It is a sister company of RankLogic SEO.
+
+[CONFIRM] The medium description names three services (Google Business Profile,
+website pages, reviews). You did not list services, so delete any that do not apply.

@@ -1,6 +1,6 @@
 # Impact Windows SEO: blog drafts and schema
 
-Twelve posts for impactwindowsseo.com, written for window and door companies, each with BlogPosting, WebPage, BreadcrumbList, FAQPage, and ProfessionalService JSON-LD.
+Thirteen posts for impactwindowsseo.com, written for window and door companies, each with BlogPosting, WebPage, BreadcrumbList, FAQPage, and ProfessionalService JSON-LD.
 
 **Nothing here is published.** Some posts exist as WordPress drafts (see `publish-log.csv`); none are live. A person must review and publish each draft.
 
@@ -26,6 +26,7 @@ Twelve posts for impactwindowsseo.com, written for window and door companies, ea
 | `reply-to-negative-reviews-window-companies.html` | how to respond to negative reviews | not checked** | not checked** | Day 2 |
 | `city-pages-for-window-companies.html` | location pages seo | 480 | 21 | Day 3*** |
 | `call-tracking-for-window-companies.html` | call tracking numbers | 390 | 21 | Day 3*** |
+| `faq-schema-for-contractors.html` | faq schema | 2,400 | 22 | Run 2026-11-12 (2)*** |
 | `schema-sitewide.json` | Organization + WebSite for the homepage | n/a | n/a | |
 
 *Semrush US database, 2026-10-08, monthly estimates.
@@ -75,6 +76,15 @@ SSH to Cloudways is a different path and may not work through the environment's 
 - Drafts alone will not close the gap with competitors that have thousands of linking domains. See `LINK-GAP.md`.
 
 ## Daily run log
+
+**2026-11-12 (second run, unattended).** 1 new post (draft), 1 refresh (draft), 3 backlink targets, 1 outreach draft, 1 GBP post saved. Nothing published live.
+- New: `faq-schema-for-contractors` as WordPress draft 1023. It passed every content gate, but its internal links point to posts that are not live in WordPress, so it was held as a draft. No post on the site is live yet.
+- Refresh: `city-pages-for-window-companies` (draft 1021) updated with question H2s, a direct answer, a Sources section, and a link to the new post.
+- Added `publish_wp.py` (standard library; checks for an existing slug before creating) and `OWNER-INPUT.md` (template, empty).
+- GBP post saved in `gbp-posts/2026-11-12.txt` for manual posting (no GBP API credentials). Do not post until the article is live.
+- Outreach: 1 of 2 drafts (`../impactwindowsseo-backlinks/outreach/2026-11-12.md`); Gmail connector failed, so no Gmail draft.
+- Digest: `digests/2026-11-12-run2.txt` (named to avoid overwriting the first run's digest). Email NOT sent.
+- Full report: `run-reports/2026-11-12.md`.
 
 **2026-11-12 (Day 3).** 2 posts, 5 backlink targets.
 - Tools: Semrush (demand data for both topics), WebSearch, and Firecrawl page reads in place of WebFetch. Google's spam policy page and Business Profile guidelines were opened and quoted directly.

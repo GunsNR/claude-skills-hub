@@ -692,9 +692,10 @@ POSTS = [
         "body": """
 <p>Most window companies work in more than one city, and most want a page for each. The common shortcut is to write one page, copy it, and swap the city name. That shortcut is the problem this guide is about.</p>
 <p>People search for this. Semrush's US data puts "location pages seo" at about 480 searches a month and "local landing pages" at about 390.</p>
-<aside class="iws-tldr"><strong>The short version:</strong> Build a city page only when you have something specific to say about that city: real jobs, local permit steps, the products you install there, and photos. Link every city page from a clear service-area hub. Never mass-produce near-identical pages with a new city name.</aside>
+<aside class="iws-tldr"><strong>Short answer:</strong> A city page should exist only when you have something specific to say about that city: real jobs, local permit steps, the products you install there, and photos. Link each city page from one service-area hub. Google's spam policy lists city-targeted pages that funnel users to one page, and substantially similar pages, as doorway abuse.</aside>
 
-<h2>What Google's spam policy says</h2>
+<h2>Are city pages against Google's spam policies?</h2>
+<p>No, but copy-paste city pages can be. Google's policy targets pages that exist only to catch a search, not pages with real local information.</p>
 <p>Google's spam policies for web search describe "doorway abuse" as sites or pages created to rank for specific, similar search queries that lead users to intermediate pages less useful than the final destination. The examples Google lists include:</p>
 <ul>
 <li>Having multiple domain names or pages targeted at specific regions or cities that funnel users to one page.</li>
@@ -703,10 +704,11 @@ POSTS = [
 <p>The same policy page describes "scaled content abuse": many pages generated mainly to manipulate rankings rather than help users, no matter how they are created. Google says these behaviors can lead to a page or a whole site ranking lower or being left out of results.</p>
 <p>None of that bans city pages. It bans city pages that exist only to catch a search and add nothing.</p>
 
-<h2>The test for every city page</h2>
+<h2>How do you know if a city page is worth publishing?</h2>
 <p>Ask one question: would a homeowner in this city learn something here that they could not learn on your other city pages? If the honest answer is no, do not publish the page yet.</p>
 
-<h2>What a useful city page includes</h2>
+<h2>What should a window company city page include?</h2>
+<p>Local proof and local detail. Each item below should be specific to that city.</p>
 <ul>
 <li><strong>Jobs you actually did there.</strong> Photos of real installs in that city, with a sentence on what the job involved.</li>
 <li><strong>Local permit and inspection steps.</strong> How the process works with that building department, in plain English. Check it with the department before you publish.</li>
@@ -715,7 +717,8 @@ POSTS = [
 <li><strong>A clear next step.</strong> Phone number, estimate form, and honest expectations on timing.</li>
 </ul>
 
-<h2>A simple structure</h2>
+<h2>How should city pages be structured?</h2>
+<p>As a simple hierarchy: one hub page that links to each city page.</p>
 <ol>
 <li><strong>One service-area hub page.</strong> Lists every city you serve and links to each city page.</li>
 <li><strong>One page per city where you have real work to show.</strong> Linked from the hub and from relevant product pages.</li>
@@ -723,7 +726,7 @@ POSTS = [
 </ol>
 <p>That gives homeowners, and Google, a browseable hierarchy instead of a pile of near-duplicates.</p>
 
-<h2>What not to do</h2>
+<h2>What city page mistakes should you avoid?</h2>
 <ul>
 <li>Do not generate dozens of pages from a template and change only the city name.</li>
 <li>Do not create pages for cities you do not actually serve.</li>
@@ -731,11 +734,16 @@ POSTS = [
 <li>Do not use AI or spinning tools to churn out "unique" versions of the same page. Google's policy applies no matter how the pages are made.</li>
 </ul>
 
-<h2>How many city pages to start with</h2>
+<h2>How many city pages should you start with?</h2>
 <p>Start with the cities where you already have the most finished jobs and photos. Add a new city page when you have enough real material to make it useful. Fewer, better pages beat a long list of thin ones.</p>
 
 <h2>Where this fits</h2>
-<p>City pages are step three in our <a href="{{LINK:seo-for-window-companies}}">SEO plan for window companies</a>. Make sure the service area in your <a href="{{LINK:google-business-profile-for-window-companies}}">Google Business Profile</a> matches the cities your pages describe.</p>
+<p>City pages are step three in our <a href="{{LINK:seo-for-window-companies}}">SEO plan for window companies</a>. Make sure the service area in your <a href="{{LINK:google-business-profile-for-window-companies}}">Google Business Profile</a> matches the cities your pages describe. If you add structured data to city pages, keep it accurate and visible on the page; our guide to <a href="{{LINK:faq-schema-for-contractors}}">FAQ schema for contractors</a> explains what changed and what still matters.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://developers.google.com/search/docs/essentials/spam-policies">Google Search Central: Spam policies for Google web search</a> (doorway abuse and scaled content abuse)</li>
+</ul>
 """,
         "faq": [
             ("Are city pages against Google's guidelines?",
@@ -820,6 +828,90 @@ POSTS = [
              "Florida's law makes recording lawful when all parties to the call have given prior consent. Tell callers at the start and ask your attorney how to handle consent properly."),
             ("What should a window company measure with call tracking?",
              "Calls from real prospects, booked estimates, signed jobs, and spend for each source, so you can compare cost per signed job across channels."),
+        ],
+    },
+    # ------------------------------------------------------------------ 13 (Run 2026-11-12, unattended)
+    {
+        "slug": "faq-schema-for-contractors",
+        "date": "2026-11-12",
+        "title": "FAQ Schema for Contractors: What Changed and What to Do Now",
+        "meta": "Google stopped showing FAQ rich results in May 2026. What that means for window and door contractors, what to keep, and which structured data still matters.",
+        "primary_kw": "faq schema",
+        "secondary_kw": ["local business schema", "localbusiness schema", "structured data for contractors"],
+        "alt_titles": [
+            "Is FAQ Schema Still Worth It for Window Companies?",
+            "FAQ Rich Results Are Gone: A Plain Guide for Contractors",
+            "Structured Data for Contractors After the FAQ Rich Result Change",
+        ],
+        "body": """
+<aside class="iws-tldr"><strong>Short answer:</strong> FAQ schema is FAQPage structured data that marks up questions and answers on a page. Google stopped showing FAQ rich results in Search starting May 7, 2026, and removed the feature's documentation. Keep a visible FAQ if it helps homeowners, do not pay for FAQ schema to win rich results, and spend that effort on accurate business details.</aside>
+<p>For years, contractors were told to add FAQ schema so their answers would show as expandable questions under their listing in Google. If someone is still selling you that idea, this guide explains what changed, using Google's own pages.</p>
+<p>The search numbers show the topic is still popular. Semrush's US data puts "faq schema" at about 2,400 searches a month.</p>
+
+<h2>What is FAQ schema?</h2>
+<p>FAQ schema is code, usually JSON-LD, that labels the questions and answers on a page using the FAQPage type. It is invisible to visitors and is read by search engines.</p>
+<p>Structured data in general is a way to describe a page's content in a format machines can read. Google's general structured data guidelines say the markup must be a true representation of the page content.</p>
+
+<h2>Does Google still show FAQ rich results?</h2>
+<p>No. Google's Search Central documentation changelog says the FAQ rich result feature "will no longer appear in Google Search starting May 7, 2026," and a later entry removed the documentation for the feature.</p>
+<p>This was the end of a longer change. In August 2023, Google announced that FAQ rich results would only be shown for well-known, authoritative government and health websites, and would no longer be shown regularly for all other sites. Most contractor sites stopped seeing them then.</p>
+
+<h2>Should a contractor remove FAQ schema from their site?</h2>
+<p>There is no need to rush. In its 2023 announcement, Google said there was no need to proactively remove FAQ structured data, and that structured data that is not being used does not cause problems for Search but also has no visible effects.</p>
+<p>What matters more is whether the questions on the page help a homeowner. A short, honest FAQ that answers what your estimators hear every week is useful to readers with or without markup.</p>
+
+<h2>What structured data still matters for a window company?</h2>
+<p>Local business details. Google's LocalBusiness structured data page says it can tell Google about business hours, departments, and more, and lists these properties:</p>
+<table>
+<thead><tr><th>Property</th><th>Google's label</th><th>What to put in it</th></tr></thead>
+<tbody>
+<tr><td>name</td><td>Required</td><td>Your real business name, exactly as on your signs and Business Profile</td></tr>
+<tr><td>address</td><td>Required</td><td>Your real address, matching your Business Profile</td></tr>
+<tr><td>telephone</td><td>Recommended</td><td>Your main local number</td></tr>
+<tr><td>url</td><td>Recommended</td><td>The page for this location</td></tr>
+<tr><td>openingHoursSpecification</td><td>Recommended</td><td>Real hours only</td></tr>
+<tr><td>geo</td><td>Recommended</td><td>Latitude and longitude of the location</td></tr>
+</tbody>
+</table>
+<p>Google's page also lists review and rating properties, and describes review markup for sites that capture reviews about other businesses. Do not add rating or review markup for your own company unless you have confirmed it fits Google's current rules.</p>
+
+<h2>What rules apply to any structured data?</h2>
+<p>Google's general structured data guidelines say:</p>
+<ol>
+<li>Your structured data must be a true representation of the page content.</li>
+<li>Do not mark up content that is not visible to readers of the page.</li>
+<li>Do not mark up irrelevant or misleading content, such as fake reviews.</li>
+<li>Do not use structured data to deceive or mislead users.</li>
+<li>Provide up-to-date information.</li>
+</ol>
+<p>The same page says a structured data issue can lead to a manual action. A structured data manual action means the page loses eligibility to appear as a rich result; Google says it does not affect how the page ranks in web search.</p>
+
+<h2>What should you ask an agency that sells schema?</h2>
+<ul>
+<li>Which rich result is this markup for, and is it still listed in Google's current documentation?</li>
+<li>Does every marked-up item appear on the visible page?</li>
+<li>Do the name, address, and phone in the markup match the Business Profile exactly?</li>
+<li>Is any review or rating markup included, and why does it fit Google's rules?</li>
+</ul>
+<p>If the answers are vague, put the budget into work homeowners can see: a complete <a href="{{LINK:google-business-profile-for-window-companies}}">Google Business Profile</a> and useful <a href="{{LINK:city-pages-for-window-companies}}">city pages</a>. For more questions to ask before you hire, see <a href="{{LINK:how-to-hire-seo-agency-for-window-company}}">9 questions to ask an SEO agency</a>.</p>
+
+<h2>Sources</h2>
+<ul>
+<li><a href="https://developers.google.com/search/updates">Google Search Central: Latest documentation updates</a> (entries "Deprecating the FAQ rich result feature" and "Removing documentation for the FAQ rich result feature")</li>
+<li><a href="https://developers.google.com/search/blog/2023/08/howto-faq-changes">Google Search Central Blog: Changes to HowTo and FAQ rich results (August 8, 2023)</a></li>
+<li><a href="https://developers.google.com/search/docs/appearance/structured-data/local-business">Google Search Central: Local Business (LocalBusiness) structured data</a></li>
+<li><a href="https://developers.google.com/search/docs/appearance/structured-data/sd-policies">Google Search Central: General structured data guidelines</a></li>
+</ul>
+""",
+        "faq": [
+            ("Does Google still show FAQ rich results in 2026?",
+             "No. Google's documentation changelog says the FAQ rich result feature no longer appears in Google Search starting May 7, 2026, and Google has removed the feature's documentation."),
+            ("Will FAQ schema hurt my contractor website?",
+             "In 2023 Google said structured data that is not being used does not cause problems for Search and that there is no need to proactively remove FAQ markup. It also has no visible effect in results."),
+            ("Should I still have an FAQ section on my pages?",
+             "Yes, if it answers questions homeowners actually ask. A visible FAQ helps readers whether or not it is marked up."),
+            ("What structured data should a window company use?",
+             "LocalBusiness markup with accurate name and address, plus recommended details such as telephone, url, and opening hours, all matching your Google Business Profile. Follow Google's general structured data guidelines."),
         ],
     },
 ]

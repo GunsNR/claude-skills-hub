@@ -1,3 +1,5 @@
 date,slug,wp_post_id,status,check1_accuracy,check2_technical,check3_engagement,live_url,notes
 2026-11-12,city-pages-for-window-companies,1021,draft,pending,pending,pending,,created via REST API; edit https://impactwindowsseo.com/wp-admin/post.php?post=1021&action=edit
 2026-11-12,call-tracking-for-window-companies,1022,draft,pending,pending,pending,,created via REST API; edit https://impactwindowsseo.com/wp-admin/post.php?post=1022&action=edit; Florida recording claim starred
+2026-11-12,faq-schema-for-contractors,1023,draft,pass,pass,FAIL: internal link targets not live,,run 2: gate passed except internal links point to posts not yet published (would 404); build pass; no starred claims; no legal claims
+2026-11-12,city-pages-for-window-companies,1021,draft (updated),pass,pass,FAIL: internal link targets not live,,run 2 refresh: question H2s; direct answer; Sources section; link to faq-schema post; status kept draft
