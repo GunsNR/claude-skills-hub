@@ -13,3 +13,16 @@ date,slug,wp_post_id,status,check1_accuracy,check2_technical,check3_engagement,l
 2026-11-12,reply-to-negative-reviews-window-companies,1032,draft,pending,pending,pending,,backfill: created as draft via publish_wp.py; edit https://impactwindowsseo.com/wp-admin/post.php?post=1032&action=edit
 2026-11-12,product-approvals-impact-window-pages,1014,draft,pending,pending,pending,,backfill: pre-existing draft found (never logged before); not changed
 2026-11-12,wind-mitigation-inspection-window-companies,1016,draft,pending,pending,pending,,backfill: pre-existing draft found (never logged before); not changed
+2026-11-12,city-pages-for-window-companies,1021,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
+2026-11-12,call-tracking-for-window-companies,1022,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
+2026-11-12,faq-schema-for-contractors,1023,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
+2026-11-12,seo-for-window-companies,1025,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
+2026-11-12,window-replacement-leads,1026,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
+2026-11-12,local-seo-for-contractors,1027,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
+2026-11-12,google-business-profile-for-window-companies,1028,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
+2026-11-12,impact-window-marketing-florida,1029,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
+2026-11-12,how-to-hire-seo-agency-for-window-company,1030,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
+2026-11-12,google-review-request-wording-window-companies,1031,publish,,,,https://impactwindowsseo.com/google-review-request-wording-window-companies/,redesign update via publish_wp.py --update; status kept (publish)
+2026-11-12,reply-to-negative-reviews-window-companies,1032,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
+2026-11-12,product-approvals-impact-window-pages,1014,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
+2026-11-12,wind-mitigation-inspection-window-companies,1016,draft,,,,,redesign update via publish_wp.py --update; status kept (draft)
