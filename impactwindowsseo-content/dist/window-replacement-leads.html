@@ -1,21 +1,85 @@
 <style>
-.iws-tldr{background:#f3f6fa;border-left:4px solid #0b5cab;padding:14px 18px;margin:24px 0;border-radius:4px}
-.iws-cta{background:#0b2545;color:#fff;padding:28px;border-radius:8px;margin:40px 0;text-align:center}
+article.iws-post{--ink:#0e1726;--muted:#5b6678;--line:#e3e8ef;--navy:#0b2545;--blue:#1565d8;--accent:#ff7a3d;--soft:#f5f8fc;
+  max-width:760px;margin:0 auto;color:var(--ink);font-size:18px;line-height:1.7;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+article.iws-post *{box-sizing:border-box}
+article.iws-post p,article.iws-post li{color:var(--ink)}
+article.iws-post a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+article.iws-post a:hover{text-decoration-thickness:2px}
+.iws-progress{position:fixed;top:0;left:0;right:0;height:4px;z-index:9999;background:transparent;pointer-events:none}
+.iws-progress span{display:block;height:4px;background:linear-gradient(90deg,var(--blue),var(--accent));transform:scaleX(0);transform-origin:0 50%}
+.iws-hero{padding:8px 0 28px;border-bottom:1px solid var(--line);margin-bottom:32px}
+.iws-kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:#e8f0fd;padding:6px 12px;border-radius:999px;margin-bottom:16px}
+article.iws-post h1{font-size:clamp(32px,5vw,46px);line-height:1.12;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);font-weight:800}
+.iws-meta{color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:6px 18px}
+article.iws-post h2{font-size:clamp(24px,3.4vw,30px);line-height:1.25;letter-spacing:-.01em;color:var(--navy);margin:48px 0 14px;font-weight:750;scroll-margin-top:80px}
+article.iws-post h2::before{content:"";display:block;width:44px;height:4px;border-radius:4px;background:var(--accent);margin-bottom:14px}
+article.iws-post h3{font-size:20px;color:var(--navy);margin:28px 0 8px}
+article.iws-post ul,article.iws-post ol{padding-left:1.3em}
+article.iws-post li{margin:6px 0}
+article.iws-post li::marker{color:var(--blue);font-weight:700}
+.iws-tldr{display:block;position:relative;background:var(--soft);border:1px solid #d6e3f7;border-radius:16px;padding:22px 24px 22px 26px;margin:28px 0;box-shadow:0 1px 0 rgba(14,23,38,.03),0 12px 32px -18px rgba(21,101,216,.35)}
+.iws-tldr::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:4px;border-radius:4px;background:linear-gradient(var(--blue),var(--accent))}
+.iws-tldr strong:first-child{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.iws-toc{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:8px 0 8px;background:#fff}
+.iws-toc b{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.iws-toc ol{margin:0;padding-left:1.2em;display:grid;grid-template-columns:1fr 1fr;gap:2px 32px}
+.iws-toc li{font-size:15.5px;margin:4px 0}
+.iws-toc a{text-decoration:none}
+article.iws-post table{border-collapse:separate;border-spacing:0;width:100%;margin:24px 0;font-size:16px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+article.iws-post th{background:var(--navy);color:#fff;text-align:left;padding:12px 14px;font-weight:650}
+article.iws-post td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+article.iws-post tr:nth-child(even) td{background:var(--soft)}
+.iws-figure{margin:28px 0}
+.iws-figure img{width:100%;height:auto;border-radius:16px;display:block;box-shadow:0 18px 40px -24px rgba(14,23,38,.45)}
+.iws-figure figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.iws-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:28px 0;background:#fff;box-shadow:0 24px 48px -30px rgba(14,23,38,.4)}
+.iws-card-top{height:96px;background:linear-gradient(135deg,#dfe9f8,#f6efe9)}
+.iws-card-body{padding:18px 22px 20px}
+.iws-card-name{font-size:22px;font-weight:750;color:var(--navy);margin:0}
+.iws-card-cat{color:var(--muted);font-size:15px;margin:2px 0 14px}
+.iws-card-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.iws-card-actions span{border:1px solid #c9d6ea;color:var(--blue);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
+.iws-card-rows{display:grid;gap:8px;font-size:15px}
+.iws-card-rows div{display:flex;gap:10px}
+.iws-card-rows i{font-style:normal;color:var(--muted);min-width:96px}
+.iws-card-note{font-size:13px;color:var(--muted);padding:10px 22px;border-top:1px solid var(--line);background:var(--soft)}
+.iws-faq{margin-top:48px}
+.iws-faq details{border:1px solid var(--line);border-radius:14px;padding:4px 18px;margin:10px 0;background:#fff;transition:box-shadow .2s}
+.iws-faq details[open]{box-shadow:0 14px 30px -22px rgba(14,23,38,.45)}
+.iws-faq summary{cursor:pointer;list-style:none;font-weight:650;color:var(--navy);padding:14px 28px 14px 0;position:relative}
+.iws-faq summary::-webkit-details-marker{display:none}
+.iws-faq summary::after{content:"+";position:absolute;right:0;top:10px;font-size:24px;color:var(--blue);transition:transform .2s}
+.iws-faq details[open] summary::after{transform:rotate(45deg)}
+.iws-faq details p{margin:0 0 16px;color:var(--muted)}
+.iws-sources{font-size:15px;background:var(--soft);border-radius:14px;padding:16px 20px 16px 2.2em}
+.iws-cta{position:relative;overflow:hidden;background:radial-gradient(120% 140% at 0% 0%,#1d4f9a 0%,var(--navy) 55%);color:#fff;padding:40px 32px;border-radius:22px;margin:56px 0 24px;text-align:center}
+.iws-cta::after{content:"";position:absolute;width:260px;height:260px;right:-80px;top:-80px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,61,.45),transparent 70%)}
 .iws-cta h2{color:#fff;margin-top:0}
-.iws-cta a.iws-btn{display:inline-block;background:#ff7a3d;color:#fff;padding:14px 26px;border-radius:999px;font-weight:700;text-decoration:none;margin:8px 0}
+.iws-cta h2::before{margin-left:auto;margin-right:auto}
+.iws-cta p{color:#dbe6f5;position:relative;z-index:1}
+.iws-cta a.iws-btn{display:inline-block;background:var(--accent);color:#fff;padding:15px 30px;border-radius:999px;font-weight:750;text-decoration:none;margin:10px 0;box-shadow:0 12px 26px -12px rgba(255,122,61,.9);transition:transform .2s,box-shadow .2s}
+.iws-cta a.iws-btn:hover{transform:translateY(-2px);box-shadow:0 18px 30px -12px rgba(255,122,61,.95)}
 .iws-cta a.iws-tel{color:#fff;font-weight:700}
-.iws-faq h3{margin-bottom:4px}
-.iws-faq p{margin-top:0}
-article.iws-post table{border-collapse:collapse;width:100%;margin:20px 0}
-article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;text-align:left}
+.iws-js .iws-reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.iws-js .iws-reveal.is-in{opacity:1;transform:none}
+@media (max-width:640px){article.iws-post{font-size:17px}.iws-toc ol{grid-template-columns:1fr}.iws-cta{padding:32px 20px}article.iws-post table{display:block;overflow-x:auto}}
+@media (prefers-reduced-motion:reduce){.iws-js .iws-reveal{opacity:1;transform:none;transition:none}.iws-progress{display:none}}
 </style>
 <article class="iws-post">
+<div class="iws-progress" aria-hidden="true"><span></span></div>
+<header class="iws-hero">
+<span class="iws-kicker">Window company marketing</span>
 <h1>Window Replacement Leads: Rent Them or Own Them?</h1>
+<div class="iws-meta"><span>By Impact Windows SEO</span><span>Updated October 8, 2026</span><span>2 min read</span></div>
+</header>
 <p>Search "window replacement leads" and you land in a wall of lead vendors. Semrush's US data shows advertisers paying an average of about $22.57 a click on that phrase and about $30.60 a click on "window replacement near me." Those are market estimates, but they show that other companies think your customers are worth bidding for.</p>
 <p>The question is whether you want to keep renting access to them.</p>
 <aside class="iws-tldr"><strong>The short version:</strong> Paid leads and ads usually bring calls faster, and they stop when you stop paying. Organic search usually takes longer and has no per-lead fee. Track cost per signed job for each channel and let the numbers decide.</aside>
 
-<h2>What renting leads costs</h2>
+<nav class="iws-toc" aria-label="In this guide"><b>In this guide</b><ol><li><a href="#what-renting-leads-costs">What renting leads costs</a></li><li><a href="#do-the-math-with-your-own-numbers">Do the math with your own numbers</a></li><li><a href="#what-owning-leads-looks-like">What owning leads looks like</a></li><li><a href="#when-renting-still-makes-sense">When renting still makes sense</a></li><li><a href="#a-sane-way-to-shift-budget">A sane way to shift budget</a></li></ol></nav>
+<section class="iws-reveal">
+<h2 id="what-renting-leads-costs">What renting leads costs</h2>
 <p>There are two common ways to rent customers:</p>
 <ul>
 <li><strong>Shared lead sites.</strong> The same homeowner request goes to more than one contractor. You race to call first and quote best.</li>
@@ -23,12 +87,16 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 </ul>
 <p>Neither one is wrong. Both share one trait: when you stop paying, the leads and clicks stop.</p>
 
-<h2>Do the math with your own numbers</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="do-the-math-with-your-own-numbers">Do the math with your own numbers</h2>
 <p>Cost per lead is the wrong number. The number that matters is cost per signed job:</p>
 <p><strong>Cost per signed job = what you spent on the channel &divide; jobs you signed from it</strong></p>
 <p>Here is an illustration with made-up numbers, not a benchmark. Say you spend $3,000 and get 40 leads. Twelve become booked estimates and four become signed jobs. That is $750 per signed job in lead cost alone, before your estimator's time and drive. Your own numbers will differ, which is the point. Run them.</p>
 
-<h2>What owning leads looks like</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="what-owning-leads-looks-like">What owning leads looks like</h2>
 <p>Owning leads means showing up in the map results and on page one when a homeowner searches, so they call your business directly. You still compete with other companies for those positions, but there is no per-lead fee.</p>
 <table>
 <thead><tr><th>&nbsp;</th><th>Renting (leads, ads)</th><th>Owning (organic search)</th></tr></thead>
@@ -40,14 +108,18 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 </tbody>
 </table>
 
-<h2>When renting still makes sense</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="when-renting-still-makes-sense">When renting still makes sense</h2>
 <ul>
 <li>You are entering a new city and have no reviews yet.</li>
 <li>Your crew has open capacity this month.</li>
 <li>You need calls while your <a href="https://impactwindowsseo.com/seo-for-window-companies/">SEO work</a> builds.</li>
 </ul>
 
-<h2>A sane way to shift budget</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="a-sane-way-to-shift-budget">A sane way to shift budget</h2>
 <ol>
 <li>Give every channel its own tracking phone number and form.</li>
 <li>For 90 days, record leads, booked estimates, and signed jobs per channel.</li>
@@ -55,19 +127,20 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 <li>Move budget toward the channels that win, a little at a time.</li>
 </ol>
 <p>Ask every lead vendor for their lead-to-signed rate for window companies in your area. If they cannot give you one, you now know how much they track.</p>
-<p>Thinking about hiring help? Read <a href="https://impactwindowsseo.com/how-to-hire-seo-agency-for-window-company/">9 questions to ask before you hire an SEO agency</a>.</p>
-<section class="iws-faq">
-<h2>Frequently asked questions</h2>
-<h3>Are shared window replacement leads worth buying?</h3>
-<p>It depends on your cost per signed job. Shared leads go to more than one contractor, so you are racing others for the same homeowner. Track spend against signed jobs for 90 days before deciding.</p>
-<h3>Can SEO replace paid leads for a window company?</h3>
-<p>For some companies it can reduce reliance on paid leads, but results depend on your market and the work done. SEO builds slowly, so many companies keep a smaller paid budget while organic rankings and reviews grow.</p>
-<h3>How do I know if a lead is exclusive?</h3>
-<p>Ask the vendor in writing how many contractors receive each lead. If the answer is more than one, it is a shared lead.</p>
-<h3>How much does a window replacement lead cost?</h3>
-<p>Prices vary by market and vendor. Semrush&#x27;s US data shows advertisers averaging about $22.57 per click on the phrase &#x27;window replacement leads.&#x27; A click is not yet a lead, so your cost per signed job will be higher than the cost per click.</p>
+<p>Thinking about hiring help? Read <a href="https://impactwindowsseo.com/how-to-hire-seo-agency-for-window-company/">9 questions to ask before you hire an SEO agency</a>.</p></section>
+
+<section class="iws-faq iws-reveal">
+<h2 id="faq">Frequently asked questions</h2>
+<details open><summary>Are shared window replacement leads worth buying?</summary>
+<p>It depends on your cost per signed job. Shared leads go to more than one contractor, so you are racing others for the same homeowner. Track spend against signed jobs for 90 days before deciding.</p></details>
+<details><summary>Can SEO replace paid leads for a window company?</summary>
+<p>For some companies it can reduce reliance on paid leads, but results depend on your market and the work done. SEO builds slowly, so many companies keep a smaller paid budget while organic rankings and reviews grow.</p></details>
+<details><summary>How do I know if a lead is exclusive?</summary>
+<p>Ask the vendor in writing how many contractors receive each lead. If the answer is more than one, it is a shared lead.</p></details>
+<details><summary>How much does a window replacement lead cost?</summary>
+<p>Prices vary by market and vendor. Semrush&#x27;s US data shows advertisers averaging about $22.57 per click on the phrase &#x27;window replacement leads.&#x27; A click is not yet a lead, so your cost per signed job will be higher than the cost per click.</p></details>
 </section>
-<section class="iws-cta">
+<section class="iws-cta iws-reveal">
 <h2>Want to see where your window company stands?</h2>
 <p>Request a free SEO audit. We review your Google Business Profile, your website, and your top local competitors, then send you a written report.</p>
 <p><a class="iws-btn" href="https://impactwindowsseo.com/contact/">Request my free audit</a></p>
@@ -75,6 +148,20 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 <p>Impact Windows SEO &middot; 5840 Lakeshore Drive, Fort Lauderdale, FL 33312</p>
 </section>
 </article>
+<script>
+(function(){
+  var a=document.querySelector('article.iws-post'); if(!a) return;
+  a.classList.add('iws-js');
+  var items=a.querySelectorAll('.iws-reveal');
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(still||!('IntersectionObserver' in window)){for(var i=0;i<items.length;i++){items[i].classList.add('is-in');}}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+    for(var j=0;j<items.length;j++){io.observe(items[j]);}}
+  var bar=a.querySelector('.iws-progress span');
+  function prog(){if(!bar)return;var r=a.getBoundingClientRect();var h=r.height-window.innerHeight;var v=h>0?Math.min(1,Math.max(0,-r.top/h)):1;bar.style.transform='scaleX('+v+')';}
+  window.addEventListener('scroll',prog,{passive:true}); prog();
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

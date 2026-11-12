@@ -240,6 +240,7 @@ POSTS = [
 <p>When a homeowner searches for a window installer, your Google Business Profile is often one of the first things they see. It can show your reviews, photos, hours, and a button that calls you.</p>
 <p>Some profiles stop at the name and phone number. Use this checklist to finish the job.</p>
 <aside class="iws-tldr"><strong>The short version:</strong> Complete every field honestly, show real work, collect reviews steadily, and avoid the handful of mistakes that break Google's guidelines.</aside>
+{{PROFILE_CARD}}
 
 <h2>The checklist</h2>
 <h3>Basics</h3>

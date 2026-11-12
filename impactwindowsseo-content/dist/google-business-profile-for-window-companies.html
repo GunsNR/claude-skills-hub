@@ -1,21 +1,101 @@
 <style>
-.iws-tldr{background:#f3f6fa;border-left:4px solid #0b5cab;padding:14px 18px;margin:24px 0;border-radius:4px}
-.iws-cta{background:#0b2545;color:#fff;padding:28px;border-radius:8px;margin:40px 0;text-align:center}
+article.iws-post{--ink:#0e1726;--muted:#5b6678;--line:#e3e8ef;--navy:#0b2545;--blue:#1565d8;--accent:#ff7a3d;--soft:#f5f8fc;
+  max-width:760px;margin:0 auto;color:var(--ink);font-size:18px;line-height:1.7;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+article.iws-post *{box-sizing:border-box}
+article.iws-post p,article.iws-post li{color:var(--ink)}
+article.iws-post a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+article.iws-post a:hover{text-decoration-thickness:2px}
+.iws-progress{position:fixed;top:0;left:0;right:0;height:4px;z-index:9999;background:transparent;pointer-events:none}
+.iws-progress span{display:block;height:4px;background:linear-gradient(90deg,var(--blue),var(--accent));transform:scaleX(0);transform-origin:0 50%}
+.iws-hero{padding:8px 0 28px;border-bottom:1px solid var(--line);margin-bottom:32px}
+.iws-kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:#e8f0fd;padding:6px 12px;border-radius:999px;margin-bottom:16px}
+article.iws-post h1{font-size:clamp(32px,5vw,46px);line-height:1.12;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);font-weight:800}
+.iws-meta{color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:6px 18px}
+article.iws-post h2{font-size:clamp(24px,3.4vw,30px);line-height:1.25;letter-spacing:-.01em;color:var(--navy);margin:48px 0 14px;font-weight:750;scroll-margin-top:80px}
+article.iws-post h2::before{content:"";display:block;width:44px;height:4px;border-radius:4px;background:var(--accent);margin-bottom:14px}
+article.iws-post h3{font-size:20px;color:var(--navy);margin:28px 0 8px}
+article.iws-post ul,article.iws-post ol{padding-left:1.3em}
+article.iws-post li{margin:6px 0}
+article.iws-post li::marker{color:var(--blue);font-weight:700}
+.iws-tldr{display:block;position:relative;background:var(--soft);border:1px solid #d6e3f7;border-radius:16px;padding:22px 24px 22px 26px;margin:28px 0;box-shadow:0 1px 0 rgba(14,23,38,.03),0 12px 32px -18px rgba(21,101,216,.35)}
+.iws-tldr::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:4px;border-radius:4px;background:linear-gradient(var(--blue),var(--accent))}
+.iws-tldr strong:first-child{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.iws-toc{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:8px 0 8px;background:#fff}
+.iws-toc b{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.iws-toc ol{margin:0;padding-left:1.2em;display:grid;grid-template-columns:1fr 1fr;gap:2px 32px}
+.iws-toc li{font-size:15.5px;margin:4px 0}
+.iws-toc a{text-decoration:none}
+article.iws-post table{border-collapse:separate;border-spacing:0;width:100%;margin:24px 0;font-size:16px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+article.iws-post th{background:var(--navy);color:#fff;text-align:left;padding:12px 14px;font-weight:650}
+article.iws-post td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+article.iws-post tr:nth-child(even) td{background:var(--soft)}
+.iws-figure{margin:28px 0}
+.iws-figure img{width:100%;height:auto;border-radius:16px;display:block;box-shadow:0 18px 40px -24px rgba(14,23,38,.45)}
+.iws-figure figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.iws-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:28px 0;background:#fff;box-shadow:0 24px 48px -30px rgba(14,23,38,.4)}
+.iws-card-top{height:96px;background:linear-gradient(135deg,#dfe9f8,#f6efe9)}
+.iws-card-body{padding:18px 22px 20px}
+.iws-card-name{font-size:22px;font-weight:750;color:var(--navy);margin:0}
+.iws-card-cat{color:var(--muted);font-size:15px;margin:2px 0 14px}
+.iws-card-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.iws-card-actions span{border:1px solid #c9d6ea;color:var(--blue);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
+.iws-card-rows{display:grid;gap:8px;font-size:15px}
+.iws-card-rows div{display:flex;gap:10px}
+.iws-card-rows i{font-style:normal;color:var(--muted);min-width:96px}
+.iws-card-note{font-size:13px;color:var(--muted);padding:10px 22px;border-top:1px solid var(--line);background:var(--soft)}
+.iws-faq{margin-top:48px}
+.iws-faq details{border:1px solid var(--line);border-radius:14px;padding:4px 18px;margin:10px 0;background:#fff;transition:box-shadow .2s}
+.iws-faq details[open]{box-shadow:0 14px 30px -22px rgba(14,23,38,.45)}
+.iws-faq summary{cursor:pointer;list-style:none;font-weight:650;color:var(--navy);padding:14px 28px 14px 0;position:relative}
+.iws-faq summary::-webkit-details-marker{display:none}
+.iws-faq summary::after{content:"+";position:absolute;right:0;top:10px;font-size:24px;color:var(--blue);transition:transform .2s}
+.iws-faq details[open] summary::after{transform:rotate(45deg)}
+.iws-faq details p{margin:0 0 16px;color:var(--muted)}
+.iws-sources{font-size:15px;background:var(--soft);border-radius:14px;padding:16px 20px 16px 2.2em}
+.iws-cta{position:relative;overflow:hidden;background:radial-gradient(120% 140% at 0% 0%,#1d4f9a 0%,var(--navy) 55%);color:#fff;padding:40px 32px;border-radius:22px;margin:56px 0 24px;text-align:center}
+.iws-cta::after{content:"";position:absolute;width:260px;height:260px;right:-80px;top:-80px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,61,.45),transparent 70%)}
 .iws-cta h2{color:#fff;margin-top:0}
-.iws-cta a.iws-btn{display:inline-block;background:#ff7a3d;color:#fff;padding:14px 26px;border-radius:999px;font-weight:700;text-decoration:none;margin:8px 0}
+.iws-cta h2::before{margin-left:auto;margin-right:auto}
+.iws-cta p{color:#dbe6f5;position:relative;z-index:1}
+.iws-cta a.iws-btn{display:inline-block;background:var(--accent);color:#fff;padding:15px 30px;border-radius:999px;font-weight:750;text-decoration:none;margin:10px 0;box-shadow:0 12px 26px -12px rgba(255,122,61,.9);transition:transform .2s,box-shadow .2s}
+.iws-cta a.iws-btn:hover{transform:translateY(-2px);box-shadow:0 18px 30px -12px rgba(255,122,61,.95)}
 .iws-cta a.iws-tel{color:#fff;font-weight:700}
-.iws-faq h3{margin-bottom:4px}
-.iws-faq p{margin-top:0}
-article.iws-post table{border-collapse:collapse;width:100%;margin:20px 0}
-article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;text-align:left}
+.iws-js .iws-reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.iws-js .iws-reveal.is-in{opacity:1;transform:none}
+@media (max-width:640px){article.iws-post{font-size:17px}.iws-toc ol{grid-template-columns:1fr}.iws-cta{padding:32px 20px}article.iws-post table{display:block;overflow-x:auto}}
+@media (prefers-reduced-motion:reduce){.iws-js .iws-reveal{opacity:1;transform:none;transition:none}.iws-progress{display:none}}
 </style>
 <article class="iws-post">
+<div class="iws-progress" aria-hidden="true"><span></span></div>
+<header class="iws-hero">
+<span class="iws-kicker">Window company marketing</span>
 <h1>Google Business Profile for Window Companies: A Checklist</h1>
+<div class="iws-meta"><span>By Impact Windows SEO</span><span>Updated October 8, 2026</span><span>2 min read</span></div>
+</header>
 <p>When a homeowner searches for a window installer, your Google Business Profile is often one of the first things they see. It can show your reviews, photos, hours, and a button that calls you.</p>
 <p>Some profiles stop at the name and phone number. Use this checklist to finish the job.</p>
 <aside class="iws-tldr"><strong>The short version:</strong> Complete every field honestly, show real work, collect reviews steadily, and avoid the handful of mistakes that break Google's guidelines.</aside>
+<figure class="iws-card iws-reveal" aria-label="Illustration of the main parts of a business profile">
+<div class="iws-card-top"></div>
+<div class="iws-card-body">
+<p class="iws-card-name">Your Window Company</p>
+<p class="iws-card-cat">Primary category &middot; Fort Lauderdale, FL</p>
+<div class="iws-card-actions"><span>Website</span><span>Directions</span><span>Call</span><span>Save</span></div>
+<div class="iws-card-rows">
+<div><i>Address</i><span>Your real street address, or a service area</span></div>
+<div><i>Hours</i><span>Your real opening hours</span></div>
+<div><i>Phone</i><span>Your main local number</span></div>
+<div><i>Services</i><span>Every product you install, each described</span></div>
+<div><i>Photos</i><span>Your own install, crew, and truck photos</span></div>
+</div>
+</div>
+<figcaption class="iws-card-note">Illustration of the parts of a business profile. Not a screenshot of Google.</figcaption>
+</figure>
 
-<h2>The checklist</h2>
+<nav class="iws-toc" aria-label="In this guide"><b>In this guide</b><ol><li><a href="#the-checklist">The checklist</a></li><li><a href="#mistakes-that-break-google-s-guidelines">Mistakes that break Google&#x27;s guidelines</a></li><li><a href="#a-15-minute-weekly-routine">A 15-minute weekly routine</a></li></ol></nav>
+<section class="iws-reveal">
+<h2 id="the-checklist">The checklist</h2>
 <h3>Basics</h3>
 <ul>
 <li><strong>Business name:</strong> the real-world name you use on your signs, website, and paperwork. Google's guidelines say not to add taglines, phone numbers, URLs, or other extra descriptors.</li>
@@ -48,7 +128,9 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 <li>Keep products, services, and hours current.</li>
 </ul>
 
-<h2>Mistakes that break Google's guidelines</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="mistakes-that-break-google-s-guidelines">Mistakes that break Google's guidelines</h2>
 <ul>
 <li><strong>Extra words in the business name.</strong> Google's guidelines say unnecessary information in the name can lead to suspension.</li>
 <li><strong>A virtual office or mailbox as your address.</strong> Google says a rented mailing address where you do not operate is not eligible.</li>
@@ -57,26 +139,29 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 </ul>
 <p>Google updates its guidelines, so check the current version in Business Profile Help before making big changes.</p>
 
-<h2>A 15-minute weekly routine</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="a-15-minute-weekly-routine">A 15-minute weekly routine</h2>
 <ol>
 <li>Upload two or three new job photos.</li>
 <li>Reply to any new reviews.</li>
 <li>Send review requests for jobs signed off this week.</li>
 <li>Check calls and direction taps in the profile insights.</li>
 </ol>
-<p>The profile is step one of a larger plan. See how it fits in <a href="https://impactwindowsseo.com/local-seo-for-contractors/">the 90-day local SEO plan</a> and in <a href="https://impactwindowsseo.com/seo-for-window-companies/">SEO for window companies</a>.</p>
-<section class="iws-faq">
-<h2>Frequently asked questions</h2>
-<h3>How many categories can a Google Business Profile have?</h3>
-<p>You choose one primary category and can add secondary ones. Add every secondary category that truly describes work you do, and skip the rest. The category list in your dashboard shows the current options.</p>
-<h3>Can a window company use a Business Profile without a storefront?</h3>
-<p>Yes, if it serves customers at their locations. Google lets service-area businesses hide their street address and list the areas they serve.</p>
-<h3>How often should I post on my Google Business Profile?</h3>
-<p>Regularly. A photo of a finished job with one or two sentences is enough. Pick a schedule you can keep.</p>
-<h3>What can get a Google Business Profile suspended?</h3>
-<p>Google&#x27;s guidelines say extra descriptors in the business name can lead to suspension, and they also prohibit virtual-office addresses, duplicate profiles, and incentivized reviews. Read the current guidelines in Business Profile Help for the full list.</p>
+<p>The profile is step one of a larger plan. See how it fits in <a href="https://impactwindowsseo.com/local-seo-for-contractors/">the 90-day local SEO plan</a> and in <a href="https://impactwindowsseo.com/seo-for-window-companies/">SEO for window companies</a>.</p></section>
+
+<section class="iws-faq iws-reveal">
+<h2 id="faq">Frequently asked questions</h2>
+<details open><summary>How many categories can a Google Business Profile have?</summary>
+<p>You choose one primary category and can add secondary ones. Add every secondary category that truly describes work you do, and skip the rest. The category list in your dashboard shows the current options.</p></details>
+<details><summary>Can a window company use a Business Profile without a storefront?</summary>
+<p>Yes, if it serves customers at their locations. Google lets service-area businesses hide their street address and list the areas they serve.</p></details>
+<details><summary>How often should I post on my Google Business Profile?</summary>
+<p>Regularly. A photo of a finished job with one or two sentences is enough. Pick a schedule you can keep.</p></details>
+<details><summary>What can get a Google Business Profile suspended?</summary>
+<p>Google&#x27;s guidelines say extra descriptors in the business name can lead to suspension, and they also prohibit virtual-office addresses, duplicate profiles, and incentivized reviews. Read the current guidelines in Business Profile Help for the full list.</p></details>
 </section>
-<section class="iws-cta">
+<section class="iws-cta iws-reveal">
 <h2>Want to see where your window company stands?</h2>
 <p>Request a free SEO audit. We review your Google Business Profile, your website, and your top local competitors, then send you a written report.</p>
 <p><a class="iws-btn" href="https://impactwindowsseo.com/contact/">Request my free audit</a></p>
@@ -84,6 +169,20 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 <p>Impact Windows SEO &middot; 5840 Lakeshore Drive, Fort Lauderdale, FL 33312</p>
 </section>
 </article>
+<script>
+(function(){
+  var a=document.querySelector('article.iws-post'); if(!a) return;
+  a.classList.add('iws-js');
+  var items=a.querySelectorAll('.iws-reveal');
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(still||!('IntersectionObserver' in window)){for(var i=0;i<items.length;i++){items[i].classList.add('is-in');}}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+    for(var j=0;j<items.length;j++){io.observe(items[j]);}}
+  var bar=a.querySelector('.iws-progress span');
+  function prog(){if(!bar)return;var r=a.getBoundingClientRect();var h=r.height-window.innerHeight;var v=h>0?Math.min(1,Math.max(0,-r.top/h)):1;bar.style.transform='scaleX('+v+')';}
+  window.addEventListener('scroll',prog,{passive:true}); prog();
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

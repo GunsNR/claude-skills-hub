@@ -35,6 +35,16 @@ Thirteen posts for impactwindowsseo.com, written for window and door companies, 
 
 ***Semrush US database, 2026-11-12.
 
+## Blog design (2026-11-12)
+
+`build.py` now outputs a styled post: hero with kicker, date and reading time; a reading progress bar; a contents box; fade-in sections as you scroll; FAQ accordions; a styled Sources list and CTA. Everything is scoped to `article.iws-post`, so it does not restyle the theme.
+
+- **Animation is progressive.** Content is fully visible if the script is stripped, and motion turns off for visitors who set "reduce motion".
+- **Images:** add `"images": [{"src": ..., "alt": ..., "caption": ...}]` to a post and place `{{IMAGE:1}}` in the body. Use only your own photos, or illustrations clearly labeled as such.
+- **`{{PROFILE_CARD}}`** inserts a labeled illustration of the parts of a business profile. It has no Google logo and no star rating on purpose.
+- **Optional `"kicker"`** sets the small label above the title (default "Window company marketing").
+- WordPress must allow the `<script>` in a Custom HTML block (administrators can by default). Without it, posts still display, just without animation.
+
 ## To publish each post
 
 1. In WordPress, create a post. Set the slug to the file name without `.html`.

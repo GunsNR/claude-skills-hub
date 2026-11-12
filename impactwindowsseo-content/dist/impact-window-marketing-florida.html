@@ -1,21 +1,85 @@
 <style>
-.iws-tldr{background:#f3f6fa;border-left:4px solid #0b5cab;padding:14px 18px;margin:24px 0;border-radius:4px}
-.iws-cta{background:#0b2545;color:#fff;padding:28px;border-radius:8px;margin:40px 0;text-align:center}
+article.iws-post{--ink:#0e1726;--muted:#5b6678;--line:#e3e8ef;--navy:#0b2545;--blue:#1565d8;--accent:#ff7a3d;--soft:#f5f8fc;
+  max-width:760px;margin:0 auto;color:var(--ink);font-size:18px;line-height:1.7;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+article.iws-post *{box-sizing:border-box}
+article.iws-post p,article.iws-post li{color:var(--ink)}
+article.iws-post a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+article.iws-post a:hover{text-decoration-thickness:2px}
+.iws-progress{position:fixed;top:0;left:0;right:0;height:4px;z-index:9999;background:transparent;pointer-events:none}
+.iws-progress span{display:block;height:4px;background:linear-gradient(90deg,var(--blue),var(--accent));transform:scaleX(0);transform-origin:0 50%}
+.iws-hero{padding:8px 0 28px;border-bottom:1px solid var(--line);margin-bottom:32px}
+.iws-kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:#e8f0fd;padding:6px 12px;border-radius:999px;margin-bottom:16px}
+article.iws-post h1{font-size:clamp(32px,5vw,46px);line-height:1.12;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);font-weight:800}
+.iws-meta{color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:6px 18px}
+article.iws-post h2{font-size:clamp(24px,3.4vw,30px);line-height:1.25;letter-spacing:-.01em;color:var(--navy);margin:48px 0 14px;font-weight:750;scroll-margin-top:80px}
+article.iws-post h2::before{content:"";display:block;width:44px;height:4px;border-radius:4px;background:var(--accent);margin-bottom:14px}
+article.iws-post h3{font-size:20px;color:var(--navy);margin:28px 0 8px}
+article.iws-post ul,article.iws-post ol{padding-left:1.3em}
+article.iws-post li{margin:6px 0}
+article.iws-post li::marker{color:var(--blue);font-weight:700}
+.iws-tldr{display:block;position:relative;background:var(--soft);border:1px solid #d6e3f7;border-radius:16px;padding:22px 24px 22px 26px;margin:28px 0;box-shadow:0 1px 0 rgba(14,23,38,.03),0 12px 32px -18px rgba(21,101,216,.35)}
+.iws-tldr::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:4px;border-radius:4px;background:linear-gradient(var(--blue),var(--accent))}
+.iws-tldr strong:first-child{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.iws-toc{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:8px 0 8px;background:#fff}
+.iws-toc b{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.iws-toc ol{margin:0;padding-left:1.2em;display:grid;grid-template-columns:1fr 1fr;gap:2px 32px}
+.iws-toc li{font-size:15.5px;margin:4px 0}
+.iws-toc a{text-decoration:none}
+article.iws-post table{border-collapse:separate;border-spacing:0;width:100%;margin:24px 0;font-size:16px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+article.iws-post th{background:var(--navy);color:#fff;text-align:left;padding:12px 14px;font-weight:650}
+article.iws-post td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+article.iws-post tr:nth-child(even) td{background:var(--soft)}
+.iws-figure{margin:28px 0}
+.iws-figure img{width:100%;height:auto;border-radius:16px;display:block;box-shadow:0 18px 40px -24px rgba(14,23,38,.45)}
+.iws-figure figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.iws-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:28px 0;background:#fff;box-shadow:0 24px 48px -30px rgba(14,23,38,.4)}
+.iws-card-top{height:96px;background:linear-gradient(135deg,#dfe9f8,#f6efe9)}
+.iws-card-body{padding:18px 22px 20px}
+.iws-card-name{font-size:22px;font-weight:750;color:var(--navy);margin:0}
+.iws-card-cat{color:var(--muted);font-size:15px;margin:2px 0 14px}
+.iws-card-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.iws-card-actions span{border:1px solid #c9d6ea;color:var(--blue);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
+.iws-card-rows{display:grid;gap:8px;font-size:15px}
+.iws-card-rows div{display:flex;gap:10px}
+.iws-card-rows i{font-style:normal;color:var(--muted);min-width:96px}
+.iws-card-note{font-size:13px;color:var(--muted);padding:10px 22px;border-top:1px solid var(--line);background:var(--soft)}
+.iws-faq{margin-top:48px}
+.iws-faq details{border:1px solid var(--line);border-radius:14px;padding:4px 18px;margin:10px 0;background:#fff;transition:box-shadow .2s}
+.iws-faq details[open]{box-shadow:0 14px 30px -22px rgba(14,23,38,.45)}
+.iws-faq summary{cursor:pointer;list-style:none;font-weight:650;color:var(--navy);padding:14px 28px 14px 0;position:relative}
+.iws-faq summary::-webkit-details-marker{display:none}
+.iws-faq summary::after{content:"+";position:absolute;right:0;top:10px;font-size:24px;color:var(--blue);transition:transform .2s}
+.iws-faq details[open] summary::after{transform:rotate(45deg)}
+.iws-faq details p{margin:0 0 16px;color:var(--muted)}
+.iws-sources{font-size:15px;background:var(--soft);border-radius:14px;padding:16px 20px 16px 2.2em}
+.iws-cta{position:relative;overflow:hidden;background:radial-gradient(120% 140% at 0% 0%,#1d4f9a 0%,var(--navy) 55%);color:#fff;padding:40px 32px;border-radius:22px;margin:56px 0 24px;text-align:center}
+.iws-cta::after{content:"";position:absolute;width:260px;height:260px;right:-80px;top:-80px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,61,.45),transparent 70%)}
 .iws-cta h2{color:#fff;margin-top:0}
-.iws-cta a.iws-btn{display:inline-block;background:#ff7a3d;color:#fff;padding:14px 26px;border-radius:999px;font-weight:700;text-decoration:none;margin:8px 0}
+.iws-cta h2::before{margin-left:auto;margin-right:auto}
+.iws-cta p{color:#dbe6f5;position:relative;z-index:1}
+.iws-cta a.iws-btn{display:inline-block;background:var(--accent);color:#fff;padding:15px 30px;border-radius:999px;font-weight:750;text-decoration:none;margin:10px 0;box-shadow:0 12px 26px -12px rgba(255,122,61,.9);transition:transform .2s,box-shadow .2s}
+.iws-cta a.iws-btn:hover{transform:translateY(-2px);box-shadow:0 18px 30px -12px rgba(255,122,61,.95)}
 .iws-cta a.iws-tel{color:#fff;font-weight:700}
-.iws-faq h3{margin-bottom:4px}
-.iws-faq p{margin-top:0}
-article.iws-post table{border-collapse:collapse;width:100%;margin:20px 0}
-article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;text-align:left}
+.iws-js .iws-reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.iws-js .iws-reveal.is-in{opacity:1;transform:none}
+@media (max-width:640px){article.iws-post{font-size:17px}.iws-toc ol{grid-template-columns:1fr}.iws-cta{padding:32px 20px}article.iws-post table{display:block;overflow-x:auto}}
+@media (prefers-reduced-motion:reduce){.iws-js .iws-reveal{opacity:1;transform:none;transition:none}.iws-progress{display:none}}
 </style>
 <article class="iws-post">
+<div class="iws-progress" aria-hidden="true"><span></span></div>
+<header class="iws-hero">
+<span class="iws-kicker">Window company marketing</span>
 <h1>Impact Window Marketing in Florida: What to Build First</h1>
+<div class="iws-meta"><span>By Impact Windows SEO</span><span>Updated October 8, 2026</span><span>2 min read</span></div>
+</header>
 <p>Florida's Atlantic hurricane season runs June 1 through November 30. Semrush's US data shows people search for impact windows in every month of the past year, and it shows the scale of the searching: "impact windows florida" and "impact windows cost" each draw about 720 searches a month, "hurricane windows cost" about 1,000, and "impact window installation" about 720, with an average ad cost near $20 a click.</p>
 <p>Semrush's twelve-month trend for these phrases moves up and down without one obvious peak, so we would not plan around a single predictable spike. Check your own Search Console data for your market.</p>
 <aside class="iws-tldr"><strong>The short version:</strong> Publish product, cost, and city pages before you need them, show your product approvals, explain the insurance and permit steps carefully, and make the next step easy. Keep the tone calm and clear.</aside>
 
-<h2>1. Build the pages before you need them</h2>
+<nav class="iws-toc" aria-label="In this guide"><b>In this guide</b><ol><li><a href="#1-build-the-pages-before-you-need-them">1. Build the pages before you need them</a></li><li><a href="#2-show-your-product-approvals">2. Show your product approvals</a></li><li><a href="#3-explain-the-insurance-and-permit-steps-carefully">3. Explain the insurance and permit steps carefully</a></li><li><a href="#4-make-the-next-step-easy">4. Make the next step easy</a></li><li><a href="#5-keep-reviews-moving-all-year">5. Keep reviews moving all year</a></li><li><a href="#a-note-on-tone">A note on tone</a></li></ol></nav>
+<section class="iws-reveal">
+<h2 id="1-build-the-pages-before-you-need-them">1. Build the pages before you need them</h2>
 <p>New pages are not instantly visible in search, so publish them early. These are worth having:</p>
 <ul>
 <li>One page per product type you install.</li>
@@ -24,33 +88,44 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 <li>A page explaining your estimate and installation process from first call to final inspection.</li>
 </ul>
 
-<h2>2. Show your product approvals</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="2-show-your-product-approvals">2. Show your product approvals</h2>
 <p>Miami-Dade and Broward counties make up Florida's High Velocity Hurricane Zone. Homeowners and building officials both care that the product installed is approved for where it goes. We cover how to present approvals in <a href="https://impactwindowsseo.com/product-approvals-impact-window-pages/">how to show product approvals on your impact window pages</a>.</p>
 
-<h2>3. Explain the insurance and permit steps carefully</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="3-explain-the-insurance-and-permit-steps-carefully">3. Explain the insurance and permit steps carefully</h2>
 <p>Florida law requires insurers to provide discounts, credits, or other rate differentials for features that reduce windstorm damage, and homeowners document those features on the state's Uniform Mitigation Verification Inspection Form. Homeowners ask about this. Explain the process, point them to their insurer, and never promise a discount amount. Our guide to <a href="https://impactwindowsseo.com/wind-mitigation-inspection-window-companies/">what window companies should say about wind mitigation</a> goes deeper.</p>
 
-<h2>4. Make the next step easy</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="4-make-the-next-step-easy">4. Make the next step easy</h2>
 <p>A worried homeowner who finds you late in the evening will not read five pages. Give them a click-to-call button, a short estimate form, and honest expectations on timing. Then answer quickly.</p>
 
-<h2>5. Keep reviews moving all year</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="5-keep-reviews-moving-all-year">5. Keep reviews moving all year</h2>
 <p>Do not wait for storm season to ask for reviews. A steady flow of recent reviews, plus photos of real Florida installs, gives homeowners something to judge you by. The <a href="https://impactwindowsseo.com/google-business-profile-for-window-companies/">Google Business Profile checklist</a> covers how.</p>
 
-<h2>A note on tone</h2>
-<p>People searching around a storm are often worried. Help them understand their options and let them decide. Skip fear-based ads. Calm, clear information treats homeowners fairly and keeps your reputation intact.</p>
-<p>The general framework is in <a href="https://impactwindowsseo.com/seo-for-window-companies/">SEO for window companies</a>.</p>
-<section class="iws-faq">
-<h2>Frequently asked questions</h2>
-<h3>When should an impact window company publish its pages?</h3>
-<p>As early as you can. New pages are not instantly visible in search, so publish them before you need them.</p>
-<h3>Do I need separate pages for Miami-Dade and Broward?</h3>
-<p>It is a good idea. Separate pages let you show local jobs and the details that matter in each county, instead of one page that tries to cover both.</p>
-<h3>What should an impact window product page include?</h3>
-<p>The product type and features, approval numbers with links to the official records, warranty terms, photos of real installs, what affects price, and a clear way to request an estimate.</p>
-<h3>Should I run ads for impact windows?</h3>
-<p>Ads can bring calls while organic results build. Check the cost per click in your ad platform, and track cost per signed job so you know whether the spend is worth it.</p>
 </section>
-<section class="iws-cta">
+<section class="iws-reveal">
+<h2 id="a-note-on-tone">A note on tone</h2>
+<p>People searching around a storm are often worried. Help them understand their options and let them decide. Skip fear-based ads. Calm, clear information treats homeowners fairly and keeps your reputation intact.</p>
+<p>The general framework is in <a href="https://impactwindowsseo.com/seo-for-window-companies/">SEO for window companies</a>.</p></section>
+
+<section class="iws-faq iws-reveal">
+<h2 id="faq">Frequently asked questions</h2>
+<details open><summary>When should an impact window company publish its pages?</summary>
+<p>As early as you can. New pages are not instantly visible in search, so publish them before you need them.</p></details>
+<details><summary>Do I need separate pages for Miami-Dade and Broward?</summary>
+<p>It is a good idea. Separate pages let you show local jobs and the details that matter in each county, instead of one page that tries to cover both.</p></details>
+<details><summary>What should an impact window product page include?</summary>
+<p>The product type and features, approval numbers with links to the official records, warranty terms, photos of real installs, what affects price, and a clear way to request an estimate.</p></details>
+<details><summary>Should I run ads for impact windows?</summary>
+<p>Ads can bring calls while organic results build. Check the cost per click in your ad platform, and track cost per signed job so you know whether the spend is worth it.</p></details>
+</section>
+<section class="iws-cta iws-reveal">
 <h2>Want to see where your window company stands?</h2>
 <p>Request a free SEO audit. We review your Google Business Profile, your website, and your top local competitors, then send you a written report.</p>
 <p><a class="iws-btn" href="https://impactwindowsseo.com/contact/">Request my free audit</a></p>
@@ -58,6 +133,20 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 <p>Impact Windows SEO &middot; 5840 Lakeshore Drive, Fort Lauderdale, FL 33312</p>
 </section>
 </article>
+<script>
+(function(){
+  var a=document.querySelector('article.iws-post'); if(!a) return;
+  a.classList.add('iws-js');
+  var items=a.querySelectorAll('.iws-reveal');
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(still||!('IntersectionObserver' in window)){for(var i=0;i<items.length;i++){items[i].classList.add('is-in');}}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+    for(var j=0;j<items.length;j++){io.observe(items[j]);}}
+  var bar=a.querySelector('.iws-progress span');
+  function prog(){if(!bar)return;var r=a.getBoundingClientRect();var h=r.height-window.innerHeight;var v=h>0?Math.min(1,Math.max(0,-r.top/h)):1;bar.style.transform='scaleX('+v+')';}
+  window.addEventListener('scroll',prog,{passive:true}); prog();
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

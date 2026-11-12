@@ -1,21 +1,85 @@
 <style>
-.iws-tldr{background:#f3f6fa;border-left:4px solid #0b5cab;padding:14px 18px;margin:24px 0;border-radius:4px}
-.iws-cta{background:#0b2545;color:#fff;padding:28px;border-radius:8px;margin:40px 0;text-align:center}
+article.iws-post{--ink:#0e1726;--muted:#5b6678;--line:#e3e8ef;--navy:#0b2545;--blue:#1565d8;--accent:#ff7a3d;--soft:#f5f8fc;
+  max-width:760px;margin:0 auto;color:var(--ink);font-size:18px;line-height:1.7;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+article.iws-post *{box-sizing:border-box}
+article.iws-post p,article.iws-post li{color:var(--ink)}
+article.iws-post a{color:var(--blue);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+article.iws-post a:hover{text-decoration-thickness:2px}
+.iws-progress{position:fixed;top:0;left:0;right:0;height:4px;z-index:9999;background:transparent;pointer-events:none}
+.iws-progress span{display:block;height:4px;background:linear-gradient(90deg,var(--blue),var(--accent));transform:scaleX(0);transform-origin:0 50%}
+.iws-hero{padding:8px 0 28px;border-bottom:1px solid var(--line);margin-bottom:32px}
+.iws-kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);background:#e8f0fd;padding:6px 12px;border-radius:999px;margin-bottom:16px}
+article.iws-post h1{font-size:clamp(32px,5vw,46px);line-height:1.12;letter-spacing:-.02em;margin:0 0 14px;color:var(--navy);font-weight:800}
+.iws-meta{color:var(--muted);font-size:15px;display:flex;flex-wrap:wrap;gap:6px 18px}
+article.iws-post h2{font-size:clamp(24px,3.4vw,30px);line-height:1.25;letter-spacing:-.01em;color:var(--navy);margin:48px 0 14px;font-weight:750;scroll-margin-top:80px}
+article.iws-post h2::before{content:"";display:block;width:44px;height:4px;border-radius:4px;background:var(--accent);margin-bottom:14px}
+article.iws-post h3{font-size:20px;color:var(--navy);margin:28px 0 8px}
+article.iws-post ul,article.iws-post ol{padding-left:1.3em}
+article.iws-post li{margin:6px 0}
+article.iws-post li::marker{color:var(--blue);font-weight:700}
+.iws-tldr{display:block;position:relative;background:var(--soft);border:1px solid #d6e3f7;border-radius:16px;padding:22px 24px 22px 26px;margin:28px 0;box-shadow:0 1px 0 rgba(14,23,38,.03),0 12px 32px -18px rgba(21,101,216,.35)}
+.iws-tldr::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:4px;border-radius:4px;background:linear-gradient(var(--blue),var(--accent))}
+.iws-tldr strong:first-child{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.iws-toc{border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin:8px 0 8px;background:#fff}
+.iws-toc b{display:block;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.iws-toc ol{margin:0;padding-left:1.2em;display:grid;grid-template-columns:1fr 1fr;gap:2px 32px}
+.iws-toc li{font-size:15.5px;margin:4px 0}
+.iws-toc a{text-decoration:none}
+article.iws-post table{border-collapse:separate;border-spacing:0;width:100%;margin:24px 0;font-size:16px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+article.iws-post th{background:var(--navy);color:#fff;text-align:left;padding:12px 14px;font-weight:650}
+article.iws-post td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+article.iws-post tr:nth-child(even) td{background:var(--soft)}
+.iws-figure{margin:28px 0}
+.iws-figure img{width:100%;height:auto;border-radius:16px;display:block;box-shadow:0 18px 40px -24px rgba(14,23,38,.45)}
+.iws-figure figcaption{font-size:14px;color:var(--muted);margin-top:8px}
+.iws-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin:28px 0;background:#fff;box-shadow:0 24px 48px -30px rgba(14,23,38,.4)}
+.iws-card-top{height:96px;background:linear-gradient(135deg,#dfe9f8,#f6efe9)}
+.iws-card-body{padding:18px 22px 20px}
+.iws-card-name{font-size:22px;font-weight:750;color:var(--navy);margin:0}
+.iws-card-cat{color:var(--muted);font-size:15px;margin:2px 0 14px}
+.iws-card-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.iws-card-actions span{border:1px solid #c9d6ea;color:var(--blue);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600}
+.iws-card-rows{display:grid;gap:8px;font-size:15px}
+.iws-card-rows div{display:flex;gap:10px}
+.iws-card-rows i{font-style:normal;color:var(--muted);min-width:96px}
+.iws-card-note{font-size:13px;color:var(--muted);padding:10px 22px;border-top:1px solid var(--line);background:var(--soft)}
+.iws-faq{margin-top:48px}
+.iws-faq details{border:1px solid var(--line);border-radius:14px;padding:4px 18px;margin:10px 0;background:#fff;transition:box-shadow .2s}
+.iws-faq details[open]{box-shadow:0 14px 30px -22px rgba(14,23,38,.45)}
+.iws-faq summary{cursor:pointer;list-style:none;font-weight:650;color:var(--navy);padding:14px 28px 14px 0;position:relative}
+.iws-faq summary::-webkit-details-marker{display:none}
+.iws-faq summary::after{content:"+";position:absolute;right:0;top:10px;font-size:24px;color:var(--blue);transition:transform .2s}
+.iws-faq details[open] summary::after{transform:rotate(45deg)}
+.iws-faq details p{margin:0 0 16px;color:var(--muted)}
+.iws-sources{font-size:15px;background:var(--soft);border-radius:14px;padding:16px 20px 16px 2.2em}
+.iws-cta{position:relative;overflow:hidden;background:radial-gradient(120% 140% at 0% 0%,#1d4f9a 0%,var(--navy) 55%);color:#fff;padding:40px 32px;border-radius:22px;margin:56px 0 24px;text-align:center}
+.iws-cta::after{content:"";position:absolute;width:260px;height:260px;right:-80px;top:-80px;border-radius:50%;background:radial-gradient(circle,rgba(255,122,61,.45),transparent 70%)}
 .iws-cta h2{color:#fff;margin-top:0}
-.iws-cta a.iws-btn{display:inline-block;background:#ff7a3d;color:#fff;padding:14px 26px;border-radius:999px;font-weight:700;text-decoration:none;margin:8px 0}
+.iws-cta h2::before{margin-left:auto;margin-right:auto}
+.iws-cta p{color:#dbe6f5;position:relative;z-index:1}
+.iws-cta a.iws-btn{display:inline-block;background:var(--accent);color:#fff;padding:15px 30px;border-radius:999px;font-weight:750;text-decoration:none;margin:10px 0;box-shadow:0 12px 26px -12px rgba(255,122,61,.9);transition:transform .2s,box-shadow .2s}
+.iws-cta a.iws-btn:hover{transform:translateY(-2px);box-shadow:0 18px 30px -12px rgba(255,122,61,.95)}
 .iws-cta a.iws-tel{color:#fff;font-weight:700}
-.iws-faq h3{margin-bottom:4px}
-.iws-faq p{margin-top:0}
-article.iws-post table{border-collapse:collapse;width:100%;margin:20px 0}
-article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;text-align:left}
+.iws-js .iws-reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.iws-js .iws-reveal.is-in{opacity:1;transform:none}
+@media (max-width:640px){article.iws-post{font-size:17px}.iws-toc ol{grid-template-columns:1fr}.iws-cta{padding:32px 20px}article.iws-post table{display:block;overflow-x:auto}}
+@media (prefers-reduced-motion:reduce){.iws-js .iws-reveal{opacity:1;transform:none;transition:none}.iws-progress{display:none}}
 </style>
 <article class="iws-post">
+<div class="iws-progress" aria-hidden="true"><span></span></div>
+<header class="iws-hero">
+<span class="iws-kicker">Window company marketing</span>
 <h1>City Pages for Window Companies Without Duplicate Content</h1>
+<div class="iws-meta"><span>By Impact Windows SEO</span><span>Updated November 12, 2026</span><span>3 min read</span></div>
+</header>
 <p>Most window companies work in more than one city, and most want a page for each. The common shortcut is to write one page, copy it, and swap the city name. That shortcut is the problem this guide is about.</p>
 <p>People search for this. Semrush's US data puts "location pages seo" at about 480 searches a month and "local landing pages" at about 390.</p>
 <aside class="iws-tldr"><strong>Short answer:</strong> A city page should exist only when you have something specific to say about that city: real jobs, local permit steps, the products you install there, and photos. Link each city page from one service-area hub. Google's spam policy lists city-targeted pages that funnel users to one page, and substantially similar pages, as doorway abuse.</aside>
 
-<h2>Are city pages against Google's spam policies?</h2>
+<nav class="iws-toc" aria-label="In this guide"><b>In this guide</b><ol><li><a href="#are-city-pages-against-google-s-spam-policies">Are city pages against Google&#x27;s spam policies?</a></li><li><a href="#how-do-you-know-if-a-city-page-is-worth-publishing">How do you know if a city page is worth publishing?</a></li><li><a href="#what-should-a-window-company-city-page-include">What should a window company city page include?</a></li><li><a href="#how-should-city-pages-be-structured">How should city pages be structured?</a></li><li><a href="#what-city-page-mistakes-should-you-avoid">What city page mistakes should you avoid?</a></li><li><a href="#how-many-city-pages-should-you-start-with">How many city pages should you start with?</a></li><li><a href="#where-this-fits">Where this fits</a></li></ol></nav>
+<section class="iws-reveal">
+<h2 id="are-city-pages-against-google-s-spam-policies">Are city pages against Google's spam policies?</h2>
 <p>No, but copy-paste city pages can be. Google's policy targets pages that exist only to catch a search, not pages with real local information.</p>
 <p>Google's spam policies for web search describe "doorway abuse" as sites or pages created to rank for specific, similar search queries that lead users to intermediate pages less useful than the final destination. The examples Google lists include:</p>
 <ul>
@@ -25,10 +89,14 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 <p>The same policy page describes "scaled content abuse": many pages generated mainly to manipulate rankings rather than help users, no matter how they are created. Google says these behaviors can lead to a page or a whole site ranking lower or being left out of results.</p>
 <p>None of that bans city pages. It bans city pages that exist only to catch a search and add nothing.</p>
 
-<h2>How do you know if a city page is worth publishing?</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="how-do-you-know-if-a-city-page-is-worth-publishing">How do you know if a city page is worth publishing?</h2>
 <p>Ask one question: would a homeowner in this city learn something here that they could not learn on your other city pages? If the honest answer is no, do not publish the page yet.</p>
 
-<h2>What should a window company city page include?</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="what-should-a-window-company-city-page-include">What should a window company city page include?</h2>
 <p>Local proof and local detail. Each item below should be specific to that city.</p>
 <ul>
 <li><strong>Jobs you actually did there.</strong> Photos of real installs in that city, with a sentence on what the job involved.</li>
@@ -38,7 +106,9 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 <li><strong>A clear next step.</strong> Phone number, estimate form, and honest expectations on timing.</li>
 </ul>
 
-<h2>How should city pages be structured?</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="how-should-city-pages-be-structured">How should city pages be structured?</h2>
 <p>As a simple hierarchy: one hub page that links to each city page.</p>
 <ol>
 <li><strong>One service-area hub page.</strong> Lists every city you serve and links to each city page.</li>
@@ -47,7 +117,9 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 </ol>
 <p>That gives homeowners, and Google, a browseable hierarchy instead of a pile of near-duplicates.</p>
 
-<h2>What city page mistakes should you avoid?</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="what-city-page-mistakes-should-you-avoid">What city page mistakes should you avoid?</h2>
 <ul>
 <li>Do not generate dozens of pages from a template and change only the city name.</li>
 <li>Do not create pages for cities you do not actually serve.</li>
@@ -55,28 +127,35 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 <li>Do not use AI or spinning tools to churn out "unique" versions of the same page. Google's policy applies no matter how the pages are made.</li>
 </ul>
 
-<h2>How many city pages should you start with?</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="how-many-city-pages-should-you-start-with">How many city pages should you start with?</h2>
 <p>Start with the cities where you already have the most finished jobs and photos. Add a new city page when you have enough real material to make it useful. Fewer, better pages beat a long list of thin ones.</p>
 
-<h2>Where this fits</h2>
+</section>
+<section class="iws-reveal">
+<h2 id="where-this-fits">Where this fits</h2>
 <p>City pages are step three in our <a href="https://impactwindowsseo.com/seo-for-window-companies/">SEO plan for window companies</a>. Make sure the service area in your <a href="https://impactwindowsseo.com/google-business-profile-for-window-companies/">Google Business Profile</a> matches the cities your pages describe. If you add structured data to city pages, keep it accurate and visible on the page; our guide to <a href="https://impactwindowsseo.com/faq-schema-for-contractors/">FAQ schema for contractors</a> explains what changed and what still matters.</p>
 
-<h2>Sources</h2>
-<ul>
-<li><a href="https://developers.google.com/search/docs/essentials/spam-policies">Google Search Central: Spam policies for Google web search</a> (doorway abuse and scaled content abuse)</li>
-</ul>
-<section class="iws-faq">
-<h2>Frequently asked questions</h2>
-<h3>Are city pages against Google&#x27;s guidelines?</h3>
-<p>No. Google&#x27;s spam policy targets doorway pages: pages aimed at specific cities that funnel users to one page, or substantially similar pages with little value. A city page with real local jobs, permit steps, and photos is not that.</p>
-<h3>Can I reuse some text across city pages?</h3>
-<p>Some shared material, such as your warranty terms or contact details, is normal. The core of each page should be specific to that city: local jobs, local steps, and local questions.</p>
-<h3>How many city pages should a window company have?</h3>
-<p>There is no set number. Build a page for each city where you have real work to show, and add more as you finish jobs in new areas.</p>
-<h3>Should I use AI to write city pages faster?</h3>
-<p>Google&#x27;s scaled content abuse policy applies to pages generated mainly to manipulate rankings, no matter how they are made. If you use any tool, add real local detail and check every fact before publishing.</p>
 </section>
-<section class="iws-cta">
+<section class="iws-reveal">
+<h2 id="sources">Sources</h2>
+<ul class="iws-sources">
+<li><a href="https://developers.google.com/search/docs/essentials/spam-policies">Google Search Central: Spam policies for Google web search</a> (doorway abuse and scaled content abuse)</li>
+</ul></section>
+
+<section class="iws-faq iws-reveal">
+<h2 id="faq">Frequently asked questions</h2>
+<details open><summary>Are city pages against Google&#x27;s guidelines?</summary>
+<p>No. Google&#x27;s spam policy targets doorway pages: pages aimed at specific cities that funnel users to one page, or substantially similar pages with little value. A city page with real local jobs, permit steps, and photos is not that.</p></details>
+<details><summary>Can I reuse some text across city pages?</summary>
+<p>Some shared material, such as your warranty terms or contact details, is normal. The core of each page should be specific to that city: local jobs, local steps, and local questions.</p></details>
+<details><summary>How many city pages should a window company have?</summary>
+<p>There is no set number. Build a page for each city where you have real work to show, and add more as you finish jobs in new areas.</p></details>
+<details><summary>Should I use AI to write city pages faster?</summary>
+<p>Google&#x27;s scaled content abuse policy applies to pages generated mainly to manipulate rankings, no matter how they are made. If you use any tool, add real local detail and check every fact before publishing.</p></details>
+</section>
+<section class="iws-cta iws-reveal">
 <h2>Want to see where your window company stands?</h2>
 <p>Request a free SEO audit. We review your Google Business Profile, your website, and your top local competitors, then send you a written report.</p>
 <p><a class="iws-btn" href="https://impactwindowsseo.com/contact/">Request my free audit</a></p>
@@ -84,6 +163,20 @@ article.iws-post th,article.iws-post td{border:1px solid #d5dbe3;padding:10px;te
 <p>Impact Windows SEO &middot; 5840 Lakeshore Drive, Fort Lauderdale, FL 33312</p>
 </section>
 </article>
+<script>
+(function(){
+  var a=document.querySelector('article.iws-post'); if(!a) return;
+  a.classList.add('iws-js');
+  var items=a.querySelectorAll('.iws-reveal');
+  var still=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(still||!('IntersectionObserver' in window)){for(var i=0;i<items.length;i++){items[i].classList.add('is-in');}}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px'});
+    for(var j=0;j<items.length;j++){io.observe(items[j]);}}
+  var bar=a.querySelector('.iws-progress span');
+  function prog(){if(!bar)return;var r=a.getBoundingClientRect();var h=r.height-window.innerHeight;var v=h>0?Math.min(1,Math.max(0,-r.top/h)):1;bar.style.transform='scaleX('+v+')';}
+  window.addEventListener('scroll',prog,{passive:true}); prog();
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
