@@ -42,6 +42,7 @@ Thirteen posts for impactwindowsseo.com, written for window and door companies, 
 - **Animation is progressive.** Content is fully visible if the script is stripped, and motion turns off for visitors who set "reduce motion".
 - **Images:** add `"images": [{"src": ..., "alt": ..., "caption": ...}]` to a post and place `{{IMAGE:1}}` in the body. Use only your own photos, or illustrations clearly labeled as such.
 - **`{{PROFILE_CARD}}`** inserts a labeled illustration of the parts of a business profile. It has no Google logo and no star rating on purpose.
+- **Brand color:** one line in `build.py`, `--accent:` inside `article.iws-post{...}`. It drives the button, progress bar, heading bars, and summary accent. Set it to your brand hex and run `python3 build.py`.
 - **Optional `"kicker"`** sets the small label above the title (default "Window company marketing").
 - WordPress must allow the `<script>` in a Custom HTML block (administrators can by default). Without it, posts still display, just without animation.
 
